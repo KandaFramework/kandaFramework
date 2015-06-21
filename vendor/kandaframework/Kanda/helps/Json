@@ -1,0 +1,27 @@
+<?php
+/**
+ * @copyright (c) KandaFramework
+ * @access public
+ * 
+ * 
+ */
+namespace helps;
+
+
+class Json{
+
+	public function encode( array $param){
+
+
+		
+
+
+	}
+
+	pulbic function decode( array $param){
+
+
+	}
+
+
+}
