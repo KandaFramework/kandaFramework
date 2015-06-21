@@ -3,6 +3,7 @@
 return $main = [
 
     'config' => [
+    
         'db' => [
             'dsn' => 'mysql://anexojob:linux321@localhost/anexojob',
         ],
