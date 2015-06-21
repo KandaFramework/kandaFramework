@@ -10,50 +10,7 @@ define('Kanda_CORE', dirname(__DIR__ . '/Kanda/'));
 
 set_include_path(get_include_path() . PATH_SEPARATOR . WWW_ROOT);
 set_include_path(get_include_path() . PATH_SEPARATOR . Kanda_CORE);
- 
-
-
-/**
- * function setApplication($main){
-        
-        if($main['app']['render']){ 
-        
-        define('DSN', $main['app']['db']['dsn']);
-        define('THEME', $main['app']['view'][1][0]);
-                 
-        define('MODEL', WWW_ROOT . $main['app']['model']);
-        define('VIEW',$main['app']['view'][0]);
-        define('CONTROLLER',$main['app']['controller']);
-
-        if(!empty($main['app']['dirAlias']))
-            define('ALIAS',$main['app']['dirAlias']);
-        else
-            define('ALIAS','');
-        }else
-            if($main['modules']['render']){
-        
-        define('MODULES',true);        
-        define('THEME', $main['modules']['view'][0][0]);         
-        define('MODEL', WWW_ROOT . $main['modules']['model']);        
-        define('DSN', $main['modules']['db']['dsn']);
-        define('CONTROLLER',$main['modules']['controller']);
-        define('VIEW','/modules/');
-        
-       
-          //Carregamento do primeiro 
-        
-        //define('THEME', $main['modules']['view'][1][0]);
-        
-        if(!empty($main['app']['dirAlias']))
-            define('ALIAS',$main['app']['dirAlias']);
-        else
-            define('ALIAS','');
-        }else
-            new Exception('Parametros inválidos da config.');
-    }
-
-    setApplication($main);
- */
+  
 
 require_once WWW_ROOT.'/vendor/autoload.php';
   
@@ -98,7 +55,7 @@ class Kanda{
      * 
      * 
      */
-    public static function run($main) {
+    public static function begin($main) {
    
         define('DSN',$main['config']['db']['dsn']);
         
@@ -119,4 +76,4 @@ class Kanda{
 
 }
 $kanda = new Kanda();
-$kanda->run($main);
+$kanda->begin($main);
