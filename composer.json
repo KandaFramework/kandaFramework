@@ -5,14 +5,13 @@
         "dist": {
           "url": "https://github.com/KandaFramework/kandaframework",
           "type": "zip"
-},
+    },
 
 "source": {
             "url": "https://github.com/KandaFramework/kandaframework",
             "type": "git",
             "reference": ""
-
-        }
+  }
     },
    {
     "name": "KandaFramework/kandaframework",
