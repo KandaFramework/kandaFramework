@@ -4,7 +4,7 @@ return $main = [
 
     'config' => [
         'db' => [
-            'dsn' => 'mysql://nome-usuario:senha@localhost/db-name',
+            'dsn' => 'mysql://NOME-USUARIO:SENHA-USUARIO@localhost/DB-NAME',
         ],
         'timezone' => 'America/Sao_Paulo',
         'default' => 'kanda',
