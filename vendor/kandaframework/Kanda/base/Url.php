@@ -119,7 +119,6 @@ class Url{
      * @example $this->redirect('index',['id'=>1]); 
      * 
      * @description Redirecionar para uma view. Referencia da url serar herdada
-
      * 
      */
     public function redirect($view = '', $param = []) {
@@ -152,21 +151,5 @@ class Url{
 
         header("Location:$header");
         exit;
-    }
-
-
-    public function Formart($string) {
-
-
-        $map = array(
-            'á' => 'a', 'à' => 'a', 'ã' => 'a', 'â' => 'a',
-            'é' => 'e', 'ê' => 'e', 'í' => 'i', 'ó' => 'o',
-            'ô' => 'o', 'õ' => 'o', 'ú' => 'u', 'ü' => 'u',
-            'ç' => 'c', 'Á' => 'a', 'À' => 'a', 'Ã' => 'a',
-            'Â' => 'a', 'É' => 'e', 'Ê' => 'e', 'Í' => 'i',
-            'Ó' => 'o', 'Ô' => 'o', 'Õ' => 'o',
-            'Ú' => 'u', 'Ü' => 'u', 'Ç' => 'c', '?' => '()');
-        $str = str_replace(' ', '-', strtolower($string));
-        return strtr($str, $map);
     }
  }
