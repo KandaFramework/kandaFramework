@@ -15,7 +15,7 @@
    "name": "KandaFramework/kandaframework",
     "description": "",
     "require": {
-        "KandaFramework/Kanda": "2.0"
+        "kandaframework/Kanda": "2.0"
     },
     "minimum-stability": "dev"
     
