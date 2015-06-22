@@ -117,21 +117,24 @@ class Controller extends Url implements  InterfaceController {
  
      
     public function load(){
- 
-
-      $controller = '/'.self::$namespace_module.'/controllers/'.self::$controller.'Controller';
-        
+  
       self::$path = View::pathView(self::$namespace_module);
+ 
+      $load = $this->createNamespaceController();
 
-      $class = str_replace('/','\\',$controller);
-
-      $class = new $class;
+      $class = new $load;
 
       $class->actionIndex();
 
     }
 
-    public function actions() {}
+    public function createNamespaceController(){
+
+      $path = '/'.self::$namespace_module.'/controllers/'.self::$controller.'Controller';
+        
+      return  str_replace('/','\\',$path);
+ 
+    }
  
       
 }
