@@ -44,4 +44,13 @@ class Root{
         return $root;
     }
 
+   public static function fileExists($filename){
+
+       if(!file_exists(filename))
+          throw new Exception("Nonexistent file", 1);
+          
+      return true;
+   }
+
+
 }

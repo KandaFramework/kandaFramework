@@ -13,19 +13,11 @@ namespace app;
 
 use base\Url;
 use base\InterfaceController;
+use base\Root;
 
 class Controller extends Url implements  InterfaceController {
 
-    /**
-     * @access public
-     * 
-     * @static 
-     * 
-     * @var type string  $theme Guarda o nome do theme
-     * 
-     */
-    public static $theme;
-
+    
     /**
      *
      * @access public
@@ -57,8 +49,7 @@ class Controller extends Url implements  InterfaceController {
      * @var string Contem o valor da url
      * 
      */
-    public static $server;
-
+   
     /**
      * @access public
      * 
@@ -79,21 +70,7 @@ class Controller extends Url implements  InterfaceController {
      * @var string Contem o valor da url padrão do projeto 
      * 
      */
-    public static $baseUrl;
-
-    /**
-     * 
-     * @access private
-     * 
-     * @static
-     * 
-     * 
-     * @var string Guarda o nome do controller.
-     * 
-     * 
-     */
-    private static $ControllerName;
-
+     
     /**
      * @access public
      * 
@@ -128,7 +105,9 @@ class Controller extends Url implements  InterfaceController {
     
     public static $modules;
      
-
+    public static $default;
+ 
+    public static $path;
     
     public function behaviors() {}
 
@@ -137,7 +116,9 @@ class Controller extends Url implements  InterfaceController {
      * @param array $main
      */
     public static function begin($main){
-        
+ 
+        self::$default = $main['config']['default'];
+
         
         if(isset($main['config']['modules'])){
            
@@ -169,36 +150,25 @@ class Controller extends Url implements  InterfaceController {
     public function render($render, $param = []) {
  
         
-        $render = '/views/' . self::$view . '/' . $render . '.php';
+        $render = self::$path.'/views/' . self::$view . '/' . $render . '.php';
   
-        $layout = '/views/layout/' . $this->layout . '.php';
+        $layout = self::$path.'/views/layout/' . $this->layout . '.php';
  
-        ob_start();
-        ob_implicit_flush(false);
-        extract($param, EXTR_OVERWRITE);
-        require($content_);
+        return View::render($render,$param,$layout);
+    }
 
-        $content = ob_get_clean();
+    /**
+    *  
+    */
+    public function load(){
 
-        if (file_exists($main)) {
-            require_once $main;
-        } else
-            throw new Exception("Not fond main.php", 1);
-            
+      $file = WWW_ROOT.'/modules/'.self::$default.'controllers/DefaultController.php';
+
+      
 
     }
- 
 
-     /**
-     *  
-     */
-    public function load() {
-
-
-    }
-    private function actions() {
-       
-    }
+    public function actions() {}
 
     /**
      * 
@@ -216,20 +186,7 @@ class Controller extends Url implements  InterfaceController {
         }
               
     }
-  
-    /**
-     * 
-     * @param type $theme
-     * @param type $controller
-     */
-    public function NameController($theme, $controller) {
-
-
-        self::$base = $controller;
-        self::$baseUrl = $this->createUrl() . $theme;
-        self::$theme = $theme;
-        self::$ControllerName = ucfirst($controller);
-    }
+   
 
     /**
      * @access public
