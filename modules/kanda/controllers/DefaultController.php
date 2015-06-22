@@ -7,6 +7,8 @@ class DefaultController extends \app\Controller {
 
     public function actionIndex() {
 
+    	$this->render('index');
+
     }
-   
+
 }

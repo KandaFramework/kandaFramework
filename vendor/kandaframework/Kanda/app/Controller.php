@@ -17,60 +17,9 @@ use base\Root;
 
 class Controller extends Url implements  InterfaceController {
 
-    
-    /**
-     *
-     * @access public
-     * 
-     * @var type string
-     * 
-     * @description Serar guardado o title da página. Deve ser chamado no arquivo php
-     * 
-     * @example $this->title = 'KandaFramework';
-     * 
-     */
-    public $title = '';
-
-    /**
-     * @access public
-     * 
-     * @static 
-     * 
-     * @var string $view Guarda o nome da view
-     * 
-     */
-    public static $view;
-
-    /**
-     * @access public
-     * 
-     * @static 
-     * 
-     * @var string Contem o valor da url
-     * 
-     */
-   
-    /**
-     * @access public
-     * 
-     * @static
-     *  
-     * @var string Contem o valor base da url
-     * 
-     * @example /kandaframework/painel
-     * 
-     */
-    public static $base;
-
-    /**
-     * @access public
-     * 
-     * @static
-     * 
-     * @var string Contem o valor da url padrão do projeto 
-     * 
-     */
      
+ 
+  
     /**
      * @access public
      * 
@@ -103,13 +52,17 @@ class Controller extends Url implements  InterfaceController {
     public static $home;
 
     
-    public static $modules;
+    public static $namespace_module;
      
-    public static $default;
- 
-    public static $path;
+    public static $controller = 'Default';
     
-    public function behaviors() {}
+    public static $module;
+
+    public static $path;
+
+    public static $view = 'default';
+    
+     public function behaviors() {}
 
     /**
      * 
@@ -117,8 +70,7 @@ class Controller extends Url implements  InterfaceController {
      */
     public static function begin($main){
  
-        self::$default = $main['config']['default'];
-
+        self::$module = $main['config']['default'];
         
         if(isset($main['config']['modules'])){
            
@@ -126,8 +78,14 @@ class Controller extends Url implements  InterfaceController {
 
              $class = new $main['config']['modules'][parent::segment(1)]['class'];
             
-            self::$modules = $class->begin();
+             self::$namespace_module = $class->begin();
                       
+          }else{
+
+            $class = new $main['config']['modules'][self::$module]['class'];
+            
+            self::$namespace_module =  $class->begin();
+
           }          
         }
         
@@ -156,65 +114,27 @@ class Controller extends Url implements  InterfaceController {
  
         return View::render($render,$param,$layout);
     }
-
-    /**
-    *  
-    */
+ 
+     
     public function load(){
-
-      $file = WWW_ROOT.'/modules/'.self::$default.'controllers/DefaultController.php';
-
-      
-
-    }
-
-    public function actions() {}
-
-    /**
-     * 
-     * @return string
-     * 
-     * @description Retorna os valores do parametro da action
-     * 
-     */
-    public function paramns() {
+  
+      self::$path = View::pathView(self::$namespace_module);
  
-        $QUERY_STRING = [];
+      $load = $this->createNamespaceController();
 
-        if(isset($_SERVER['QUERY_STRING'])){
+      $class = new $load;
 
-        }
-              
+      $class->actionIndex();
+
     }
-   
 
-    /**
-     * @access public
-     * @param string $theme Contem o nome do theme
-     * @return string Retorna a url do path do theme
-     * 
-     */
-    public function assets($theme = '') {
+    public function createNamespaceController(){
+
+      $path = '/'.self::$namespace_module.'/controllers/'.self::$controller.'Controller';
         
-        $theme = (!empty($theme)) ? $theme : THEME;
-             
-        return $this->baseUrl() . '/assets/' . $theme . "/";
-    }
-
-
-    /**
-     * 
-     * @param type array $json
-     * 
-     * @return type object Retonar os dados do Json
-     * 
-     */
-    public static function Json($json = []) {
-
-        header('Content-Type: application/json');
-
-        echo json_encode($json);
-        exit;
+      return  str_replace('/','\\',$path);
+ 
     }
  
+      
 }
