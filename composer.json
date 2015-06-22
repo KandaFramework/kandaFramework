@@ -2,15 +2,15 @@
     "name": "KandaFramework/kandaframework",
     "type": "project",
     "description": "KandaFramework MVC",
-    "license": "MIT",
+    "license": "BSD-3-Clause",
     "authors": [
-        {
+            {
             "name": "Marcus Antonio",
             "email": "marcusjavascript@gmail.com"
             
-        }
+            }
     ],
     "require": {
         "php": ">=5.4.0"
-    },
+    }
 }
