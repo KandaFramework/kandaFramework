@@ -4,16 +4,13 @@ KandaFramework MVC
 
 #Executando
 
-Obs: A pasta root do framework é public/
-
 php -S 0.0.0.0:8888 -t public/
- 
+
+Obs: A pasta root do framework é public/ 
 
 #Estrutura de diretórios do Framework
 
 /config/main.php -> Configurações do db, rotas do Framework.
-
-/backup/ Pasta para arquivos...
 
 /controllers
 /help/
@@ -24,12 +21,6 @@ php -S 0.0.0.0:8888 -t public/
 /models
 
 /modules
-	painel/
-		controllers/
-		models/
-		views/
-			layout
-			    main.php
     site/		
     	controllers/
 		models/
@@ -41,3 +32,19 @@ php -S 0.0.0.0:8888 -t public/
 	index.php
 	httacess
 	assets/
+/vendor
+      activerecord/
+      kandaframework
+      	   kanda/
+      	   	assets/
+      	   	app/
+      	   	   Controller.php
+      	   	   Model.php
+      	   	   View.php
+      	        helps/
+      	          ....
+      	        base/
+      	        widgets/
+       wideImage 	        
+      	        
+      
