@@ -14,12 +14,7 @@ return $main = [
                 'timezone' => 'America/Sao_Paulo',
                 'dirAlias' => '',
                 'class' => 'modules\kanda\Module',
-            ],
-            'site' => [
-                'timezone' => 'America/Sao_Paulo',
-                'dirAlias' => '',
-                'class' => 'modules\site\Module',
-            ],
+            ],             
         ],
         'urlManager' => [
             'class'
