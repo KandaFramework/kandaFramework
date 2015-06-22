@@ -12,39 +12,3 @@ Obs: A pasta root do framework é public/
 
 /config/main.php -> Configurações do db, rotas do Framework.
 
-/controllers
-/help/
-	Image.php -> Para edição de imagens
-	Style.php -> Para estilo do form 
-	User.php  -> Para ser chamado nas class controllers
-
-/models
-
-/modules
-    site/		
-    	controllers/
-		models/
-		views/
-			layout
-			    main.php	
-/web/
-/public
-	index.php
-	httacess
-	assets/
-/vendor
-      activerecord/
-      kandaframework
-      	   kanda/
-      	   	assets/
-      	   	app/
-      	   	   Controller.php
-      	   	   Model.php
-      	   	   View.php
-      	        helps/
-      	          ....
-      	        base/
-      	        widgets/
-       wideImage 	        
-      	        
-      
