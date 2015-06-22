@@ -14,8 +14,21 @@ namespace app;
 class View{
 
 
-    public static function render($render,$param=[],$layout){
+    /**
+     *
+     * @access public
+     * 
+     * @var type string
+     * 
+     * @description Serar guardado o title da página. Deve ser chamado no arquivo php
+     * 
+     * @example $this->title = 'KandaFramework';
+     * 
+     */
+    public static $title = '';
 
+    public static function render($render,$param=[],$layout){
+ 
 
        if(empty($render)) 
          throw new Exception("Render can not be empty", 1);
@@ -31,6 +44,12 @@ class View{
         $content = ob_get_clean();
         
         require_once $layout;
+
+    }
+
+    public static function pathView($module){
+
+        return  WWW_ROOT.'/'.str_replace('\\','/',$module);
 
     }    
  

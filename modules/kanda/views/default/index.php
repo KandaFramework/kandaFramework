@@ -1,1 +1,3 @@
 <?php
+
+static::$title  = 'KandaFramework';

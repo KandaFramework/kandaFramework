@@ -4,7 +4,7 @@
 function Autoload($class) {
     
     $class = WWW_ROOT.DS. str_replace("\\", DS, $class) . '.php';
- 
+  
     $array =  explode('/',$class);
     $array = array_filter($array);
     
@@ -14,7 +14,7 @@ function Autoload($class) {
             
     
     foreach ($array as $param){
-            
+
         
         switch ($array[3]){
             
@@ -26,13 +26,15 @@ function Autoload($class) {
                 break;
             case 'helps':
                 $array[3] = $basedir.'/helps';
-                break;
+                break;                  
             
         }
+  
     }
     
     $filename = '/'.implode('/',$array);
     
+   
     
     if(!file_exists($filename))
         throw new Exception("File path $class not found.");

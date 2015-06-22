@@ -17,19 +17,7 @@ use base\Root;
 
 class Controller extends Url implements  InterfaceController {
 
-    
-    /**
-     *
-     * @access public
-     * 
-     * @var type string
-     * 
-     * @description Serar guardado o title da página. Deve ser chamado no arquivo php
-     * 
-     * @example $this->title = 'KandaFramework';
-     * 
-     */
-    public $title = '';
+     
  
   
     /**
@@ -66,11 +54,13 @@ class Controller extends Url implements  InterfaceController {
     
     public static $namespace_module;
      
-    public static $controller = 'DefaultController';
+    public static $controller = 'Default';
     
     public static $module;
 
     public static $path;
+
+    public static $view = 'default';
     
      public function behaviors() {}
 
@@ -94,7 +84,7 @@ class Controller extends Url implements  InterfaceController {
 
             $class = new $main['config']['modules'][self::$module]['class'];
             
-            self::$namespace_module = $class->begin();
+            self::$namespace_module =  $class->begin();
 
           }          
         }
@@ -124,33 +114,20 @@ class Controller extends Url implements  InterfaceController {
  
         return View::render($render,$param,$layout);
     }
-
-    /**
-    *
-    *
-    */
-
-
-    public static function pathController(){
-
-        $filename =  WWW_ROOT.'/modules/'.self::$module."/controllers/".self::$controller.".php";
-
-        if(!file_exists($filename))
-            throw new Exception("File not fond", 1);
-
-        return $filename; 
-    }
-
-    /**
-    *  
-    */
-    public function load(){
-
-      $filename = static::pathController();
-
+ 
      
-       new self::$namespace_module.'\\controllers\\'.self::$controller;
+    public function load(){
+ 
 
+      $controller = '/'.self::$namespace_module.'/controllers/'.self::$controller.'Controller';
+        
+      self::$path = View::pathView(self::$namespace_module);
+
+      $class = str_replace('/','\\',$controller);
+
+      $class = new $class;
+
+      $class->actionIndex();
 
     }
 

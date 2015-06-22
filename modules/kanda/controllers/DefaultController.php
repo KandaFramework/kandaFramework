@@ -7,7 +7,7 @@ class DefaultController extends \app\Controller {
 
     public function actionIndex() {
 
-    	echo 'heheheh';
+    	$this->render('index');
 
     }
 
