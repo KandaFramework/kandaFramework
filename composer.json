@@ -1,23 +1,16 @@
 {
- "packages": {
-        "name": "KandaFramework/kandaframework",
-        "version": "2.0",
-        "dist": {
-          "url": "https://github.com/KandaFramework/kandaframework",
-          "type": "zip"
-    },
-
-"source": {
-            "url": "https://github.com/KandaFramework/kandaframework",
-            "type": "git",
-            "reference": ""
-  },
-   "name": "KandaFramework/kandaframework",
-    "description": "",
+    "name": "KandaFramework/kandaframework",
+    "type": "project",
+    "description": "KandaFramework MVC",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcus Antonio",
+            "email": "marcusjavascript@gmail.com",
+            
+        }
+    ],
     "require": {
-        "kandaframework/Kanda": "2.0"
+        "php": ">=5.4.0"
     },
-    "minimum-stability": "dev"
-    
- }
 }
