@@ -1,0 +1,17 @@
+{
+    "packages": {
+        "name": "medinadato/mdn-sample",
+        "version": "2.0.0",
+        "dist": {
+          "url": "https://github.com/KandaFramework/kandaframework",
+          "type": "zip"
+},
+
+"source": {
+            "url": "https://github.com/KandaFramework/kandaframework",
+            "type": "git",
+            "reference": ""
+
+        }
+    }
+}
