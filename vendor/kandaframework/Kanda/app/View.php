@@ -51,6 +51,7 @@ class View{
 
         return  WWW_ROOT.'/'.str_replace('\\','/',$module);
 
-    }    
+    }
+ 
  
 }

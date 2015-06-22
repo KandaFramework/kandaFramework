@@ -3,8 +3,8 @@
     <head>
         <title><?php echo self::$title ?></title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/assets/kanda/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/kanda/css/style.css">
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
