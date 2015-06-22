@@ -15,7 +15,7 @@ use base\Url;
 use base\InterfaceController;
 use base\Root;
 
-class Controller extends Url implements  InterfaceController {
+class Controller implements  InterfaceController {
 
      
  
@@ -29,18 +29,7 @@ class Controller extends Url implements  InterfaceController {
      * 
      */
     public $layout = 'main';
-
-    /**
-     *
-     * @access public
-     * 
-     * @static
-     * 
-     * @var string Guarda no url dos script que são chamados na pasta assets
-     * 
-     * 
-     */
-    public static $assets = '';
+ 
 
     /**
      *
@@ -74,9 +63,9 @@ class Controller extends Url implements  InterfaceController {
         
         if(isset($main['config']['modules'])){
            
-          if(isset( $main['config']['modules'][parent::segment(1)])){
+          if(isset( $main['config']['modules'][Url::segment(1)])){
 
-             $class = new $main['config']['modules'][parent::segment(1)]['class'];
+             $class = new $main['config']['modules'][Url::segment(1)]['class'];
             
              self::$namespace_module = $class->begin();
                       
@@ -108,18 +97,18 @@ class Controller extends Url implements  InterfaceController {
     public function render($render, $param = []) {
  
         
-        $render = self::$path.'/views/' . self::$view . '/' . $render . '.php';
+        $render = View::pathView(self::$namespace_module).'/views/' . self::$view . '/' . $render . '.php';
   
-        $layout = self::$path.'/views/layout/' . $this->layout . '.php';
+        $layout = View::pathView(self::$namespace_module).'/views/layout/' . $this->layout . '.php';
  
         return View::render($render,$param,$layout);
     }
- 
+
+    public function renderAjax($render,$param=[]){}
+    
      
     public function load(){
-  
-      self::$path = View::pathView(self::$namespace_module);
- 
+    
       $load = $this->createNamespaceController();
 
       $class = new $load;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace kanda\models;
+namespace modules\kanda\models;
 
 class Nivel extends \ActiveRecord\Model{
     
