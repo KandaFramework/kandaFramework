@@ -17,9 +17,7 @@ use base\Root;
 
 class Controller implements  InterfaceController {
 
-     
- 
-  
+      
     /**
      * @access public
      * 
@@ -103,6 +101,13 @@ class Controller implements  InterfaceController {
  
         return View::render($render,$param,$layout);
     }
+
+    public function redirect($render){
+
+      return Url::redirect($render);
+
+    }
+
 
     public function renderAjax($render,$param=[]){}
     

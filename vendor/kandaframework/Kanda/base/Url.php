@@ -69,7 +69,7 @@ class Url{
      * @return string Retonar a url
      *
      */
-    public function createUrl($url = '') {
+    public static function createUrl($url = '') {
 
         if (!empty($url)) {
 
@@ -88,7 +88,7 @@ class Url{
      *
      * @return string
      */
-    public function baseUrl() {
+    public static function baseUrl() {
  
         $server_name = $_SERVER['SERVER_NAME'];
 
@@ -121,7 +121,7 @@ class Url{
      * @description Redirecionar para uma view. Referencia da url serar herdada
      * 
      */
-    public function redirect($view = '', $param = []) {
+    public static function redirect($view = '', $param = []) {
 
         $queryString = '';
 
@@ -146,9 +146,7 @@ class Url{
 
         if (empty($view)) {
             $header = $this->baseUrl() . '/' . self::$theme . '/' . self::$view . $queryString;
-        }
-
-
+        } 
         header("Location:$header");
         exit;
     }

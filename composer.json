@@ -1,0 +1,23 @@
+{
+ "packages": {
+        "name": "KandaFramework/kandaframework",
+        "version": "2.0",
+        "dist": {
+          "url": "https://github.com/KandaFramework/kandaframework",
+          "type": "zip"
+    },
+
+"source": {
+            "url": "https://github.com/KandaFramework/kandaframework",
+            "type": "git",
+            "reference": ""
+  },
+   "name": "KandaFramework/kandaframework",
+    "description": "MDN sample",
+    "require": {
+        "KandaFramework/Kanda": "2.0"
+    },
+    "minimum-stability": "dev"
+     
+    }
+}
