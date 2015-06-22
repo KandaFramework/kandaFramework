@@ -1,6 +1,6 @@
 {
     "packages": {
-        "name": "medinadato/mdn-sample",
+        "name": "kandaframework/kandaframework",
         "version": "2.0.0",
         "dist": {
           "url": "https://github.com/KandaFramework/kandaframework",
