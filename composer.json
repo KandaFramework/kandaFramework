@@ -10,10 +10,13 @@
             
             }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
-        "KandaFramework/Kanda": "*"
+        "KandaFramework/Kanda": "dev-dev"
+    },
+    "require-dev":{
+        
     },
     "autoload": {
         "psr-0": {
