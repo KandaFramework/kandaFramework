@@ -67,9 +67,8 @@ class Kanda{
 
         date_default_timezone_set($main['config']['timezone']);
         
-        $controller =  Controller::begin($main);
-        
-        $controller->load();
+        Controller::begin($main)->load();
+         
         
     }
      
