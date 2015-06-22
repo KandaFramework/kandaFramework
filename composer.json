@@ -13,5 +13,13 @@
             "reference": ""
 
         }
+    },
+   {
+    "name": "KandaFramework/kandaframework",
+    "description": "MDN sample",
+    "require": {
+        "KandaFramework/Kanda": "2.0"
+    },
+    "minimum-stability": "dev"
     }
 }
