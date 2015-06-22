@@ -10,8 +10,14 @@
             
             }
     ],
+    "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4.0",
-         "kandaframework/Kanda": "2.1"
+        "php": ">=5.4.0"
+    },
+    ,
+    "autoload": {
+        "psr-0": {
+            "kandaframework": "Kanda/"
+        }
     }
 }
