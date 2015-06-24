@@ -32,6 +32,7 @@ class Kanda{
     public function __construct() {
            
 
+        echo "Certo";
 
          die;  
         
