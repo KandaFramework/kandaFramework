@@ -7,7 +7,7 @@
  * @access public
  */
 
-namespace vendor\db; 
+namespace db; 
 
 class SGBD{
        

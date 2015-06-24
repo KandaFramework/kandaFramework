@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package App
  * 
@@ -49,7 +48,7 @@ class Controller implements  InterfaceController {
 
     public static $view = 'default';
     
-     public function behaviors() {}
+    public function behaviors() {}
 
     /**
      * 
