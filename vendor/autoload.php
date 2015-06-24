@@ -3,7 +3,7 @@
 
 function Autoload($class) {
     
-    $class = WWW_ROOT.DS. str_replace("/", DS, $class) . '.php';
+    $class = WWW_ROOT.DS. str_replace("\\", DS, $class) . '.php';
   
 
     echo $class."<br/>";
