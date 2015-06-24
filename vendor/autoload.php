@@ -5,6 +5,8 @@ function Autoload($class) {
     
     $class = WWW_ROOT.DS. str_replace("\\", DS, $class) . '.php';
     
+    echo $class;die;
+
     $array =  explode('/',$class);
     $array = array_filter($array);
     
