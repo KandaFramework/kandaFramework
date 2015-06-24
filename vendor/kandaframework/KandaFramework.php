@@ -31,6 +31,9 @@ class Kanda{
 
     public function __construct() {
            
+
+
+         die;  
         
         Kanda::$request = helps\Http::run();
           
