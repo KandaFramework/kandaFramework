@@ -30,12 +30,7 @@ class Kanda{
     
 
     public function __construct() {
-           
-
-        echo "Certo";
-
-         die;  
-        
+ 
         Kanda::$request = helps\Http::run();
           
         Kanda::$app = (object) [
