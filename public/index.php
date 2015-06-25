@@ -17,4 +17,9 @@
   /**
    * Carregando o Framework
    */
+
+
+
+  require_once WWW_ROOT.'/vendor/autoload.php';
+
   require_once (WWW_ROOT.'/vendor/kandaframework/KandaFramework.php');

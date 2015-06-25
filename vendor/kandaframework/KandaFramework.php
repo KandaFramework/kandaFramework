@@ -7,10 +7,7 @@
   
 
 set_include_path(get_include_path() . PATH_SEPARATOR . WWW_ROOT);
- 
   
-
-require_once WWW_ROOT.'/vendor/autoload.php';
   
 require_once WWW_ROOT.'/vendor/activerecord/ActiveRecord.php';
  
@@ -30,8 +27,6 @@ class Kanda{
 
     public function __construct() {
 
-
-        die;
         Kanda::$request = helps\Http::run();
           
         Kanda::$app = (object) [
