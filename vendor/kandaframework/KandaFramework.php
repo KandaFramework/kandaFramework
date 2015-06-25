@@ -4,12 +4,10 @@
  * @access public
  * 
  */
- 
-define('Kanda_CORE','vendor/kandaframework/Kanda');
-
+  
 
 set_include_path(get_include_path() . PATH_SEPARATOR . WWW_ROOT);
-set_include_path(get_include_path() . PATH_SEPARATOR . Kanda_CORE);
+ 
   
 
 require_once WWW_ROOT.'/vendor/autoload.php';
