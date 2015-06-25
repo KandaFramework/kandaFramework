@@ -29,9 +29,9 @@ class Kanda{
     
 
     public function __construct() {
-         
-        $d = new Http();die;
 
+
+        die;
         Kanda::$request = helps\Http::run();
           
         Kanda::$app = (object) [
