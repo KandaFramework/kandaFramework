@@ -10,10 +10,10 @@ class DefaultController extends \app\Controller {
     	$this->render('index');
 
     }
+   
+    public function actionContato(){
 
-    public function actionUpdate($id,$name){
-
-    	echo  $name;
+    	return $this->render('index');
     }
 
 }

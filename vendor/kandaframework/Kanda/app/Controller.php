@@ -108,18 +108,13 @@ class Controller implements  InterfaceController {
       return Url::redirect($render);
 
     }
-
-    /**
-    *
-    *   
-    */
-
+ 
     public static function Action(){
 
         if(empty(Url::segment()))
             return 'actionIndex';
         else
-            return 'action'.Url::segment();
+            return 'action'. ucwords(Url::segment());
 
     }
 

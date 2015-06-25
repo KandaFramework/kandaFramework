@@ -73,10 +73,10 @@ class Url{
 
         if (!empty($url)) {
 
-            return $this->baseUrl() . '/' . $url;
+            return static::baseUrl() . '/' . $url;
         }
 
-        self::$home = $this->baseUrl();
+        self::$home = static::baseUrl();
 
         return self::$home;
     }
@@ -142,10 +142,10 @@ class Url{
             }
         }
 
-        $header = $this->baseUrl() . '/' . self::$theme . '/' . self::$view . '/' . $view . $queryString;
+        $header = static::baseUrl() . '/' . self::$theme . '/' . self::$view . '/' . $view . $queryString;
 
         if (empty($view)) {
-            $header = $this->baseUrl() . '/' . self::$theme . '/' . self::$view . $queryString;
+            $header = static::baseUrl() . '/' . self::$theme . '/' . self::$view . $queryString;
         } 
         header("Location:$header");
         exit;

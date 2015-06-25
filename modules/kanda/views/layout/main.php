@@ -1,7 +1,12 @@
+<?php
+
+use helps\Url;
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        <title><?php echo self::$title ?></title>
+        <title><?php echo static::$title ?></title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="/assets/kanda/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/kanda/css/style.css">
@@ -20,8 +25,8 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Formulário</a></li>
+                        <li class=""><a href="<?php echo Url::createUrl() ?>">Home</a></li>
+                        <li><a href="<?php echo Url::createUrl('contato') ?>">Contato</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
