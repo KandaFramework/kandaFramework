@@ -5,8 +5,8 @@
  * 
  */
  
+define('Kanda_CORE','vendor/kandaframework/Kanda');
 
-define('Kanda_CORE', dirname(__DIR__ . '/Kanda/'));
 
 set_include_path(get_include_path() . PATH_SEPARATOR . WWW_ROOT);
 set_include_path(get_include_path() . PATH_SEPARATOR . Kanda_CORE);
@@ -30,7 +30,7 @@ class Kanda{
     
 
     public function __construct() {
- 
+         
         Kanda::$request = helps\Http::run();
           
         Kanda::$app = (object) [
@@ -59,8 +59,7 @@ class Kanda{
         define('DSN',$main['config']['db']['dsn']);
         
         ActiveRecord\Config::initialize(function($cfg) {
-           // $cfg->set_model_directory(MODEL);
-            $cfg->set_connections(array(
+                $cfg->set_connections(array(
                 'development' => DSN));
         });
 

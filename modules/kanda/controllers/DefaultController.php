@@ -11,4 +11,9 @@ class DefaultController extends \app\Controller {
 
     }
 
+    public function actionUpdate($id,$name){
+
+    	echo  $name;
+    }
+
 }

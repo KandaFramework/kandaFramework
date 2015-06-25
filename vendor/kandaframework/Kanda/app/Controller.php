@@ -35,7 +35,7 @@ class Controller implements  InterfaceController {
      * @var string Guarda o valor da url base 
      * 
      */
-    public static $home;
+    public static $action;
 
     
     public static $namespace_module;
@@ -45,6 +45,8 @@ class Controller implements  InterfaceController {
     public static $module;
 
     public static $path;
+
+    public static $class;
 
     public static $view = 'default';
     
@@ -107,6 +109,18 @@ class Controller implements  InterfaceController {
 
     }
 
+    /**
+    *
+    *   
+    */
+
+    public static function Action(){
+
+        return 'actionIndex';
+
+    }
+
+
 
     public function renderAjax($render,$param=[]){}
     
@@ -115,9 +129,39 @@ class Controller implements  InterfaceController {
     
       $load = $this->createNamespaceController();
 
-      $class = new $load;
+      static::$class = new $load;
 
-      $class->actionIndex();
+      call_user_func_array(array(static::$class,static::Action()),static::param());
+     
+
+    }
+    
+    static function param(){
+
+      $params = [];  
+
+     if(!empty($_GET)){
+
+        foreach ($_GET as $param => $value) {
+             
+            if(static::reflection($param))
+                $params[] = $value;
+            }
+      }
+         return $params;
+
+    }
+
+    //Verifica os nomes param dos methods
+
+    static function reflection($param){
+
+        $reflect = new \ReflectionParameter(array(static::$class,static::Action()),$param);
+ 
+        if(!$reflect)
+            return false;
+           
+        return true;      
 
     }
 
