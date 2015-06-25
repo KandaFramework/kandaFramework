@@ -116,7 +116,10 @@ class Controller implements  InterfaceController {
 
     public static function Action(){
 
-        return 'actionIndex';
+        if(empty(Url::segment()))
+            return 'actionIndex';
+        else
+            return 'action'.Url::segment();
 
     }
 
@@ -130,7 +133,6 @@ class Controller implements  InterfaceController {
       $load = $this->createNamespaceController();
 
       static::$class = new $load;
-
       call_user_func_array(array(static::$class,static::Action()),static::param());
      
 
@@ -157,7 +159,7 @@ class Controller implements  InterfaceController {
     static function reflection($param){
 
         $reflect = new \ReflectionParameter(array(static::$class,static::Action()),$param);
- 
+
         if(!$reflect)
             return false;
            

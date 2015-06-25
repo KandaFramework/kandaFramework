@@ -3,36 +3,42 @@
 
 function Autoload($class) {
     
-    $class = WWW_ROOT.DS. str_replace("\\", DS, $class) . '.php';
-
-    $array =  explode('/',$class);
-    $array = array_filter($array);
+    switch(PHP_OS){
+         
+      case 'WINNT':
+       $key = 4;$dilimitador = '';
+        break;
+      default:
+      //Para Linux ou Mac
+      $key = 3;$dilimitador = '/';
     
-    $filename = '';
-        
+    }
+    
+    $class = WWW_ROOT.DS. str_replace('\\', DS, $class) . '.php';
+    
+    $array =  explode(DS,$class);
+           
+    $baseroot = "vendor".DS."kandaframework".DS."Kanda";
+       
     foreach ($array as $param){
-
-        
-        switch ($array[3]){
+   
+        switch ($array[$key]){
             
             case 'app':
-                $array[3] = Kanda_CORE.'/app';
+                $array[$key] = $baseroot.DS."app";
                 break;
             case 'base':
-                $array[3] = Kanda_CORE.'/base';
+                $array[$key] = $baseroot.DS."base";
                 break;
             case 'helps':
-                $array[3] = Kanda_CORE.'/helps';
+                $array[$key] = $baseroot.DS."helps";
                 break;                  
             
         }
   
     }
-    
-    $filename = '/'.implode('/',$array);
-    
-   
-    
+    $filename = $dilimitador.implode(DS,$array);
+     
     if(!file_exists($filename))
         throw new Exception("File path $class not found.");
     
