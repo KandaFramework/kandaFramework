@@ -17,6 +17,7 @@ require_once WWW_ROOT.'/vendor/activerecord/ActiveRecord.php';
 
 use app\Controller;
  
+use helps\Http; 
  
 class Kanda{
 
@@ -29,7 +30,9 @@ class Kanda{
 
     public function __construct() {
          
-        Kanda::$request = \helps\Http::run();
+        $d = new Http();die;
+
+        Kanda::$request = helps\Http::run();
           
         Kanda::$app = (object) [
                     'arrays'     => helps\Arrays::run(),

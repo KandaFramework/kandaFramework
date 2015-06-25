@@ -38,9 +38,7 @@ function Autoload($class) {
   
     }
     $filename = $dilimitador.implode(DS,$array);
-     
-
-    echo $filename;
+      
 
     if(!file_exists($filename))
         throw new Exception("File path $class not found.");
