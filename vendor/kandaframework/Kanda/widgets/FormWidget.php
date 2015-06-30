@@ -9,6 +9,7 @@
 namespace widgets;
 
 use helps\Html;
+use helps\Assets;
 
 class FormWidget {
 
@@ -134,6 +135,15 @@ class FormWidget {
     }
 
     private static function CreateJsFile($rules, $messages, $id) {
+
+         $assets  = new Assets();
+
+         $assets->jsbase = KANDA_ROOT.'/widgets/assets/js/';
+
+         $assets->setJs();
+                 
+
+        die;
 
         $jquery = Kanda_CORE . '/widgets/assets/js/jquery-v1.11.js';
         $jquery_validade = Kanda_CORE . '/widgets/assets/js/jquery.validate.min.js';

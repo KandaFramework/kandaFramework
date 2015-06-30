@@ -7,6 +7,7 @@
   
 
 set_include_path(get_include_path() . PATH_SEPARATOR . WWW_ROOT);
+set_include_path(get_include_path() . PATH_SEPARATOR . KANDA_ROOT);
   
   
 require_once WWW_ROOT.'/vendor/activerecord/ActiveRecord.php';

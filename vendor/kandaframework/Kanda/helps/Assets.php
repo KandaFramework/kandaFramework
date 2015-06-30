@@ -12,13 +12,58 @@ namespace helps;
 
 class Assets{
 
-	public $base = WWW_ROOT.'/pulbic/assets/';
+	public $basename = '/assets/';
 
-	public static function begin($config=[]){}
+	public $cssbase = '/assets/css/';
+
+	public $jsbase = '/assets/js/';
+
+	private $files = '';
+
+	public function __construct(){
+
+
+
+	}
+
+	public function begin(){
+
+		if(is_dir($base)){
+
+		}else{
+			mkdir($base);			
+		}
+	}
 	
-	public static function getCss(){}
+	public static function setCopy($dir){
+
+		$files = (scandir($dir));
+
+	    if(count($files) == 0)
+	    	return true;
+
+	    unset($files[0],$files[1]);
+
+	    foreach ($files as $key => $value) {
+	    	 	
+	    	 	echo $value.'<br>';
+	    	 	
+	    }
+
+	}
+
+	public function setCss(){
+
+		print_r(scandir($this->cssbase));
+
+	}
 	
-	public static function getJs(){}
+	public function setJs(){
+
+
+
+
+	}
 
  
 }

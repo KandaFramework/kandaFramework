@@ -1,5 +1,6 @@
 <?php
 use widgets\FormWidget;
+use helps\Url;
 
 
 function Script(){
@@ -18,7 +19,7 @@ function Script(){
             $form = FormWidget::widget($model, [
                         'id' => 'Validade',
                         'ajax' => [
-                            'url' => $this->createUrl('painel/login'),
+                            'url' => Url::createUrl('painel/login'),
                             'type' => 'POST',
                             'dataType' => 'json',
                             'success' => function($data) {
