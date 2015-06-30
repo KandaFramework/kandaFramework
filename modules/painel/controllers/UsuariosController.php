@@ -51,7 +51,6 @@ class UsuariosController extends \app\Controller {
                  $model->senha = $defaultpasswork;
 
             $model->save();
-
             Session::setflash('update', 'Alterado com sucesso');
 
             return $this->redirect();
@@ -69,13 +68,14 @@ class UsuariosController extends \app\Controller {
 
             $model->senha = password_hash($model->senha, PASSWORD_DEFAULT);
  
-              $model->save();
+            $model->save();
 
             Session::setflash('update', 'Cadastrado com sucesso');
-
             return $this->redirect('update', ['id' => $model->id]);
+
         } else {
-            return $this->render('form', ['model' => $model]);
+
+            return $this->renderAjax('form', ['model' => $model]);
         }
     }
 

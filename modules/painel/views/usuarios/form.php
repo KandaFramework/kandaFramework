@@ -8,6 +8,7 @@ use helps\Session;
  
 
 ?>
+ 
 <div class="module">
     <div class="module-head">
         <h3><?php echo static::$title ?></h3>
@@ -17,7 +18,7 @@ use helps\Session;
 
         <br>
 
-        <form method="POST" name=" " id="Validade" action="<?php  echo Url::request() ?>" class="form-horizontal row-fluid" enctype="multipart/form-data" >
+        <form method="POST"  id="Validade" action=""  class="form-horizontal row-fluid" enctype="multipart/form-data" >
             <fieldset>
                 <?php
                 $form = FormWidget::widget($model, [ 'style' => "\help\Style",]);
@@ -25,14 +26,14 @@ use helps\Session;
                 echo $form->text('nome');
                 echo $form->text('login');
                 echo $form->text('email');
-                 echo $form->text('senha',['value' => '123'], 'password');
+                echo $form->text('senha',['value' => '123'], 'password');
            
                 ?>
                 <div class="form-actions">
-                    <button class="btn btn-success" type="submit">Enviar</button>
+                    <button class="btn btn-success"  type="submit" >Enviar</button>
                 </div>
 
-            </fieldset>
+            </fieldset>;
         </form> 
         <?php
         echo Session::getflash('update');

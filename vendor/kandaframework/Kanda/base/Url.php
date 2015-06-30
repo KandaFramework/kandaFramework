@@ -155,4 +155,15 @@ class Url{
         }                
         
     }
+
+    static function Request(){
+
+        if(!empty($_GET))
+            return $_GET;
+
+        if(!empty($_POST))
+            return $_POST;
+
+    }
+
  }

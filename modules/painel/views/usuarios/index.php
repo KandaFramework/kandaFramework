@@ -11,7 +11,7 @@ use modules\painel\models\Nivel;
 <div class="module">
     <div class="module-head">
         <h3><?php echo static::$title ?></h3>
-        <a href="<?php echo Url::to('create') ?>" class="btn btn-small btn-success param">Cadastrar</a>
+        <a href="#"  data-toggle="modal" data-target="#myModal" onclick="Modal('<?php echo Url::to('create') ?>');" class="btn btn-small btn-success param">Cadastrar</a>
         
     </div>
     <div class="module-body">
@@ -35,4 +35,31 @@ use modules\painel\models\Nivel;
                      ?>
 
                 </div><!-- /.box-body -->
-            </div><!-- /.box -->     
+            </div><!-- /.box -->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content modal-lg">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cadatrar</h4>
+              </div>
+              <div class="modal-body">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       <script>
+
+       var Modal = function(url)
+       {
+        $.get(url,{},function(data){ 
+            $('.modal-body').html(data);
+         });
+       }
+      </script>

@@ -178,17 +178,9 @@ static function param(){
         if(static::reflection($param))
             $params[] = $value;
     }
- }elseif(!empty($_POST)){
+ } 
 
-    foreach ($_POST as $param => $value) {
-
-        if(static::reflection($param))
-            $params[] = $value;
-    }
-
- }
-
-return $params;
+ return $params;
 
 }
 
