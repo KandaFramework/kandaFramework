@@ -1,35 +1,15 @@
 <?php
 use widgets\FormWidget;
 use helps\Url;
-
-
-function Script(){
-    
-   return " var Class = data.class; setTimeout(function(){ $('.checkbox').html(''); if(Class == 'success'){ location.href=data.page;  }; },3000); if(Class ==='success'){ $('.checkbox').html(data.msg); }; if(Class ==='warning' ){ $('.checkbox').html(data.msg); }  ";
-    
-}
-
+use helps\Session;
 ?>
 
 <div class="row">
     <div class="module module-login span4 offset4">
 
-        <form id="Validade" action="" method="POST" class="form-vertical">
+        <form  action="<?php echo Url::to('/login') ?>" method="POST" class="form-vertical">
             <?php
-            $form = FormWidget::widget($model, [
-                        'id' => 'Validade',
-                        'ajax' => [
-                            'url' => Url::createUrl('painel/login'),
-                            'type' => 'POST',
-                            'dataType' => 'json',
-                            'success' => function($data) {
-                                return Script();
-                            },
-                            'error' => function($data) {
-                                
-                            },
-                        ],
-            ]);
+            $form = FormWidget::widget($model,[]);
             ?>
             <div class="module-head">
                 <h3>Login</h3>
@@ -57,3 +37,6 @@ function Script(){
         </form>
     </div>
 </div>
+ <?php
+        echo Session::getflash('error');
+ 

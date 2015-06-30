@@ -128,6 +128,7 @@ class Url{
 
         $queryString = '';
 
+
         if (!empty($param)) {
 
             $queryString = '?';

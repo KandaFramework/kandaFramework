@@ -15,7 +15,7 @@ use helps\Url;
         <link  href="/assets/painel/css/theme.css" rel="stylesheet">
         <link  href="/assets/painel/images/icons/css/font-awesome.css" rel="stylesheet">
         <link  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
-        <script src="/assets/painel/scripts/jquery-1.9.1.min.js" ></script>
+        
         <script>
         
             
@@ -37,7 +37,7 @@ use helps\Url;
         </script>
     </head>
     <body>
-     <div id="alertShow" class="noty"></div>
+ 
         <div id="Alert">
             <div class="alert" style="display: none" >
             <strong></strong>
@@ -134,7 +134,7 @@ use helps\Url;
 
             </div>
         </div>
-
+        <script src="/assets/painel/scripts/jquery-1.9.1.min.js" ></script>
         <script src="/assets/painel/scripts/jquery-ui-1.10.1.custom.min.js" ></script>
         <script src="/assets/painel/bootstrap/js/bootstrap.min.js" ></script>
         <script src="/assets/painel/scripts/flot/jquery.flot.js" ></script>

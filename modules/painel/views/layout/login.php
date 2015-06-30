@@ -12,10 +12,35 @@ use helps\Url;
         <link  href="/assets/painel/css/theme.css" rel="stylesheet">
         <link  href="/assets/painel/images/icons/css/font-awesome.css" rel="stylesheet">
         <link  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
-        <script src="/assets/painel/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+       <script src="/assets/painel/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+      <script>
+        
+            
+           var Alert =  function(Class,msg){
+            
+            setTimeout(function(){
+                
+                $('#Alert .alert').fadeOut("slow");
+                $('#Alert .alert').removeClass(Class);
+                
+            },3000);
+            window.scrollTo(3000, 0);
+            $('#Alert .alert strong').html('');
+            $('#Alert .alert').fadeIn();
+            $('#Alert .alert').addClass('alert-'+Class);
+            $('#Alert .alert strong').html(msg);
+        };
+          
+        </script>
+
+
     </head>
     <body>
-
+         <div id="Alert">
+            <div class="alert" style="display: none" >
+            <strong></strong>
+            </div>
+        </div>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container" style="margin-top:50px;">
@@ -46,6 +71,6 @@ use helps\Url;
       
             </div>
         </div>
-
-    </body>
+        
+             </body>
 </html>

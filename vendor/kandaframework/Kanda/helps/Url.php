@@ -31,15 +31,15 @@ class Url extends UrlBase{
     static function prev()
     {
         $prev =  explode('/',$_SERVER['REQUEST_URI']);
-    	
-    	array_pop($prev);
 
-    	return  static::baseUrl().implode('/',$prev);
+        array_pop($prev);
+
+        return  static::baseUrl().implode('/',$prev);
     }
 
     static function to($to='')
     {
-        return static::toRouter().'/'.$to;
+        return static::toRouter().$to;
     }
 
 }
