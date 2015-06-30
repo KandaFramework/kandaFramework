@@ -17,7 +17,7 @@ use modules\painel\models\Nivel;
     <div class="module-body">
             
         <br>         <?php
-                            echo GridView::widget([
+                    echo GridView::widget([
                                 'dataProvider' => $dataProvider,
                                 'dataTable'=>'dataTable',
                                 'classTable'=>'table',
@@ -31,9 +31,8 @@ use modules\painel\models\Nivel;
                                     ]);
 
                                     echo Session::getflash('create');
-                                    echo Session::getflash('delete');
-                                    ?>
+                                    echo Session::getflash('delete'); 
+                     ?>
 
                 </div><!-- /.box-body -->
-            </div><!-- /.box -->
-       
+            </div><!-- /.box -->     

@@ -74,24 +74,6 @@ class Validade{
             self::$validade_rules .= "'" . self::$className . "[$name]':'required',";
             self::$validade_message .= "'" . self::$className . "[$name]':{required:'$mensagem'},";
         }
-    }
-
-    private static function createJsValidade($rules, $messages, $id) {
-
-        $jquery = Kanda_CORE . '/assets/js/jquery-v1.11.js';
-        $jquery_validade = Kanda_CORE . '/assets/js/jquery.validate.min.js';
-        $additional_methods = Kanda_CORE . '/assets/js/additional-methods.min.js';
-
-        $ajax = '';
-        if (!empty(self::$ajax)) {
-            $succes = self::$ajax['success'];
-            $ajax = "submitHandler: function( form ){ var dados = $( form ).serialize(); $.ajax({type: '" . self::$ajax['type'] . "',dataType:'" . self::$ajax['dataType'] . "',url: '" . self::$ajax['url'] . "',data: dados,success: function( data ){" . $succes('data') . "}})  }";
-        }
-
-        echo Html::script(file_get_contents($jquery));
-        echo Html::script(file_get_contents($jquery_validade));
-        echo Html::script(file_get_contents($additional_methods));
-        echo Html::script("$('#$id').validate({rules:{ {$rules}},messages:{{$messages}},$ajax});");
-    }
+    }   
     
 }

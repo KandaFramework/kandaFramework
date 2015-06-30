@@ -103,9 +103,17 @@ return new Controller();
         return View::render($render,$param,$layout);
     }
 
+    public function renderAjax($render,$param=[]){
+
+      $render = View::pathView(self::$namespace_module).'/views/' . strtolower(static::$controller) . '/' . $render . '.php';
+
+      return View::renderAjax($render,$param);
+
+    }
+
     public function redirect($render='',$param=[]){
 
-      return Url::redirect($render,$param);
+     return Url::redirect($render,$param);
 
   }
 
@@ -115,24 +123,17 @@ return new Controller();
 
     if(empty(Url::segment()))
        $action .= 'Index';
-   else{
-
-            //CRUD
-            //DELETE CREATE UPDATE VIEW OUTROS
+   else{  //CRUD DELETE CREATE UPDATE VIEW OUTROS
     if(Url::getCount() == 3)
     {
         static::$controller = ucwords(Url::segment(2));
         $action .= ucwords(Url::segment());
-    }else
-    {
-
-              //Para chamadas dos controllers  
-      if(Url::getCount() == 2)
-      {
+    }else{
+      //Para chamadas dos controllers  
+      if(Url::getCount() == 2){
          static::$controller = ucwords(Url::segment());
          $action .='Index'; 
-     }else
-     {
+     }else{
          if(Url::getcount()==1 && static::$action)
          {
              $action .= ucwords(Url::segment());   
@@ -153,7 +154,6 @@ return $action;
 
 
 
-public function renderAjax($render,$param=[]){}
 
 
 public function load(){
@@ -178,7 +178,16 @@ static function param(){
         if(static::reflection($param))
             $params[] = $value;
     }
-}
+ }elseif(!empty($_POST)){
+
+    foreach ($_POST as $param => $value) {
+
+        if(static::reflection($param))
+            $params[] = $value;
+    }
+
+ }
+
 return $params;
 
 }
