@@ -14,12 +14,15 @@ class Url{
 
     public static $home;
 
-    protected static $url;
+    private static $url;
 
     protected static $baseUrl;
 
     protected static $base;
 
+    static function getCount(){
+        return count(static::$url);
+    }
 
     public static function segment($arg=null)
     {
@@ -38,6 +41,9 @@ class Url{
 
         $url = explode('/', trim($url, '/'));
 
+        array_filter($url);
+
+        static::$url = $url;
 
         if($arg==null)
         {
@@ -46,7 +52,7 @@ class Url{
         else
         {
             array_unshift($url, null);
-            unset($url[0]);
+
             if(isset($url[$arg]))
             {
                 return $url[$arg];

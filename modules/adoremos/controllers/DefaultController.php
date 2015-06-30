@@ -36,7 +36,7 @@ public function actionContato() {
                 return $this->render('aulas');
     }
  	
-     public function actionProfessorres() {
+     public function actionProfessores() {
 
                 return $this->render('professores');
     }

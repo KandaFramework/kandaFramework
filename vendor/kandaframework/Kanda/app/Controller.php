@@ -16,7 +16,7 @@ use base\Root;
 
 class Controller implements  InterfaceController {
 
-      
+
     /**
      * @access public
      * 
@@ -26,7 +26,7 @@ class Controller implements  InterfaceController {
      * 
      */
     public $layout = 'main';
- 
+
 
     /**
      *
@@ -35,11 +35,11 @@ class Controller implements  InterfaceController {
      * @var string Guarda o valor da url base 
      * 
      */
-    public static $action;
+    public static $action = false;
 
     
     public static $namespace_module;
-     
+
     public static $controller = 'Default';
     
     public static $module;
@@ -57,29 +57,29 @@ class Controller implements  InterfaceController {
      * @param array $main
      */
     public static function begin($main){
- 
-        self::$module = $main['config']['default'];
+
+        static::$module = $main['config']['default'];
         
         if(isset($main['config']['modules'])){
-           
+
           if(isset( $main['config']['modules'][Url::segment(1)])){
 
-             $class = new $main['config']['modules'][Url::segment(1)]['class'];
-            
-             self::$namespace_module = $class->begin();
-                      
-          }else{
+           $class = new $main['config']['modules'][Url::segment(1)]['class'];
+           static::$action = false;
+           static::$namespace_module = $class->begin();
 
-            $class = new $main['config']['modules'][self::$module]['class'];
-            
-            self::$namespace_module =  $class->begin();
+       }else{
 
-          }          
-        }
-        
-        return new Controller();
-        
-    }
+        $class = new $main['config']['modules'][static::$module]['class'];
+        static::$action = true;
+        static::$namespace_module =  $class->begin();
+
+    }          
+}
+
+return new Controller();
+
+}
 
     /**
      * 
@@ -94,12 +94,12 @@ class Controller implements  InterfaceController {
      * 
      */
     public function render($render, $param = []) {
- 
-        
+
+
         $render = View::pathView(self::$namespace_module).'/views/' . strtolower(static::$controller) . '/' . $render . '.php';
-  
+
         $layout = View::pathView(self::$namespace_module).'/views/layout/' . $this->layout . '.php';
- 
+
         return View::render($render,$param,$layout);
     }
 
@@ -107,86 +107,102 @@ class Controller implements  InterfaceController {
 
       return Url::redirect($render,$param);
 
-    }
- 
-    public static function Action(){
+  }
 
-        $action = 'action';
+  public static function Action(){
 
-        if(empty(Url::segment()))
-             $action .= 'Index';
-        else{
+    $action = 'action';
 
-            //Carregando a controller
+    if(empty(Url::segment()))
+       $action .= 'Index';
+   else{
+
             //GRUD
             //DELETE CREATE UPDATE VIEW OUTROS
-            if(Url::segment(3))
-            {
-                static::$controller = ucwords(Url::segment(2));
-                $action .= ucwords(Url::segment());
-            }else
-            {
-              static::$controller = ucwords(Url::segment());
-              $action .='Index';  
-            }
-        }
+    if(Url::getCount() == 3)
+    {
+        static::$controller = ucwords(Url::segment(2));
+        $action .= ucwords(Url::segment());
+    }else
+    {
 
-        return $action;
-         
+              //Para chamadas dos controllers  
+      if(Url::getCount() == 2)
+      {
+         static::$controller = ucwords(Url::segment());
+         $action .='Index'; 
+     }else
+     {
+         if(Url::getcount()==1 && static::$action)
+         {
+             $action .= ucwords(Url::segment());   
+         }else
+         {
+           $action .='Index'; 
+       } 
+
+   }
+
+
+}
+}
+
+return $action;
+
+}
+
+
+
+public function renderAjax($render,$param=[]){}
+
+
+public function load(){
+
+  static::Action();  
+  $load = $this->createNamespaceController();
+
+  static::$class = new $load;
+  call_user_func_array(array(static::$class,static::Action()),static::param());
+
+
+}
+
+static function param(){
+
+  $params = [];  
+
+  if(!empty($_GET)){
+
+    foreach ($_GET as $param => $value) {
+
+        if(static::reflection($param))
+            $params[] = $value;
     }
+}
+return $params;
 
-
-
-    public function renderAjax($render,$param=[]){}
-    
-     
-    public function load(){
-        
-      static::Action();  
-      $load = $this->createNamespaceController();
-
-      static::$class = new $load;
-      call_user_func_array(array(static::$class,static::Action()),static::param());
-     
-
-    }
-    
-    static function param(){
-
-      $params = [];  
-
-     if(!empty($_GET)){
-
-        foreach ($_GET as $param => $value) {
-             
-            if(static::reflection($param))
-                $params[] = $value;
-            }
-      }
-         return $params;
-
-    }
+}
 
     //Verifica os nomes param dos methods
 
-    static function reflection($param){
+static function reflection($param){
 
-        $reflect = new \ReflectionParameter(array(static::$class,static::Action()),$param);
+    $reflect = new \ReflectionParameter(array(static::$class,static::Action()),$param);
 
-        if(!$reflect)
-            return false;
-           
-        return true;      
+    if(!$reflect)
+        return false;
 
-    }
+    return true;      
 
-    public function createNamespaceController(){
+}
 
-      $path = '/'.static::$namespace_module.'/controllers/'.static::$controller.'Controller';
-        
-      return  str_replace('/','\\',$path);
- 
-    }
- 
-      
+public function createNamespaceController(){
+
+  $path = '/'.static::$namespace_module.'/controllers/'.static::$controller.'Controller';
+
+  return  str_replace('/','\\',$path);
+
+}
+
+
 }

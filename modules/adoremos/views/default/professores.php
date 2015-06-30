@@ -28,7 +28,7 @@ Ao final de cada semestre o aluno recebe certificado de conclusão do módulo me
 <div class="row">
 
 <div class="col-md-4">
-   <img  src="<?php echo $this->assets($theme) ?>images/regulagem1.png">
+   <img  src="/assets/adoremos/images/regulagem1.png">
    <div class="texto">
     <span>Regulamento</span>
     <p>
@@ -37,7 +37,7 @@ Ao final de cada semestre o aluno recebe certificado de conclusão do módulo me
 </div>
 </div>
 <div class="col-md-4">
- <img  src="<?php echo $this->assets($theme) ?>images/regulagem1.png">
+ <img  src="/assets/adoremos/images/regulagem1.png">
  <div class="texto">
   <span>Regulamento</span>
   <p>
@@ -46,7 +46,7 @@ Ao final de cada semestre o aluno recebe certificado de conclusão do módulo me
 </div>
 </div>
 <div class="col-md-4">
- <img  src="<?php echo $this->assets($theme) ?>images/regulagem1.png">
+ <img  src="/assets/adoremos/images/regulagem1.png">
  <div class="texto">
   <span>Regulamento</span>
   <p>
