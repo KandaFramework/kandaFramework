@@ -117,7 +117,7 @@ return new Controller();
        $action .= 'Index';
    else{
 
-            //GRUD
+            //CRUD
             //DELETE CREATE UPDATE VIEW OUTROS
     if(Url::getCount() == 3)
     {
@@ -198,7 +198,8 @@ static function reflection($param){
 
 public function createNamespaceController(){
 
-  $path = '/'.static::$namespace_module.'/controllers/'.static::$controller.'Controller';
+
+   $path = '/'.static::$namespace_module.'/controllers/'.static::$controller.'Controller';
 
   return  str_replace('/','\\',$path);
 

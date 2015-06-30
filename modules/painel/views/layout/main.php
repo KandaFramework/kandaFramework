@@ -79,7 +79,7 @@ use helps\Url;
                                 <ul class="dropdown-menu">
                                     <li><a href="<?php echo Url::createUrl('/painel/usuarios/update/') ?><?php echo Session::getSession()->id ?>">Editar Perfil</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="<?php echo Url::createUrl('painel/painel/logaout') ?>">Sair</a></li>
+                                    <li><a href="<?php echo Url::createUrl('painel/logaout') ?>">Sair</a></li>
                                 </ul>
                             </li>
                         </ul>

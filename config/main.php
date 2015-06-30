@@ -30,5 +30,11 @@ return $main = [
         'urlManager' => [
             'class'
         ],
-    ]
+    ],
+    'param' => [
+        'setFlash'=>function($message,$type)
+        {
+            return "Alert('$type','$message');";
+        }
+    ],
 ];

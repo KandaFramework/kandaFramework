@@ -25,6 +25,7 @@ class Kanda{
     
     public static $get;
     
+    public static $param;
 
     public function __construct() {
 
@@ -55,6 +56,8 @@ class Kanda{
    
         define('DSN',$main['config']['db']['dsn']);
         
+        Kanda::$param = (object) $main['param'];
+
         ActiveRecord\Config::initialize(function($cfg) {
                 $cfg->set_connections(array(
                 'development' => DSN));

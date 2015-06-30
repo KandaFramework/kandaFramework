@@ -96,11 +96,14 @@ class Session {
      * @param type $layout Apresentação da mensagem, top ou bottom
      * @return string 
      */
-    public static function getflash($key, $layout = 'top') {
+    public static function getflash($key) {
         $script = '';
         if (isset($_SESSION[$key]) && $_SESSION[$key] == $key) {
-
-           $script = "<script> $(window).load(function(){ $('#alertShow').attr({'data-noty-options':'{\"text\":\"{$_SESSION['message'][$key]}\",\"layout\":\"$layout\",\"type\":\"{$_SESSION['type'][$key]}\"}'}).click(); }); </script>";
+           
+           $setFlash = \Kanda::$param->setFlash;
+           
+           //Message | succcess,danger...
+           $script = Html::script($setFlash($_SESSION['message'][$key],$_SESSION['type'][$key]));
         }
         unset($_SESSION[$key], $_SESSION['title'][$key], $_SESSION['type'][$key]);
         return $script;
