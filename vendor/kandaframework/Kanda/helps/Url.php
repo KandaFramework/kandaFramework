@@ -19,12 +19,14 @@ class Url extends UrlBase{
 
     static function toRouter()
     {
-    	return static::baseUrl().($_SERVER['PATH_INFO']);
+        if(isset($_SERVER['PATH_INFO']))
+    	   return static::baseUrl().($_SERVER['PATH_INFO']);
+        else
+           return static::baseUrl(); 
     }
 
     static function request()
     { 
-
         return static::baseUrl().($_SERVER['REQUEST_URI']);
     }
 
