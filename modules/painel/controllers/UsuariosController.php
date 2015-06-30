@@ -25,13 +25,8 @@ class UsuariosController extends \app\Controller {
     public function actionIndex() {
 
         $dataProvider = UsuarioSearch::dataProvider();
-
-         $model = new Usuario();
-
-        //return $this->render('form', ['dataProvider' => $dataProvider]);
-
-          return $this->render('form', ['model' => $model]);
-
+        return $this->render('index', ['dataProvider' => $dataProvider]);
+ 
     }
 
     /**
@@ -59,7 +54,8 @@ class UsuariosController extends \app\Controller {
 
             Session::setflash('update', 'Alterado com sucesso');
 
-            return $this->redirect('update', ['id' => $id]);
+            return $this->redirect();
+            
         } else {
             return $this->render('form', ['model' => $model]);
         }

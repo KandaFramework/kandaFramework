@@ -103,22 +103,36 @@ class Controller implements  InterfaceController {
         return View::render($render,$param,$layout);
     }
 
-    public function redirect($render,$param=[]){
+    public function redirect($render='',$param=[]){
 
-      return Url::redirect($render);
+      return Url::redirect($render,$param);
 
     }
  
     public static function Action(){
 
+        $action = 'action';
+
         if(empty(Url::segment()))
-            return 'actionIndex';
+             $action .= 'Index';
         else{
+
             //Carregando a controller
-            static::$controller = ucwords(Url::segment());
-            return 'actionIndex';
+            //GRUD
+            //DELETE CREATE UPDATE VIEW OUTROS
+            if(Url::segment(3))
+            {
+                static::$controller = ucwords(Url::segment(2));
+                $action .= ucwords(Url::segment());
+            }else
+            {
+              static::$controller = ucwords(Url::segment());
+              $action .='Index';  
+            }
         }
 
+        return $action;
+         
     }
 
 

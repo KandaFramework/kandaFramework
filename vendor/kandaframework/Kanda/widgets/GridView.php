@@ -14,6 +14,7 @@ namespace widgets;
 use app\Controller;
 use base\AbstractWidget; 
 use helps\Html;
+use helps\Url;
 use helps\Bootstrap;
 
 class GridView extends AbstractWidget {
@@ -175,12 +176,12 @@ class GridView extends AbstractWidget {
         $count = count($action);
         $Action = [];
 
-        $url = ''; 
+        $url = Url::toRouter(); 
         
         $actionColumn = [
-            'update' => Html::a('editar',"$url/update/$id", ['class'=>'btn btn-info']),
-            'delete' => Html::a('deletar',"$url/delete/$id", ['class'=>'btn btn-danger','onclick'=>"if(confirm('Deseja excluir esse item?')){return true;}else{return false;};"]), 
-            'view'   => Html::a('visualizar',"$url/view/$id", ['class'=>'btn btn-success']), 
+            'update' => Html::a('editar',"$url/update?id=$id", ['class'=>'btn btn-info']),
+            'delete' => Html::a('deletar',"$url/delete?id=$id", ['class'=>'btn btn-danger','onclick'=>"if(confirm('Deseja excluir esse item?')){return true;}else{return false;};"]), 
+            'view'   => Html::a('visualizar',"$url/view?id=$id", ['class'=>'btn btn-success']), 
         ];
         foreach ($action as $columns) {
 

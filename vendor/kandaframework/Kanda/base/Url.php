@@ -75,10 +75,7 @@ class Url{
 
             return static::baseUrl() . '/' . $url;
         }
-
-        self::$home = static::baseUrl();
-
-        return self::$home;
+        return static::baseUrl();
     }
 
     /**
@@ -121,33 +118,35 @@ class Url{
      * @description Redirecionar para uma view. Referencia da url serar herdada
      * 
      */
-    public static function redirect($view = '', $param = []) {
+    public static function redirect($render = '', $param = []) {
 
         $queryString = '';
 
         if (!empty($param)) {
 
-            $queryString = '/';
-            $i = 0;
-            $cont = '';
-
-            foreach ($param as $key => $value) {
-
-                if ($i > 0)
-                    $cont = "/";
-
-                $queryString .= "{$cont}$value";
-
-                ++$i;
-            }
+            $queryString = '?';
+            $queryString .= http_build_query($param);
         }
 
-        $header = static::baseUrl() . '/' . self::$theme . '/' . self::$view . '/' . $view . $queryString;
+        if(empty($render))
+        {
+           header("Location:{$_SERVER['HTTP_REFERER']}");
+           exit;
+        }else
+        {
 
-        if (empty($view)) {
-            $header = static::baseUrl() . '/' . self::$theme . '/' . self::$view . $queryString;
-        } 
+        $request =  array_filter(explode('/',($_SERVER['REQUEST_URI'])));
+
+        array_pop($request);
+
+        array_push($request,$render.$queryString);
+
+        $header =  static::baseUrl().'/'.implode('/',$request);
+
         header("Location:$header");
-        exit;
+        exit;   
+
+        }                
+        
     }
  }
