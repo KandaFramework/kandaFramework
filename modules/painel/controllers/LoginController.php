@@ -71,25 +71,16 @@ class LoginController extends \app\Controller{
     }
     
     
-    public function actionLogout(){
+    public function actionCreate(){
 
-        $url = end($this->server());
-        
-        $logSistema = new LogSistema();
+            $model = new Usuario();
 
-        if($url == 'logout'){
+            if(\Kanda::$request->post($model)){
 
-            $date = date('Y-m-d H:i:s');
 
-            $update = ['saida'=>$date];
 
-            $logSistema->setUpdate($update, $_SESSION['idLog']);
-
-            session_destroy();
-            Controller::location($this->createUrl());
-
-        }
-
-    }   
+            }else
+              return $this->renderAjax('form',['model'=>$model]);
+        }   
     
 }

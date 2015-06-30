@@ -39,7 +39,7 @@ class Url extends UrlBase{
 
     static function to($to='')
     {
-        return static::toRouter().$to;
+        return static::toRouter().'/'.$to;
     }
 
 }

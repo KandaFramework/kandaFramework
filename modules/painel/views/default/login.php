@@ -1,4 +1,7 @@
 <?php
+
+static::$title = 'Admin Adoremos';
+
 use widgets\FormWidget;
 use helps\Url;
 use helps\Session;
@@ -7,7 +10,7 @@ use helps\Session;
 <div class="row">
     <div class="module module-login span4 offset4">
 
-        <form  action="<?php echo Url::to('/login') ?>" method="POST" class="form-vertical">
+        <form  action="<?php echo Url::to('login') ?>" method="POST" class="form-vertical">
             <?php
             $form = FormWidget::widget($model,[]);
             ?>

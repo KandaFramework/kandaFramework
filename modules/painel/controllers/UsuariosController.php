@@ -45,10 +45,10 @@ class UsuariosController extends \app\Controller {
 
         if (\Kanda::$request->post($model)) {
             
-                if($model->senha <> "123")
+            /*  if($model->senha <> "123")
                     $model->senha = password_hash($model->senha, PASSWORD_DEFAULT);
                  else
-                 $model->senha = $defaultpasswork;
+                 $model->senha = $defaultpasswork;*/
 
             $model->save();
             Session::setflash('update', 'Alterado com sucesso');
