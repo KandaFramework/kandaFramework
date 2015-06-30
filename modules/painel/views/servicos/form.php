@@ -18,8 +18,8 @@ use helps\Session;
                 <?php
                 $form = FormWidget::widget($model, [ 'style' => "\help\Style",]);
 
-                echo $form->textFieldGroup('nome');
-                echo $form->textareaFildGroup('descricao');
+                echo $form->text('nome');
+                echo $form->textarea('descricao');
                  
            
                 ?>

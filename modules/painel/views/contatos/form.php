@@ -22,10 +22,10 @@ use helps\Url;
                             'style' => "\help\Style",
                 ]);
 
-                echo $form->textFieldGroup('nome');
-                echo $form->textFieldGroup('email');
-                 echo $form->textFieldGroup('telefone');
-                echo $form->textareaFildGroup('mensagem');
+                echo $form->text('nome');
+                echo $form->text('email');
+                 echo $form->text('telefone');
+                echo $form->textarea('mensagem');
                 ?>
              </fieldset>
         </form> 

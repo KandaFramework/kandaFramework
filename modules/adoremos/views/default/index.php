@@ -1,4 +1,4 @@
-<?php
+  <?php
 static::$title = 'Adoremos Escola De Musica';
 ?>
  

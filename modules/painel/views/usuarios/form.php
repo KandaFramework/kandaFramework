@@ -8,21 +8,21 @@ use helps\Session;
 <div class="module">
     <div class="module-head">
         <h3><?php echo static::$title ?></h3>
-        <a href="<?php echo Url::prev() ?>" class="btn btn-small btn-warning param">voltar</a>
+        <a href="#" class="btn btn-small btn-warning param">voltar</a>
     </div>
     <div class="module-body">
 
         <br>
 
-        <form method="POST" name=" " id="Validade" action="<?php echo Url::request() ?>" class="form-horizontal row-fluid" enctype="multipart/form-data" >
+        <form method="POST" name=" " id="Validade" action="" class="form-horizontal row-fluid" enctype="multipart/form-data" >
             <fieldset>
                 <?php
                 $form = FormWidget::widget($model, [ 'style' => "\help\Style",]);
 
-                echo $form->textFieldGroup('nome');
-                echo $form->textFieldGroup('login');
-                echo $form->textFieldGroup('email');
-                 echo $form->textFieldGroup('senha',['value' => '123'], 'password');
+                echo $form->text('nome');
+                echo $form->text('login');
+                echo $form->text('email');
+                 echo $form->text('senha',['value' => '123'], 'password');
            
                 ?>
                 <div class="form-actions">

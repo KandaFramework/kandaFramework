@@ -26,7 +26,12 @@ class UsuariosController extends \app\Controller {
 
         $dataProvider = UsuarioSearch::dataProvider();
 
-        return $this->render('index', ['dataProvider' => $dataProvider]);
+         $model = new Usuario();
+
+        //return $this->render('form', ['dataProvider' => $dataProvider]);
+
+          return $this->render('form', ['model' => $model]);
+
     }
 
     /**

@@ -12,58 +12,84 @@ namespace helps;
 
 class Assets{
 
-	public $basename = '/assets/';
+	public $base = '/assets/';
 
-	public $cssbase = '/assets/css/';
+	public $basename = '';
 
-	public $jsbase = '/assets/js/';
+	public $css = [];
 
-	private $files = '';
+	public $js = [];
+
+	public $dirname = '';
 
 	public function __construct(){
 
-
-
+		$this->begin();
+		return $this;
 	}
 
 	public function begin(){
 
-		if(is_dir($base)){
+		if(!empty($this->css)){
+			$this->Copy($this->js);
+		}
 
-		}else{
-			mkdir($base);			
+		if(!empty($this->js)){
+			$this->Copy($this->js);
 		}
 	}
+
+	private function Copy($files)
+	{
+
+	     //pagegado as pastas do assets default		
+		$scandir= scandir($this->base);
+		unset($scandir[0],$scandir[1]);
+
+
+		$basename =  $this->createDir($this->basename);
+
+		foreach ($files as $value)
+		{
+			
+			$path = explode('/',$value);
+
+			if(!empty($path))
+			{
+				
+				foreach ($path as $dir)
+				{
+					if(in_array($dir, $scandir))
+					{
+						$this->createDir($this->basename.DS.$dir);
+					}
+				}
+			}	
+			
+			$default = $this->base.$value;
+			$new = $this->dirName().$value;
+			
+			if(!file_exists($new)) 
+				copy($default,$new);
+			
+		}
+
+	}
 	
-	public static function setCopy($dir){
-
-		$files = (scandir($dir));
-
-	    if(count($files) == 0)
-	    	return true;
-
-	    unset($files[0],$files[1]);
-
-	    foreach ($files as $key => $value) {
-	    	 	
-	    	 	echo $value.'<br>';
-	    	 	
-	    }
-
-	}
-
-	public function setCss(){
-
-		print_r(scandir($this->cssbase));
-
+	public function dirName()
+	{
+		return ASSETS.$this->basename.DS;
 	}
 	
-	public function setJs(){
+	public function createDir($dirname){
 
+		$dirname = ASSETS.$dirname;
 
-
-
+		if(!is_dir($dirname))	 	
+			mkdir($dirname);
+		
+		return $dirname;
 	}
 
- 
+	
 }

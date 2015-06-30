@@ -19,7 +19,7 @@ use helps\Session;
                 <?php
                 $form = FormWidget::widget($model, [ 'style' => "\help\Style",]);
 
-                echo $form->textFieldGroup('nome');
+                echo $form->text('nome');
                      
                 ?>
                 <div class="form-actions">

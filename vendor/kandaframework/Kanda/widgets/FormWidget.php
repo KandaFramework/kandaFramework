@@ -11,7 +11,7 @@ namespace widgets;
 use helps\Html;
 use helps\Assets;
 
-class FormWidget {
+class FormWidget extends Assets{
 
     /**
      *
@@ -33,8 +33,22 @@ class FormWidget {
     private static $ajax = '';
 
     public function __construct() {
-        self::required();
+        
+        $this->base = KANDA_ROOT .'/widgets/assets/';
+         
+        $this->basename = 'FormWidget';   
+        
+        $this->js = [
+            'js/jquery-v1.11.js',
+            'js/jquery.validate.min.js',
+            'js/additional-methods.min.js',
+         ]; 
+
+         parent::begin(); 
+
     }
+
+     
 
     public static function widget($model, $param = []) {
         /* Chamada no namespace */
@@ -70,96 +84,7 @@ class FormWidget {
 
         return new FormWidget();
     }
-
-    private static function required() {
-
-        $message = 'Obrigátorio';
-
-        foreach (self::$rules as $key => $rules) {
-
-            if (is_array($rules[0])) {
-
-                if ($rules[1] == 'required') {
-                    self::CreateValidade($rules[0]);
-                }
-            } elseif (isset($rules[2]) && $rules[2] == "required" || isset($rules[1]) && $rules[1] == 'file') {
-
-                if (isset($rules['message']))
-                    $messages = $rules['message'];
-
-
-                switch ($rules[1]) {
-                    case 'varchar':
-
-                        self::$validade_rules .= "'" . self::$className . "[$rules[0]]':'required',";
-                        self::$validade_message .= "'" . self::$className . "[$rules[0]]':{required:'$messages'},";
-
-                        break;
-                    case 'integer':
-                    case 'float':
-
-                        self::$validade_rules .= "'" . self::$className . "[$rules[0]]':{required: true,number: true},";
-                        self::$validade_message .= "'" . self::$className . "[$rules[0]]':{required:'$messages',number:'{$rules['error']}'},";
-
-                        break;
-                    case 'email':
-
-                        self::$validade_rules .= "'" . self::$className . "[$rules[0]]':{required: true,email: true},";
-                        self::$validade_message .= "'" . self::$className . "[$rules[0]]':{required:'$messages',email:'{$rules['error']}'},";
-
-                        break;
-                    case 'file':
-                        $rule = 'false';
-                        if (isset($rules[2]) && $rules[2] == 'required')
-                            $rule = 'true';
-
-                        self::$validade_rules .= "'" . self::$className . "[$rules[0]]':{required: $rule,extension:\"{$rules['extension']}\"},";
-                        self::$validade_message .= "'" . self::$className . "[$rules[0]]':{required:'$messages',extension:'{$rules['error']}'},";
-                        break;
-                }
-            }
-        }
-
-        self::CreateJsFile(self::$validade_rules, self::$validade_message, self::$idForm);
-    }
-
-    private static function CreateValidade($rules) {
-
-        $mensagem = 'Obrigatório.';
-
-        foreach ($rules as $key => $name) {
-
-            self::$validade_rules .= "'" . self::$className . "[$name]':'required',";
-            self::$validade_message .= "'" . self::$className . "[$name]':{required:'$mensagem'},";
-        }
-    }
-
-    private static function CreateJsFile($rules, $messages, $id) {
-
-         $assets  = new Assets();
-
-         $assets->jsbase = KANDA_ROOT.'/widgets/assets/js/';
-
-         $assets->setJs();
-                 
-
-        die;
-
-        $jquery = Kanda_CORE . '/widgets/assets/js/jquery-v1.11.js';
-        $jquery_validade = Kanda_CORE . '/widgets/assets/js/jquery.validate.min.js';
-        $additional_methods = Kanda_CORE . '/widgets/assets/js/additional-methods.min.js';
-
-        $ajax = '';
-        if (!empty(self::$ajax)) {
-            $succes = self::$ajax['success'];
-            $ajax = "submitHandler: function( form ){ var dados = $( form ).serialize(); $.ajax({type: '" . self::$ajax['type'] . "',dataType:'" . self::$ajax['dataType'] . "',url: '" . self::$ajax['url'] . "',data: dados,success: function( data ){" . $succes('data') . "}})  }";
-        }
-
-        echo Html::script(file_get_contents($jquery));
-        echo Html::script(file_get_contents($jquery_validade));
-        echo Html::script(file_get_contents($additional_methods));
-        echo Html::script("$('#$id').validate({rules:{ {$rules}},messages:{{$messages}},$ajax});");
-    }
+  
 
     /**
      * 
@@ -168,7 +93,7 @@ class FormWidget {
      * @param type $type
      * @return type
      */                
-    public function textFieldGroup($column, $param = [], $type = 'text') {
+    public function text($column, $param = [], $type = 'text') {
 
         $tag = Html::input($type, self::$className . "[$column]", self::$model->$column, array_merge(['id' => $column, 'class' => self::$classInput], $param));
 
@@ -183,7 +108,7 @@ class FormWidget {
      * @param type $param
      * @return type
      */                
-    public function fileFieldGroup($column, $param = []) {
+    public function file($column, $param = []) {
 
         $tag = Html::input('file', self::$className . "[$column]", self::$model->$column, array_merge(['id' => $column, 'class' => self::$classFile], $param));
 
@@ -198,7 +123,7 @@ class FormWidget {
      * @param type $param
      * @return type
      */                
-    public function textareaFildGroup($column, $param = []) {
+    public function textarea($column, $param = []) {
 
         $tag = Html::textarea(self::$className . "[$column]", self::$model->$column, array_merge(['id' => $column, 'class' => self::$classTextarea], $param));
 

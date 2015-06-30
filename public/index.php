@@ -4,6 +4,8 @@
 
  define('WWW_ROOT',dirname(__DIR__));
  define('KANDA_ROOT',dirname(__DIR__).'/vendor/kandaframework/Kanda');
+ define('ASSETS',dirname(__DIR__).'/public/assets/');
+
  define('DS',DIRECTORY_SEPARATOR);
    
   /**
