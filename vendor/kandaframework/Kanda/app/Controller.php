@@ -96,14 +96,14 @@ class Controller implements  InterfaceController {
     public function render($render, $param = []) {
  
         
-        $render = View::pathView(self::$namespace_module).'/views/' . self::$view . '/' . $render . '.php';
+        $render = View::pathView(self::$namespace_module).'/views/' . strtolower(static::$controller) . '/' . $render . '.php';
   
         $layout = View::pathView(self::$namespace_module).'/views/layout/' . $this->layout . '.php';
  
         return View::render($render,$param,$layout);
     }
 
-    public function redirect($render){
+    public function redirect($render,$param=[]){
 
       return Url::redirect($render);
 
@@ -113,8 +113,11 @@ class Controller implements  InterfaceController {
 
         if(empty(Url::segment()))
             return 'actionIndex';
-        else
-            return 'action'. ucwords(Url::segment());
+        else{
+            //Carregando a controller
+            static::$controller = ucwords(Url::segment());
+            return 'actionIndex';
+        }
 
     }
 
@@ -124,7 +127,8 @@ class Controller implements  InterfaceController {
     
      
     public function load(){
-    
+        
+      static::Action();  
       $load = $this->createNamespaceController();
 
       static::$class = new $load;
@@ -164,7 +168,7 @@ class Controller implements  InterfaceController {
 
     public function createNamespaceController(){
 
-      $path = '/'.self::$namespace_module.'/controllers/'.self::$controller.'Controller';
+      $path = '/'.static::$namespace_module.'/controllers/'.static::$controller.'Controller';
         
       return  str_replace('/','\\',$path);
  

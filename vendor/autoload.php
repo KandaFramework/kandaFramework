@@ -32,7 +32,10 @@ function Autoload($class) {
                 break;
             case 'helps':
                 $array[$key] = $baseroot.DS."helps";
-                break;                  
+                break;  
+            case 'widgets':
+                $array[$key] = $baseroot.DS."widgets";
+                break;                   
             
         }
   

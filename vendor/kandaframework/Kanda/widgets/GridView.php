@@ -146,6 +146,8 @@ class GridView extends AbstractWidget {
             ++$i;
         }
 
+         $tfoot = '';
+
         if (!$param['dataTable'] && isset($param['dataTable'])) {
             $li = '';
             for ($j = 1; $j < $count + 1; ++$j) {
@@ -173,7 +175,7 @@ class GridView extends AbstractWidget {
         $count = count($action);
         $Action = [];
 
-        $url =  Controller::$baseUrl . '/' . Controller::$base; 
+        $url = ''; 
         
         $actionColumn = [
             'update' => Html::a('editar',"$url/update/$id", ['class'=>'btn btn-info']),
