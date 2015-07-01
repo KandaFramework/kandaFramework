@@ -140,10 +140,10 @@ use helps\Url;
         <script src="/assets/painel/bootstrap/js/bootstrap.min.js" ></script>
         <script src="/assets/painel/scripts/flot/jquery.flot.js" ></script>
         <script src="/assets/painel/scripts/flot/jquery.flot.resize.js" ></script>
-        <script src="/assets/painel/scripts/datatables/jquery.dataTables.js" ></script>
-        <script src="/assets/painel/scripts/common.js" ></script>
+        <script src="/assets/painel/scripts/datatables/jquery.dataTables.js" ></script>      
 
-
-
+        <?php
+        static::footer();
+        ?>
      </body>
 </html>

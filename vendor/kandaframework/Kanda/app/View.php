@@ -11,6 +11,9 @@
 
 namespace app;
 
+
+use helps\Assets;
+
 class View{
 
 
@@ -80,7 +83,11 @@ class View{
 
     public function head(){}
 
-    public function footer(){}
+    public static function footer(){
+
+        echo Assets::end();
+
+    }
 
    
  

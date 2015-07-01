@@ -22,16 +22,14 @@ class Assets{
 
 	public $dirname = '';
 
-	public function __construct(){
+	protected static $public = '';
 
-		$this->begin();
-		return $this;
-	}
+	
+	public function init(){
 
-	public function begin(){
 
 		if(!empty($this->css)){
-			$this->Copy($this->js);
+			$this->Copy($this->css);
 		}
 
 		if(!empty($this->js)){
@@ -41,12 +39,20 @@ class Assets{
 
 	private function Copy($files)
 	{
-
+		static::$public = '';
 	     //pagegado as pastas do assets default		
 		$scandir= scandir($this->base);
 		unset($scandir[0],$scandir[1]);
 
+		//criando o path assets do pulbic
+		$src = function($array,$src){
+				
+				static::$public .= Html::script(null,['src'=>'/assets/'.$this->basename.'/'.$src])."\n"	;
 
+		};
+    	array_reduce($files,$src,null);
+
+		 
 		$basename =  $this->createDir($this->basename);
 
 		foreach ($files as $value)
@@ -67,17 +73,23 @@ class Assets{
 			}	
 			
 			$default = $this->base.$value;
-			$new = $this->dirName().$value;
-			
-			if(!file_exists($new)) 
-				copy($default,$new);
+			 		
+			if(!file_exists($this->dirName().$value))
+			{
+				copy($default,$this->dirName().$value);	
+				
+			} 
+				
 			
 		}
+		if(isset(Session::getSession()->EndAssets))
+		static::$public .= Html::script(Session::getSession()->EndAssets)."\n";
+ 
 
 	}
+
 	
-	public function dirName()
-	{
+	public function dirName(){
 		return ASSETS.$this->basename.DS;
 	}
 	
@@ -89,6 +101,14 @@ class Assets{
 			mkdir($dirname);
 		
 		return $dirname;
+	}
+
+	 
+	static function end(){
+			
+	    Session::clear('EndAssets');		
+		return static::$public;
+
 	}
 
 	

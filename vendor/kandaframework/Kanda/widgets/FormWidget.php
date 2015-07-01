@@ -9,9 +9,9 @@
 namespace widgets;
 
 use helps\Html;
-use helps\Assets;
+use helps\Validate;
 
-class FormWidget extends Assets{
+class FormWidget extends Validate{
 
     /**
      *
@@ -19,7 +19,6 @@ class FormWidget extends Assets{
      */
     private static $model;
     private static $labels = [];
-    private static $rules = [];
     private static $className = '';
     private static $script = '';
     private static $style = '';
@@ -31,56 +30,36 @@ class FormWidget extends Assets{
     private static $validade_message = '';
     private static $idForm = 'Validade';
     private static $ajax = '';
-
-    public function __construct() {
-        
-        $this->base = KANDA_ROOT .'/widgets/assets/';
-         
-        $this->basename = 'FormWidget';   
-        
-        $this->js = [
-            'js/jquery-v1.11.js',
-            'js/jquery.validate.min.js',
-            'js/additional-methods.min.js',
-         ]; 
-
-         parent::begin(); 
-
-    }
-
-     
+ 
 
     public static function widget($model, $param = []) {
         /* Chamada no namespace */
-        self::$model = $model;
+        static::$model = $model;
 
         $class = explode("\\", get_class($model));
 
-        self::$className = end($class);
+        static::$className = end($class);   
 
 
         if (isset($param['style'])) {
 
             $styleClass = new $param['style'];
-            self::$style = $styleClass;
-            self::$classInput = $styleClass->classInput;
-            self::$classFile = $styleClass->classFile;
-            self::$classTextarea = $styleClass->classTextarea;
-            self::$classSelect = $styleClass->classSelect;
+            static::$style = $styleClass;
+            static::$classInput = $styleClass->classInput;
+            static::$classFile = $styleClass->classFile;
+            static::$classTextarea = $styleClass->classTextarea;
+            static::$classSelect = $styleClass->classSelect;
         }
 
         if (isset($param['id']))
-            self::$idForm = $param['id'];
-
-        if (isset($param['ajax']))
-            self::$ajax = $param['ajax'];
+            static::$idForm = $param['id'];
 
         if (method_exists($model, 'rules')) {
-            self::$rules = $model::rules();
+             parent::begin($model)->end();
         }
 
         if (method_exists($model, 'attributeLabels'))
-            self::$labels = $model::attributeLabels();
+            static::$labels = $model::attributeLabels();
 
         return new FormWidget();
     }
@@ -94,13 +73,14 @@ class FormWidget extends Assets{
      * @return type
      */                
     public function text($column, $param = [], $type = 'text') {
+ 
+ 
+        $tag = Html::input($type, static::$className . "[$column]", static::$model->$column, array_merge(['id' => $column, 'class' => static::$classInput], $param));
 
-        $tag = Html::input($type, self::$className . "[$column]", self::$model->$column, array_merge(['id' => $column, 'class' => self::$classInput], $param));
-
-        if (self::$style) {
-            return self::$style->grid($column, $tag, self::$labels[$column]);
+        if (static::$style) {
+            return static::$style->grid($column, $tag, static::$labels[$column]);
         } else
-            return Html::label(self::$labels[$column]) . $tag;
+            return Html::label(static::$labels[$column]) . $tag;
     }
     /**
      * 
@@ -110,12 +90,12 @@ class FormWidget extends Assets{
      */                
     public function file($column, $param = []) {
 
-        $tag = Html::input('file', self::$className . "[$column]", self::$model->$column, array_merge(['id' => $column, 'class' => self::$classFile], $param));
+        $tag = Html::input('file', static::$className . "[$column]", static::$model->$column, array_merge(['id' => $column, 'class' => static::$classFile], $param));
 
-        if (self::$style) {
-            return self::$style->grid($column, $tag, self::$labels[$column]);
+        if (static::$style) {
+            return static::$style->grid($column, $tag, static::$labels[$column]);
         } else
-            return Html::label(self::$labels[$column]) . $tag;
+            return Html::label(static::$labels[$column]) . $tag;
     }
     /**
      * 
@@ -125,12 +105,12 @@ class FormWidget extends Assets{
      */                
     public function textarea($column, $param = []) {
 
-        $tag = Html::textarea(self::$className . "[$column]", self::$model->$column, array_merge(['id' => $column, 'class' => self::$classTextarea], $param));
+        $tag = Html::textarea(static::$className . "[$column]", static::$model->$column, array_merge(['id' => $column, 'class' => static::$classTextarea], $param));
 
-        if (self::$style) {
-            return self::$style->grid($column, $tag, self::$labels[$column]);
+        if (static::$style) {
+            return static::$style->grid($column, $tag, static::$labels[$column]);
         } else
-            return Html::label(self::$labels[$column]) . $tag;
+            return Html::label(static::$labels[$column]) . $tag;
     }
 
     /**
@@ -142,12 +122,17 @@ class FormWidget extends Assets{
      */
     public function dropDownListGroup($column, $selected = '', $options = [], $param = []) {
 
-        $tag = Html::dropdowlist(self::$className . "[$column]", $selected, $options, array_merge(['id' => $column, 'class' => self::$classSelect], $param));
+        $tag = Html::dropdowlist(static::$className . "[$column]", $selected, $options, array_merge(['id' => $column, 'class' => static::$classSelect], $param));
 
-        if (self::$style) {
-            return self::$style->grid($column, $tag, self::$labels[$column]);
+        if (static::$style) {
+            return static::$style->grid($column, $tag, static::$labels[$column]);
         } else
-            return Html::label(self::$labels[$column]) . $tag;
+            return Html::label(static::$labels[$column]) . $tag;
+    }
+
+    public static function end(){
+
+
     }
 
 }

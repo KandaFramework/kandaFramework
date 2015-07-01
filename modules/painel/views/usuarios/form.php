@@ -18,7 +18,7 @@ use helps\Session;
 
         <br>
 
-        <form method="POST"  id="Validade" action=""  class="form-horizontal row-fluid" enctype="multipart/form-data" >
+        <form method="POST"  id="FormWidget" action=""  class="form-horizontal row-fluid" enctype="multipart/form-data" >
             <fieldset>
                 <?php
                 $form = FormWidget::widget($model, [ 'style' => "\help\Style",]);

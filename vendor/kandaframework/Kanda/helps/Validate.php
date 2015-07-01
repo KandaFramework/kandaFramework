@@ -7,73 +7,93 @@
  */
 namespace helps;
 
-class Validade{
+class Validate extends Assets{
     
-    private static $validade_rules;
-    private static $validate_message;
-    private static $className;
+    protected static $rules;
+    protected static $message;
+   
+    public function __construct() {
+        
+        $this->base = KANDA_ROOT .'/assets/';
+         
+        $this->basename = 'Validate';   
+        
+        $this->js = [
+            'js/jquery-v1.11.js',
+            'js/jquery.validate.min.js',
+            'js/additional-methods.min.js',
+         ]; 
+         //Script para ser listado no final
+         parent::init(); 
 
-    public static function jsValidade($rules_=[],$className,$idForm) {
+    } 
 
-        $message = 'Obrigátorio';
-        self::$className = $className;
+     public static function begin($model) {
+
        
-        foreach ($rules_ as $key => $rules) {
+        $className = explode("\\", get_class($model));;
+        $className = end($className);
 
-            if (is_array($rules[0])) {
+        $rules = $model::rules();
+        
+        $message = 'Obrigátorio';
 
-                if ($rules[1] == 'required') {
-                    self::CreateValidade($rules[0]);
-                }
-            } elseif (isset($rules[2]) && $rules[2] == "required" || isset($rules[1]) && $rules[1] == 'file') {
+        // [[1,2,3],'required']
+        $reduce = function($class,$colun){
+               
+               static::$rules   .= "'" . $class . "[$colun]':'required',";
+               static::$message .= "'" . $class . "[$colun]':{required:'Obrigátorio'},";         
 
-                if (isset($rules['message']))
-                    $messages = $rules['message'];
+        };
 
+        foreach ($rules as $key => $colun) {
 
-                switch ($rules[1]) {
+           
+                switch ($colun[1]) {
+
+                    case 'required':
+                      array_reduce($colun[0], $reduce,$className);
+                    break;
+
                     case 'varchar':
 
-                        self::$validade_rules .= "'" . self::$className . "[$rules[0]]':'required',";
-                        self::$validade_message .= "'" . self::$className . "[$rules[0]]':{required:'$messages'},";
+                        static::$rules   .= "'" . $className . "[$colun[0]]':'required',";
+                        static::$message .= "'" . $className . "[$colun[0]]':{required:'$message'},";
 
                         break;
                     case 'integer':
                     case 'float':
 
-                        self::$validade_rules .= "'" . self::$className . "[$rules[0]]':{required: true,number: true},";
-                        self::$validade_message .= "'" . self::$className . "[$rules[0]]':{required:'$messages',number:'{$rules['error']}'},";
+                        static::$rules .= "'" . $className . "[$colun[0]]':{required: true,number: true},";
+                        static::$message .= "'" . $className . "[$colun[0]]':{required:'$message',number:'{$colun['error']}'},";
 
                         break;
                     case 'email':
 
-                        self::$validade_rules .= "'" . self::$className . "[$rules[0]]':{required: true,email: true},";
-                        self::$validade_message .= "'" . self::$className . "[$rules[0]]':{required:'$messages',email:'{$rules['error']}'},";
+                        static::$rules .= "'" . $className . "[$colun[0]]':{required: true,email: true},";
+                        static::$message .= "'" . $className . "[$colun[0]]':{required:'$message',email:'{$colun['error']}'},";
 
                         break;
                     case 'file':
-                        $rule = 'false';
-                        if (isset($rules[2]) && $rules[2] == 'required')
-                            $rule = 'true';
-
-                        self::$validade_rules .= "'" . self::$className . "[$rules[0]]':{required: $rule,extension:\"{$rules['extension']}\"},";
-                        self::$validade_message .= "'" . self::$className . "[$rules[0]]':{required:'$messages',extension:'{$rules['error']}'},";
+                        static::$rules .= "'" . $className . "[$colun[0]]':{required: $required,extension:\"{$colun['extension']}\"},";
+                        static::$message .= "'" . $className . "[$colun[0]]':{required:'$message',extension:'{$colun['error']}'},";
                         break;
                 }
             }
+
+            return new Validate();
+            
         }
-        self::createJsValidade(self::$validade_rules, self::$validade_message, $idForm);
-    }
-    
-    private static function CreateValidade($rules) {
 
-        $mensagem = 'Obrigatório.';
+        public static function end()
+        {
 
-        foreach ($rules as $key => $name) {
+           Session::setSession([
+                   'EndAssets' => "$('#FormWidget').validate({rules:{".static::$rules."},messages:{".static::$message."},});", 
+            ]);
+            
 
-            self::$validade_rules .= "'" . self::$className . "[$name]':'required',";
-            self::$validade_message .= "'" . self::$className . "[$name]':{required:'$mensagem'},";
         }
-    }   
-    
+   
+      
 }

@@ -37,14 +37,15 @@ class Session {
 
                 $_SESSION['set'][$key] = $value;
             }
-
             return new Session($_SESSION['set']);
+
         } else {
             throw new \Exception('Deve conter um valor!');
         }
     }
 
     public static function getSession() {
+ 
 
         if (!empty($_SESSION['set']))
             return (object) $_SESSION['set'];
@@ -57,11 +58,19 @@ class Session {
     public static function clear($key = '') {
 
         if (!empty($key)) {
+
+            if(isset($_SESSION['set'][$key]))
             unset($_SESSION['set'][$key]);
+
+            if(isset($_SESSION[$key]))
+            unset($_SESSION[$key]);
+
             return '';
         } else {
             session_destroy();
             unset($_SESSION['set']);
+            unset($_SESSION);
+
         }
     }
 
