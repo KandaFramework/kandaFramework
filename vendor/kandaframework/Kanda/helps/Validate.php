@@ -32,21 +32,18 @@ class Validate extends Assets{
      public static function begin($model) {
 
        
-        $className = explode("\\", get_class($model));;
-        static::$class = end($className);
+        static::$class = explode("\\", get_class($model));;
+        static::$class = end(static::$class);
 
         $rules = $model::rules();
         
         $message = 'Obrigátorio';
 
         // [[1,2,3],'required']
-        $reduce = function($colun){
+        $reduce = function($class,$colun){
                
                static::$rules   .= "'" . static::$class . "[$colun]':'required',";
                static::$message .= "'" . static::$class . "[$colun]':{required:'Obrigátorio'},"; 
-
-
-
         };
 
         foreach ($rules as $key => $colun) {
@@ -55,32 +52,31 @@ class Validate extends Assets{
                 switch ($colun[1]) {
 
                     case 'required':
-                      array_reduce($colun[0], $reduce);
-                      die;
+                      array_reduce($colun[0], $reduce,null);
                     break;
 
                     case 'varchar':
 
-                        static::$rules   .= "'" . $className . "[$colun[0]]':'required',";
-                        static::$message .= "'" . $className . "[$colun[0]]':{required:'$message'},";
+                        static::$rules   .= "'" . static::$class . "[$colun[0]]':'required',";
+                        static::$message .= "'" . static::$class . "[$colun[0]]':{required:'$message'},";
 
                         break;
                     case 'integer':
                     case 'float':
 
-                        static::$rules .= "'" . $className . "[$colun[0]]':{required: true,number: true},";
-                        static::$message .= "'" . $className . "[$colun[0]]':{required:'$message',number:'{$colun['error']}'},";
+                        static::$rules .= "'" . static::$class . "[$colun[0]]':{required: true,number: true},";
+                        static::$message .= "'" . static::$class . "[$colun[0]]':{required:'$message',number:'{$colun['error']}'},";
 
                         break;
                     case 'email':
 
-                        static::$rules .= "'" . $className . "[$colun[0]]':{required: true,email: true},";
-                        static::$message .= "'" . $className . "[$colun[0]]':{required:'$message',email:'{$colun['error']}'},";
+                        static::$rules .= "'" . static::$class . "[$colun[0]]':{required: true,email: true},";
+                        static::$message .= "'" . static::$class . "[$colun[0]]':{required:'$message',email:'{$colun['error']}'},";
 
                         break;
                     case 'file':
-                        static::$rules .= "'" . $className . "[$colun[0]]':{required: $required,extension:\"{$colun['extension']}\"},";
-                        static::$message .= "'" . $className . "[$colun[0]]':{required:'$message',extension:'{$colun['error']}'},";
+                        static::$rules .= "'" . static::$class . "[$colun[0]]':{required: $required,extension:\"{$colun['extension']}\"},";
+                        static::$message .= "'" . static::$class . "[$colun[0]]':{required:'$message',extension:'{$colun['error']}'},";
                         break;
                 }
             }
