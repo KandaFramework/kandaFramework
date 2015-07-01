@@ -20,7 +20,6 @@ class Usuario extends \ActiveRecord\Model {
         return [
             [['nome','login','senha','confirm_senha'],'required'],
             ['email','email','required','message'=>'Obrigatório','error'=>'Email inválido'],
-            ['browser', 'integer', 'required', 'message' => 'Obrigatório', 'error' => 'Somente número inteiros'],
             #['email', 'email', 'required', 'message' => 'Obrigatório', 'error' => 'E-mail inválido'],
             #['foto', 'file', 'required','extension'=>"pdf|png|jpg", 'message' => 'Obrigatório', 'error' => 'Somente pdf, png, jpg'],
         ];

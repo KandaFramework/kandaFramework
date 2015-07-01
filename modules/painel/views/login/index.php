@@ -10,7 +10,7 @@ use helps\Session;
 <div class="row">
     <div class="module module-login span4 offset4">
 
-        <form  action="<?php echo Url::request() ?>" method="POST" class="form-vertical">
+        <form  id="FormWidget" action="<?php echo Url::request() ?>" method="POST" class="form-vertical">
             <?php
             $form = FormWidget::widget($model,[]);
             ?>

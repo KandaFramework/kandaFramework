@@ -99,15 +99,8 @@ use helps\Url;
     </div>
 </div>
 <script src="/assets/painel/bootstrap/js/bootstrap.min.js" ></script>
-
-<script>
-
-       var Modal = function(url)
-       {
-        $.get(url,{},function(data){ 
-            $('.modal-body').html(data);
-         });
-       }
-      </script>
+<?php
+       static::footer();
+?>
 </body>
 </html>

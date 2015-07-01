@@ -11,6 +11,7 @@ class Validate extends Assets{
     
     protected static $rules;
     protected static $message;
+    protected static $class;
    
     public function __construct() {
         
@@ -32,17 +33,19 @@ class Validate extends Assets{
 
        
         $className = explode("\\", get_class($model));;
-        $className = end($className);
+        static::$class = end($className);
 
         $rules = $model::rules();
         
         $message = 'Obrigátorio';
 
         // [[1,2,3],'required']
-        $reduce = function($class,$colun){
+        $reduce = function($colun){
                
-               static::$rules   .= "'" . $class . "[$colun]':'required',";
-               static::$message .= "'" . $class . "[$colun]':{required:'Obrigátorio'},";         
+               static::$rules   .= "'" . static::$class . "[$colun]':'required',";
+               static::$message .= "'" . static::$class . "[$colun]':{required:'Obrigátorio'},"; 
+
+
 
         };
 
@@ -52,7 +55,8 @@ class Validate extends Assets{
                 switch ($colun[1]) {
 
                     case 'required':
-                      array_reduce($colun[0], $reduce,$className);
+                      array_reduce($colun[0], $reduce);
+                      die;
                     break;
 
                     case 'varchar':
