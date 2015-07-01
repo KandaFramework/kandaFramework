@@ -3,17 +3,8 @@
 
 function Autoload($class) {
     
-    switch(PHP_OS){
-         
-      case 'WINNT':
-       $key = 4;$dilimitador = '';
-        break;
-      default:
-      //Para Linux ou Mac
-      $key = 3;$dilimitador = '/';
-    
-    }
-    
+    $key = count(explode(DS,WWW_ROOT));
+   
     $class = WWW_ROOT.DS. str_replace('\\', DS, $class) . '.php';
     
     $array =  explode(DS,$class);
@@ -40,7 +31,7 @@ function Autoload($class) {
         }
   
     }
-    $filename = $dilimitador.implode(DS,$array);
+    $filename = implode(DS,$array);
       
 
     if(!file_exists($filename))
