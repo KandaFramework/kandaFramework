@@ -46,7 +46,7 @@ class ServicosController extends \app\Controller {
 
          Session::setflash('update', 'Alterado com sucesso');
 
-            return $this->redirect('update', ['id' => $id]);
+            return $this->redirect();
         } else {
             return $this->render('form', ['model' => $model]);
         }
@@ -60,7 +60,7 @@ class ServicosController extends \app\Controller {
 
                Session::setflash('update', 'Cadastrado com sucesso');
 
-            return $this->redirect('update', ['id' => $model->id]);
+            return $this->redirect(['update','id' => $model->id]);
         } else {
             return $this->render('form', ['model' => $model]);
         }

@@ -124,10 +124,13 @@ class Url{
      * @description Redirecionar para uma view. Referencia da url serar herdada
      * 
      */
-    public static function redirect($render = '', $param = []) {
+    public static function redirect($param = []) {
 
         $queryString = '';
 
+
+        $render = $param[0];
+        unset($param[0]);    
 
         if (!empty($param)) {
 
@@ -145,6 +148,9 @@ class Url{
         $request =  array_filter(explode('/',($_SERVER['REQUEST_URI'])));
 
         array_pop($request);
+
+        if($render == '/')
+            $render = '';
 
         array_push($request,$render.$queryString);
 

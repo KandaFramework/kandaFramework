@@ -18,7 +18,7 @@ class UsuariosController extends \app\Controller {
 
     public function behaviors() {
         return [
-            'getClass' => User::rule(),
+        'getClass' => User::rule(),
         ];
     }
 
@@ -26,7 +26,7 @@ class UsuariosController extends \app\Controller {
 
         $dataProvider = UsuarioSearch::dataProvider();
         return $this->render('index', ['dataProvider' => $dataProvider]);
- 
+        
     }
 
     /**
@@ -50,45 +50,45 @@ class UsuariosController extends \app\Controller {
                  else
                  $model->senha = $defaultpasswork;*/
 
-            $model->save();
-            Session::setflash('update', 'Alterado com sucesso');
+                 $model->save();
+                 Session::setflash('update', 'Alterado com sucesso');
 
-            return $this->redirect();
-            
-        } else {
-            return $this->render('form', ['model' => $model]);
-        }
-    }
-
-    public function actionCreate() {
-
-        $model = new Usuario();
-
-        if (\Kanda::$request->post($model)) {
-
-            $model->senha = password_hash($model->senha, PASSWORD_DEFAULT);
- 
-            $model->save();
-
-            Session::setflash('update', 'Cadastrado com sucesso');
-            return $this->redirect('update', ['id' => $model->id]);
-
-        } else {
-
-            return $this->renderAjax('form', ['model' => $model]);
-        }
-    }
-
-    public function actionDelete($id) {
-
-        if (isset($id) && !empty($id)) {
-            $model = $this->findModel($id);
-            if ($model->delete()) {
-                Session::setflash('delete', 'Excluído com sucesso');
-                return $this->redirect();
+                 return $this->redirect();
+                 
+             } else {
+                return $this->render('form', ['model' => $model]);
             }
         }
-    }
+
+        public function actionCreate() {
+
+            $model = new Usuario();
+
+            if (\Kanda::$request->post($model)) {
+
+                $model->senha = password_hash($model->senha, PASSWORD_DEFAULT);
+                
+                $model->save();
+
+                Session::setflash('update', 'Cadastrado com sucesso');
+                return $this->redirect(['update','id' => $model->id]);
+
+            } else {
+
+                return $this->render('form',['model' => $model]);
+            }
+        }
+
+        public function actionDelete($id) {
+
+            if (isset($id) && !empty($id)) {
+                $model = $this->findModel($id);
+                if ($model->delete()) {
+                    Session::setflash('delete', 'Excluído com sucesso');
+                    return $this->redirect();
+                }
+            }
+        }
 
     /**
      * 

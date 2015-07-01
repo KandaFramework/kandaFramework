@@ -4,10 +4,10 @@ return $main = [
 
     'config' => [
         'db' => [
-            'dsn' => 'mysql://root:linux321@localhost/adoremos?charset=utf8',
+            'dsn' => 'mysql://root:123@localhost/adoremos?charset=utf8',
         ],
         'timezone' => 'America/Sao_Paulo',
-        'default' => 'painel',
+        'default' => 'adoremos',
         'dirAlias' => '',
         'modules' => [
             'kanda' => [
