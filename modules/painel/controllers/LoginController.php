@@ -13,9 +13,11 @@ use helps\Session;
 
 class LoginController extends \app\Controller{
 
-    public function actionIndex(){
+    public function actionIndex($token){
 
         $model = new Usuario();
+
+        $this->layout = 'login';
 
         if(\Kanda::$request->post($model)){
 
@@ -43,7 +45,8 @@ class LoginController extends \app\Controller{
 
         }
         
-    }
+    }else
+        return $this->render('index',['model'=>$model]);
 }
     /**
      * 
@@ -61,12 +64,10 @@ class LoginController extends \app\Controller{
            'nome'      =>  $objct->nome,
            'login'     =>  $objct->login,
            'id'        =>  $objct->id,
-           'file'      =>  '/',
            'email'     =>  $objct->email,
            ]);
 
-            Session::setflash('success', 'Aguarde...');
-                  $this->redirect();
+           $this->redirect(['/']);
 
     }
     

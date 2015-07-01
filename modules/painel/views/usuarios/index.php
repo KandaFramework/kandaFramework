@@ -11,7 +11,7 @@ use modules\painel\models\Nivel;
 <div class="module">
     <div class="module-head">
         <h3><?php echo static::$title ?></h3>
-        <a href="#"  data-toggle="modal" data-target="#myModal" onclick="Modal('<?php echo Url::to('create') ?>');" class="btn btn-small btn-success param">Cadastrar</a>
+        <a href="<?php echo Url::to('create') ?>"  class="btn btn-small btn-success param">Cadastrar</a>
         
     </div>
     <div class="module-body">

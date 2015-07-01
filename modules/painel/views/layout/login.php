@@ -57,7 +57,7 @@ use helps\Url;
 
                 <ul class="nav pull-right">
 
-                    <li><a data-toggle="modal" data-target="#myModal" onclick="Modal('<?php echo Url::to('login/create') ?>')" href="#">
+                    <li><a data-toggle="modal" data-target="#myModal" onclick="Modal('<?php echo Url::to('create') ?>')" href="#">
                         Cadastrar
                     </a></li>
                 </ul>

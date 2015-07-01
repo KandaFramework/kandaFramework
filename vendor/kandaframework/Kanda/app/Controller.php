@@ -111,9 +111,9 @@ return new Controller();
 
     }
 
-    public function redirect($render='',$param=[]){
+    public function redirect($param=[]){
 
-     return Url::redirect($render,$param);
+      return Url::redirect($param);
 
   }
 
