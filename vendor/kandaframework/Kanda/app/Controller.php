@@ -121,7 +121,7 @@ return new Controller();
 
     $action = 'action';
 
-    if(empty(Url::segment()))
+    if(Url::segment() == null)
        $action .= 'Index';
    else{  //CRUD DELETE CREATE UPDATE VIEW OUTROS
     if(Url::getCount() == 3)
