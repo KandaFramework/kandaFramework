@@ -49,7 +49,7 @@ use helps\Url;
             <div class="navbar-inner">
                 <div class="container" style="margin-top:50px;">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="<?php echo Url::toRouter() ?>">Site </a>
+                        <i class="icon-reorder shaded"></i></a><a class="brand" href="<?php echo Url::createUrl() ?>">Site </a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         <!--
                         <ul class="nav nav-icons">

@@ -7,7 +7,7 @@ return $main = [
             'dsn' => 'mysql://root:linux321@localhost/adoremos?charset=utf8',
         ],
         'timezone' => 'America/Sao_Paulo',
-        'default' => 'painel', //module default para ser carregado
+        'default' => 'kanda', //module default para ser carregado
         'dirAlias' => '',
         'modules' => [
             'kanda' => [
