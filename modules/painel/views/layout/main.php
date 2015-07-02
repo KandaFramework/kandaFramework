@@ -49,7 +49,7 @@ use helps\Url;
             <div class="navbar-inner">
                 <div class="container" style="margin-top:50px;">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="<?php echo Url::createUrl() ?>">Site </a>
+                        <i class="icon-reorder shaded"></i></a><a class="brand" href="<?php echo Url::toRouter() ?>">Site </a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         <!--
                         <ul class="nav nav-icons">
@@ -69,8 +69,8 @@ use helps\Url;
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Suporte
                                     <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="<?php echo Url::createUrl('painel/chamado') ?>">Listar Chamados</a></li>
-                                    <li><a href="<?php echo Url::createUrl('painel/chamado/create') ?>">Abrir Chamado</a></li>
+                                    <li><a href="<?php echo Url::toRouter('chamado') ?>">Listar Chamados</a></li>
+                                    <li><a href="<?php echo Url::toRouter('chamado/create') ?>">Abrir Chamado</a></li>
                                 </ul>
                             </li>
 
@@ -78,9 +78,9 @@ use helps\Url;
                                     <img src="/assets/painel/images/user.png" class="nav-avatar" />
                                     <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="<?php echo Url::createUrl('/painel/usuarios/update/') ?><?php echo Session::getSession()->id ?>">Editar Perfil</a></li>
+                                    <li><a href="<?php echo Url::toRouter('/painel/usuarios/update/') ?><?php echo Session::getSession()->id ?>">Editar Perfil</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="<?php echo Url::createUrl('painel/logaout') ?>">Sair</a></li>
+                                    <li><a href="<?php echo Url::toRouter('logaout') ?>">Sair</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -97,19 +97,19 @@ use helps\Url;
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="<?php echo Url::createUrl('painel') ?>"><i class="menu-icon icon-dashboard"></i>Dashboard
+                                <li class="active"><a href="<?php echo Url::toRouter('painel') ?>"><i class="menu-icon icon-dashboard"></i>Dashboard
                                 </a></li>
-                                <li><a href="<?php echo Url::createUrl('painel/aulas') ?>"><i class="menu-icon icon-picture"></i>Aulas</a></li>                        
-                                <li><a href="<?php echo Url::createUrl('painel/banner') ?>"><i class="menu-icon icon-picture"></i>Banner</a></li>                        
-                                <li><a href="<?php echo Url::createUrl('painel/contatos') ?>"><i class="menu-icon icon-envelope"></i>Contatos </a></li>
-                                <li><a href="<?php echo Url::createUrl('painel/galerias') ?>"><i class="menu-icon icon-camera"></i>Galerias </a></li>
+                                <li><a href="<?php echo Url::toRouter('aulas') ?>"><i class="menu-icon icon-picture"></i>Aulas</a></li>                        
+                                <li><a href="<?php echo Url::toRouter('banner') ?>"><i class="menu-icon icon-picture"></i>Banner</a></li>                        
+                                <li><a href="<?php echo Url::toRouter('contatos') ?>"><i class="menu-icon icon-envelope"></i>Contatos </a></li>
+                                <li><a href="<?php echo Url::toRouter('galerias') ?>"><i class="menu-icon icon-camera"></i>Galerias </a></li>
                                  
                             </ul>
                             <ul class="widget widget-menu unstyled">
-                                <li><a href="<?php echo Url::createUrl('painel/Servicos') ?>"><i class="menu-icon icon-hand-up"></i>Serviços </a></li>
-                                <li><a href="<?php echo Url::createUrl('painel/sobre') ?>"><i class="menu-icon icon-hand-up"></i>Sobre </a></li>
-                                <li><a href="<?php echo Url::createUrl('painel/usuarios') ?>"><i class="menu-icon icon-user"></i>Usuários </a></li>
-                                <li><a href="<?php echo Url::createUrl('painel/videos') ?>"><i class="menu-icon icon-camera"></i>Vídeos</a></li>
+                                <li><a href="<?php echo Url::toRouter('servicos') ?>"><i class="menu-icon icon-hand-up"></i>Serviços </a></li>
+                                <li><a href="<?php echo Url::toRouter('sobre') ?>"><i class="menu-icon icon-hand-up"></i>Sobre </a></li>
+                                <li><a href="<?php echo Url::toRouter('usuarios') ?>"><i class="menu-icon icon-user"></i>Usuários </a></li>
+                                <li><a href="<?php echo Url::toRouter('videos') ?>"><i class="menu-icon icon-camera"></i>Vídeos</a></li>
                             </ul>
 
                             <!--/.widget-nav-->

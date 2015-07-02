@@ -17,10 +17,14 @@ class Url extends UrlBase{
         return new Url();
     }
 
-    static function toRouter()
+    static function toRouter($to='')
     {
         if(isset($_SERVER['PATH_INFO']))
-    	   return static::baseUrl().($_SERVER['PATH_INFO']);
+        {
+            $toRouter = explode('/',$_SERVER['PATH_INFO']);
+            return static::baseUrl().'/'.next($toRouter).'/'.$to;
+
+        }        
         else
            return static::baseUrl(); 
     }
@@ -41,7 +45,7 @@ class Url extends UrlBase{
 
     static function to($to='')
     {
-        return static::toRouter().'/'.$to;
+        return static::baseUrl().$_SERVER['PATH_INFO'].'/'.$to;
     }
 
 }
