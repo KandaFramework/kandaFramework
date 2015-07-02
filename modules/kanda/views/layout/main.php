@@ -32,13 +32,30 @@ use helps\Url;
             </div>
         </nav>
 
+          <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>KandaFramework</h1>
+        <p>
+            Framework criado para ajudar programadores em aumentar seus conhecimentos na linguagem PHP.<br/>
+            <strong>Básico de conhecimento</strong><br/>
+            <ul>    
+                <li>Arquitetura MVC</li>
+                <li>Namespace</li>
+                <li>ActiveRecord</li>
+            </ul>
+         </p>
+        <p><a class="btn btn-primary btn-lg" href="https://github.com/KandaFramework/kandaframework" target="_black" role="button">GuitHub »</a></p>
+      </div>
+    </div>
+
         <div class="container">
 
             <?php echo $content ?>
 
         </div><!-- /.container -->
         <footer>
-            
+           <p>© Company <?php echo date('Y') ?></p> 
         </footer>
     </body>
 </html>
