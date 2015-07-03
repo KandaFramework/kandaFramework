@@ -85,7 +85,7 @@ class View{
 
     public static function footer(){
             
-       echo Assets::end();
+      // echo Assets::end();
 
 
     }

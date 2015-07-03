@@ -40,11 +40,35 @@ class Assets{
 	private function Copy($files)
 	{
 		static::$public = '';
-	     //pagegado as pastas do assets default		
-		$scandir= scandir($this->base);
-		unset($scandir[0],$scandir[1]);
+	    
+		$this->createDir($this->basename);
+ 	
+		$path = realpath($this->base);
 
-		//criando o path assets do pulbic
+		$count = strlen($this->base);
+
+		$objects = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
+		foreach($objects as $path){
+		  
+		  if(in_array(substr($path->getPathName(),$count),$files))
+		     {
+
+		     	$dir  = explode(DS,$path->getPathName());
+		     	$filename = end($dir);
+		     	array_pop($dir);
+		     	$newdir = implode(DS,$dir);
+		     	$newdir = substr($newdir,$count);
+		     	$new = $this->basename.DS.$newdir;
+
+		     	$dir = $this->createDir($new);
+ 				copy($path->getPathName(),$this->dirName().$newdir.DS.$filename);
+
+		     }
+
+		}
+
+		die;
+	    //criando o path assets do pulbic
 		$src = function($array,$src){
 				
 				static::$public .= Html::script(null,['src'=>'/assets/'.$this->basename.'/'.$src])."\n"	;
@@ -52,36 +76,6 @@ class Assets{
 		};
     	array_reduce($files,$src,null);
 
-		 
-		$basename =  $this->createDir($this->basename);
-
-		foreach ($files as $value)
-		{
-			
-			$path = explode('/',$value);
-
-			if(!empty($path))
-			{
-				
-				foreach ($path as $dir)
-				{
-					if(in_array($dir, $scandir))
-					{
-						$this->createDir($this->basename.DS.$dir);
-					}
-				}
-			}	
-			
-			$default = $this->base.$value;
-			 		
-			if(!file_exists($this->dirName().$value))
-			{
-				copy($default,$this->dirName().$value);	
-				
-			} 
-				
-			
-		}
 		if(isset(Session::getSession()->EndAssets))
 		static::$public .= Html::script(Session::getSession()->EndAssets)."\n";
  	

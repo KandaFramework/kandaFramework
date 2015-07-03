@@ -18,7 +18,7 @@ class FileUploadDir extends Assets{
         $this->basename = 'jQueryFileUpload';   
         
         $this->js = [
-           // 'js/vendor/jquery.ui.widget.js',
+            'js/vendor/jquery.ui.widget.js',
             'js/jquery.iframe-transport.js',
             'js/jquery.fileupload.js',
         ]; 
@@ -46,6 +46,10 @@ class FileUploadDir extends Assets{
     }
 
 }
+
+FileUploadDir::class_name();
+
+die;
   
  
 
