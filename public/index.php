@@ -3,7 +3,7 @@
  ini_set('display_errors', 1);
 
  define('WWW_ROOT',dirname(__DIR__));
- define('KANDA_ROOT',dirname(__DIR__).'/vendor/kandaframework/Kanda');
+ define('KANDA_ROOT',dirname(__DIR__).'/vendor/ksoftware/Kanda');
  define('ASSETS',dirname(__DIR__).'/public/assets/');
 
  define('DS',DIRECTORY_SEPARATOR);
@@ -25,4 +25,4 @@
 
   require_once WWW_ROOT.'/vendor/autoload.php';
 
-  require_once (WWW_ROOT.'/vendor/kandaframework/KandaFramework.php');
+  require_once (WWW_ROOT.'/vendor/ksoftware/KandaFramework.php');

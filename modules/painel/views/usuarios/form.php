@@ -34,10 +34,6 @@ class FileUploadDir extends Assets{
 
     public function begin($name,$value,$param='')
     {
-
-        echo '<pre>';
-        print_r($param);
-
      return Html::input('file',$name,$value);
     }
 
@@ -72,18 +68,7 @@ class FileUploadDir extends Assets{
                 echo $form->field('nome')->text();
                 echo $form->field('login')->text();
                 echo $form->field('email')->text();
-                echo $form->field('file')->widget(FileUploadDir::class_name(),
-                 [
-                  'url'=> '',
-                   'dataType' =>'json',
-                   'progressall'=> "function (e, data) {
-                    var progress = parseInt(data.loaded / data.total * 100, 10);
-                    $('#progress .bar').css(
-                    'width',
-                    progress + '%'
-                    );
-                    },",
-                 ]);
+                echo $form->field('file')->widget(FileUploadDir::class_name());
                 echo $form->field('senha')->text(['value'=>123],'password');
            
                 ?>
