@@ -39,20 +39,13 @@ class FileUploadDir extends Assets{
 
     public static function end()
     {
-         Session::setSession([
-                   'EndAssets' => "alert('certo');",
-         ]);
+          
+     return "alert('certo');";
+          
 
     }
 
 }
-
-FileUploadDir::class_name();
-
-die;
-  
- 
-
 ?>
  
 <div class="module">

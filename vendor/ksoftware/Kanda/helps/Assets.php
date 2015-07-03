@@ -29,17 +29,17 @@ class Assets{
 
 
 		if(!empty($this->css)){
-			$this->Copy($this->css);
+			$this->Copy($this->css,'css');
 		}
 
 		if(!empty($this->js)){
-			$this->Copy($this->js);
+			$this->Copy($this->js,'js');
 		}
 	}
 
-	private function Copy($files)
+	private function Copy($files,$type)
 	{
-		static::$public = '';
+		$src = [];
 	    
 		$this->createDir($this->basename);
  	
@@ -56,29 +56,36 @@ class Assets{
 		     	$dir  = explode(DS,$path->getPathName());
 		     	$filename = end($dir);
 		     	array_pop($dir);
+		     	
 		     	$newdir = implode(DS,$dir);
+		     	
 		     	$newdir = substr($newdir,$count);
+		     	
 		     	$new = $this->basename.DS.$newdir;
 
-		     	$dir = $this->createDir($new);
- 				copy($path->getPathName(),$this->dirName().$newdir.DS.$filename);
+		     	$this->createDir($new);
+		     	
+		     	$copy = $this->dirName().$newdir.DS.$filename;
+
+ 				copy($path->getPathName(),$copy);
+
+ 				$src[] = '/assets/'.$this->basename.'/'. $newdir.DS.$filename;
 
 		     }
 
 		}
+		if(empty(Session::getSession()->$type))
+		{
+			Session::setSession([
+				  $type => $src,	
+			]);
+			return true;
+		}
+		Session::setSession([
+				  $type => array_merge(Session::getSession()->$type,$src),	
+		]);
+		return true;				 
 
-		die;
-	    //criando o path assets do pulbic
-		$src = function($array,$src){
-				
-				static::$public .= Html::script(null,['src'=>'/assets/'.$this->basename.'/'.$src])."\n"	;
-
-		};
-    	array_reduce($files,$src,null);
-
-		if(isset(Session::getSession()->EndAssets))
-		static::$public .= Html::script(Session::getSession()->EndAssets)."\n";
- 	
  	 }
 
 	

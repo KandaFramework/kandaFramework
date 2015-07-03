@@ -90,9 +90,9 @@ class Validate extends Assets{
         public static function end()
         {
 
-           Session::setSession([
-                   'EndAssets' => "$('#FormWidget').validate({rules:{".static::$rules."},messages:{".static::$message."},});", 
-            ]);
+            
+              return  "$('#FormWidget').validate({rules:{".static::$rules."},messages:{".static::$message."},});";
+        
             
 
         }
