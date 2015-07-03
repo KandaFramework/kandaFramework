@@ -12,7 +12,7 @@ use helps\Session;
 
         <form  id="FormWidget" action="<?php echo Url::request() ?>" method="POST" class="form-vertical">
             <?php
-            $form = FormWidget::widget($model,[]);
+            $form = FormWidget::begin($model,[]);
             ?>
             <div class="module-head">
                 <h3>Login</h3>

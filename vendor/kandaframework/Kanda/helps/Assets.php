@@ -25,7 +25,7 @@ class Assets{
 	protected static $public = '';
 
 	
-	public function init(){
+	public  function init(){
 
 
 		if(!empty($this->css)){
@@ -84,9 +84,8 @@ class Assets{
 		}
 		if(isset(Session::getSession()->EndAssets))
 		static::$public .= Html::script(Session::getSession()->EndAssets)."\n";
- 
-
-	}
+ 	
+ 	 }
 
 	
 	public function dirName(){

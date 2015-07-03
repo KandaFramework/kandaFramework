@@ -84,8 +84,9 @@ class View{
     public function head(){}
 
     public static function footer(){
+            
+       echo Assets::end();
 
-        echo Assets::end();
 
     }
 

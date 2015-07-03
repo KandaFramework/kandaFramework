@@ -26,7 +26,11 @@ function Autoload($class) {
                 break;  
             case 'widgets':
                 $array[$key] = $baseroot.DS."widgets";
-                break;                   
+                break;
+           //Tecerios     
+            case 'wideImage':
+                $array[$key] = "vendor".DS."wideImage";
+            break;                   
             
         }
   
