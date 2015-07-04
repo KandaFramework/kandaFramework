@@ -90,12 +90,18 @@ class View{
       if(isset(Session::getSession()->js))
       {
 
+        ECHO '<PRE>';
+        print_r($_SESSION);
+
         $session =  array_unique(Session::getSession()->js);
         $assets = '';
 
         foreach ($session as $value) {
-          
-             $assets  .= Html::script(null,['src'=>$value])."\n";   
+             
+             if(is_file(WWW_ROOT.'/public/'.$value))    
+                    $assets  .= Html::script(null,['src'=>$value])."\n";
+              else
+                    $assets .= Html::script($value)."\n";
 
         }
         echo $assets;

@@ -6,42 +6,65 @@ use helps\Url;
 use helps\Session;
 use helps\Html;
 use helps\Assets;
+use base\AbstractWidget;
  
-class FileUploadDir extends Assets{
+class FileUploadDir extends AbstractWidget{
 
 
+    private static $assets = null;
+
+    //2
     public function __construct()
     {
+
+        $assets = new Assets();
  
-        $this->base = WWW_ROOT .'/vendor/fileupload/assets/';
+        $assets->base = WWW_ROOT .'/vendor/fileupload/assets/';
          
-        $this->basename = 'jQueryFileUpload';   
+        $assets->basename = 'jQueryFileUpload';   
         
-        $this->js = [
+        $assets->js = [
             'js/vendor/jquery.ui.widget.js',
             'js/jquery.iframe-transport.js',
-            'js/jquery.fileupload.js',
+            'js/jquery.fileupload.js',            
         ]; 
          //Script para ser listado no final
-        
-        parent::init();   
+        $assets->init();
     }
-
+    //1
     static function class_name()
     {
        return new FileUploadDir();
     }
-
+    //3
     public function begin($name,$value,$param='')
     {
-     return Html::input('file',$name,$value);
+      return static::gridBootstrap(Html::input('file',$name,$value,['class'=>'form-control']));
     }
 
-    public static function end()
+    static function gridBootstrap($tag)
     {
-          
-     return "alert('certo');";
-          
+
+        //Assets::createAssets(['alert(1)'],'js');
+    // static::$assets->createAsset(['alert(1)'],'endAssets');   
+
+     return '<div class="form-group">
+                    '.$tag.'
+                    <div class="progress">
+                        <div class="progress-bar" style="width:0%;">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+      </div>';
+      
+      
+
+    }
+    //4
+    static function end()
+    {
+      
+      return [''];          
 
     }
 

@@ -22,12 +22,11 @@ class Assets{
 
 	public $dirname = '';
 
-	protected static $public = '';
+	protected static $obj;
 
 	
 	public  function init(){
-
-
+		
 		if(!empty($this->css)){
 			$this->Copy($this->css,'css');
 		}
@@ -35,6 +34,9 @@ class Assets{
 		if(!empty($this->js)){
 			$this->Copy($this->js,'js');
 		}
+
+	  return $this;
+
 	}
 
 	private function Copy($files,$type)
@@ -74,7 +76,17 @@ class Assets{
 		     }
 
 		}
-		if(empty(Session::getSession()->$type))
+
+		//$src['end'][$this->basename] = '';
+		static::createAssets($src,$type);
+		return true;
+
+ 	 }
+
+ 	static function createAssets($src,$type)
+ 	 {
+
+ 	 	if(empty(Session::getSession()->$type))
 		{
 			Session::setSession([
 				  $type => $src,	
@@ -104,11 +116,10 @@ class Assets{
 	}
 
 	 
-	static function end(){
-			
-	    Session::clear('EndAssets');		
-		return static::$public;
-
+	static function end($end=''){
+		
+		return $end;
+	   
 	}
 
 	

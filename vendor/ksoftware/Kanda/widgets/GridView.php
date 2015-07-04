@@ -17,7 +17,7 @@ use helps\Html;
 use helps\Url;
 use helps\Bootstrap;
 
-class GridView extends AbstractWidget {
+class GridView{
 
     /**
      * @access public

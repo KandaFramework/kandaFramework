@@ -28,6 +28,7 @@ class Validate extends Assets{
          ]; 
          //Script para ser listado no final
          parent::init(); 
+         $model->createAssets([static::end()],'js');
 
     } 
 
