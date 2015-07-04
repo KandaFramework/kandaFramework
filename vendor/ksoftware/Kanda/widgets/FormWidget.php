@@ -30,9 +30,11 @@ class FormWidget extends Validate{
     private static $validade_message = '';
     private static $idForm = 'Validade';
     private static $ajax = '';
+    private static $value = '';
+    private static $column = '';
  
-
-    public static function widget($model, $param = []) {
+  
+    public static function begin($model, $param = []) {
         /* Chamada no namespace */
         static::$model = $model;
 
@@ -61,9 +63,15 @@ class FormWidget extends Validate{
         if (method_exists($model, 'attributeLabels'))
             static::$labels = $model::attributeLabels();
 
-        return new FormWidget();
+        return new FormWidget($model);
     }
-  
+
+    public function field($column)
+    {
+          static::$value  = static::$model->$column;
+          static::$column = $column;
+          return $this;
+    }
 
     /**
      * 
@@ -72,13 +80,27 @@ class FormWidget extends Validate{
      * @param type $type
      * @return type
      */                
-    public function text($column, $param = [], $type = 'text') {
+    public function text($param = [],$type = 'text') {
  
- 
-        $tag = Html::input($type, static::$className . "[$column]", static::$model->$column, array_merge(['id' => $column, 'class' => static::$classInput], $param));
+        $tag = Html::input($type, static::$className . "[".static::$column."]", static::$value, array_merge(['id' => static::$column, 'class' => static::$classInput], $param));
 
         if (static::$style) {
-            return static::$style->grid($column, $tag, static::$labels[$column]);
+            return static::$style->grid(static::$column, $tag, static::$labels[static::$column]);
+        } else
+            return Html::label(static::$labels[static::$column]) . $tag;
+    }
+    /**
+     * 
+     * @param type $column
+     * @param type $param
+     * @return type
+     */                
+    public function file($param = []) {
+
+        $tag = Html::input('file', static::$className . "[".static::$column."]", static::$value, array_merge([static::$column, 'class' => static::$classFile], $param));
+
+        if (static::$style) {
+            return static::$style->grid(static::$column, $tag, static::$labels[static::$column]);
         } else
             return Html::label(static::$labels[$column]) . $tag;
     }
@@ -88,29 +110,14 @@ class FormWidget extends Validate{
      * @param type $param
      * @return type
      */                
-    public function file($column, $param = []) {
+    public function textarea($param = []) {
 
-        $tag = Html::input('file', static::$className . "[$column]", static::$model->$column, array_merge(['id' => $column, 'class' => static::$classFile], $param));
-
-        if (static::$style) {
-            return static::$style->grid($column, $tag, static::$labels[$column]);
-        } else
-            return Html::label(static::$labels[$column]) . $tag;
-    }
-    /**
-     * 
-     * @param type $column
-     * @param type $param
-     * @return type
-     */                
-    public function textarea($column, $param = []) {
-
-        $tag = Html::textarea(static::$className . "[$column]", static::$model->$column, array_merge(['id' => $column, 'class' => static::$classTextarea], $param));
+        $tag = Html::textarea(static::$className . "[".static::$column."]", static::$value, array_merge([static::$column, 'class' => static::$classTextarea], $param));
 
         if (static::$style) {
-            return static::$style->grid($column, $tag, static::$labels[$column]);
+            return static::$style->grid(static::$column, $tag, static::$labels[static::$column]);
         } else
-            return Html::label(static::$labels[$column]) . $tag;
+            return Html::label(static::$labels[static::$column]) . $tag;
     }
 
     /**
@@ -120,19 +127,26 @@ class FormWidget extends Validate{
      * @param array  $options Valores a ser criado.<br/>Exemplo:<code>[1=>'Sim',2=>'Não']</code><br/>
      * @param array  $param Valores html que serar passado no <code><select></select></code>
      */
-    public function dropDownListGroup($column, $selected = '', $options = [], $param = []) {
+    public function dropDownListGroup($selected = '', $options = [], $param = []) {
 
-        $tag = Html::dropdowlist(static::$className . "[$column]", $selected, $options, array_merge(['id' => $column, 'class' => static::$classSelect], $param));
+        $tag = Html::dropdowlist(static::$className . "[".static::$column."]", $selected, $options, array_merge([static::$column, 'class' => static::$classSelect], $param));
 
         if (static::$style) {
-            return static::$style->grid($column, $tag, static::$labels[$column]);
+            return static::$style->grid(static::$column, $tag, static::$labels[static::$column]);
         } else
-            return Html::label(static::$labels[$column]) . $tag;
+            return Html::label(static::$labels[static::$column]) . $tag;
     }
 
-    public static function end(){
+    public function widget($classname,$param=[])
+    {
 
+       return  $classname->begin(static::$className,static::$value,$param);
 
     }
+
+
+   function __destruct() {
+        
+   }
 
 }

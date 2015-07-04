@@ -25,6 +25,9 @@ return $main = [
             'class'
         ],
     ],
+    'vendor'=>[
+             require 'vendor.php',
+    ],
     'param' => [ 
         //padrão do Framework
         'setFlash'=>function($message,$type) 

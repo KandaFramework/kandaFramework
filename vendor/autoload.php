@@ -9,7 +9,7 @@ function Autoload($class) {
     
     $array =  explode(DS,$class);
            
-    $baseroot = "vendor".DS."kandaframework".DS."Kanda";
+    $baseroot = "vendor".DS."ksoftware".DS."Kanda";
        
     foreach ($array as $param){
    
@@ -26,7 +26,11 @@ function Autoload($class) {
                 break;  
             case 'widgets':
                 $array[$key] = $baseroot.DS."widgets";
-                break;                   
+                break;
+           //Tecerios     
+            case 'wideImage':
+                $array[$key] = "vendor".DS."wideImage";
+            break;                   
             
         }
   

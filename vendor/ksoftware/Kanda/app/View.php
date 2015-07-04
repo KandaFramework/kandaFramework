@@ -13,6 +13,8 @@ namespace app;
 
 
 use helps\Assets;
+use helps\Session;
+use helps\Html;
 
 class View{
 
@@ -84,9 +86,21 @@ class View{
     public function head(){}
 
     public static function footer(){
+            
+      if(isset(Session::getSession()->js))
+      {
 
-        echo Assets::end();
+        $session =  array_unique(Session::getSession()->js);
+        $assets = '';
 
+        foreach ($session as $value) {
+          
+             $assets  .= Html::script(null,['src'=>$value])."\n";   
+
+        }
+        echo $assets;
+        }
+        Session::clear('js');
     }
 
    

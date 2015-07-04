@@ -15,6 +15,8 @@ class Usuario extends \ActiveRecord\Model {
     static $primary_key = 'id';
     public $confirm_senha;
 
+    public $file;
+
     public static function rules() {
 
         return [

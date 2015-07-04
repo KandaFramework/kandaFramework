@@ -9,6 +9,7 @@ namespace modules\painel\controllers;
 
 use help\User;
 use helps\UploadFile;
+use helps\Json;
 use wideImage\WideImage;
 use modules\painel\models\Banner;
 
@@ -25,11 +26,10 @@ class BannerController extends \app\Controller {
   public function actionIndex() {
 
     $model = new Banner();
-
-
+   
     return $this->render('index',[
       'model'=> $model,
-      'assets'=> $this->assets('site').'/images/banner/',
+      'assets'=> '/tmp/',
       ]);
   }
 
@@ -37,7 +37,12 @@ class BannerController extends \app\Controller {
 
    $model = new Banner();
 
-   $file =    UploadFile::load($model,'file');
+   sleep(4);
+
+   
+   exit;
+
+   $file =  UploadFile::load($model,'file');
 
    $model->name = $file->name;
    $model->size = $file->size;
@@ -51,17 +56,21 @@ class BannerController extends \app\Controller {
 
    $model->save();
 
-
-
-   $this->Json([
-    'success'=> 'Enviado com sucesso!',
+  echo Json::encode([
+         'files'=>
+         [
+            'file'=>[
+                  'src' => '/tmp/'.$file->name,
+                  'id'  => $model->id,
+              ] 
+         ]
     ]);
-
+    exit;
 
  }
 
   static function getPath(){
-    return WWW_ROOT.'/public/assets/site/images/banner/';
+    return WWW_ROOT.'/public/tmp/';
   }
 
  public function actionUpdate($id){
@@ -80,9 +89,10 @@ public function actionDelete($id) {
 
         unlink(static::getPath().$name);
 
-        $this->Json([
+      echo  Json::encode([
           'success'=> $id,
           ]);
+        exit;
 
     }
   }        

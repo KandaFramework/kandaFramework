@@ -11,11 +11,9 @@ namespace helps;
 
 class Exception{
 
-	  public static getError($error)
+	  public static getError($message,$error=1)
 	  {
-
-	  		
-
+ 		throw new Exception($message, $error);
 	  }
 
 

@@ -15,6 +15,8 @@ class Validate extends Assets{
    
     public function __construct() {
         
+        $model =  new Assets();
+
         $this->base = KANDA_ROOT .'/assets/';
          
         $this->basename = 'Validate';   
@@ -88,9 +90,9 @@ class Validate extends Assets{
         public static function end()
         {
 
-           Session::setSession([
-                   'EndAssets' => "$('#FormWidget').validate({rules:{".static::$rules."},messages:{".static::$message."},});", 
-            ]);
+            
+              return  "$('#FormWidget').validate({rules:{".static::$rules."},messages:{".static::$message."},});";
+        
             
 
         }

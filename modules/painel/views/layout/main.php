@@ -97,7 +97,7 @@ use helps\Url;
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="<?php echo Url::toRouter('painel') ?>"><i class="menu-icon icon-dashboard"></i>Dashboard
+                                <li class="active"><a href="<?php echo Url::toRouter() ?>"><i class="menu-icon icon-dashboard"></i>Dashboard
                                 </a></li>
                                 <li><a href="<?php echo Url::toRouter('aulas') ?>"><i class="menu-icon icon-picture"></i>Aulas</a></li>                        
                                 <li><a href="<?php echo Url::toRouter('banner') ?>"><i class="menu-icon icon-picture"></i>Banner</a></li>                        
