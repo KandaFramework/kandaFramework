@@ -90,9 +90,6 @@ class View{
       if(isset(Session::getSession()->js))
       {
 
-        ECHO '<PRE>';
-        print_r($_SESSION);
-
         $session =  array_unique(Session::getSession()->js);
         $assets = '';
 
@@ -104,9 +101,10 @@ class View{
                     $assets .= Html::script($value)."\n";
 
         }
+        Session::clear('js');
         echo $assets;
         }
-        Session::clear('js');
+        
     }
 
    
