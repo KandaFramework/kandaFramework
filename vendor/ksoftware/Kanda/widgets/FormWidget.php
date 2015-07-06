@@ -142,9 +142,9 @@ class FormWidget extends Validate{
 
        if (static::$style)
        {
-       return  static::$style->grid(static::$column,$classname->begin(static::$className,static::$value,$param), static::$labels[static::$column]); 
+       return  static::$style->grid(static::$className . "[".static::$column."]",$classname->begin(static::$className . "[".static::$column."]",static::$value,$param), static::$labels[static::$column]); 
        }
-       return $classname->begin(static::$className,static::$value,$param);
+       return $classname->begin(static::$className . "[".static::$column."]",static::$value,$param);
        
 
     }

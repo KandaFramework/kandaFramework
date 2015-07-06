@@ -15,6 +15,5 @@ abstract class AbstractWidget {
 
   abstract  public function begin($name,$value,$param);
 
-  abstract  public static function end();
  
 }

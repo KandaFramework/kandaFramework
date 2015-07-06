@@ -5,6 +5,7 @@ use widgets\FormWidget;
 use helps\Url;
 use helps\Session;
 use helps\Html;
+use helps\Json;
 use helps\Assets;
 use base\AbstractWidget;
  
@@ -39,18 +40,19 @@ class FileUploadDir extends AbstractWidget{
     //3
     public function begin($name,$value,$param='')
     {
-      return static::gridBootstrap(Html::input('file',$name,$value,['class'=>'form-control']));
+
+      return static::gridBootstrap(Html::input('file',$name,$value,['class'=>'form-control',' id'=>$name]),$name);
     }
 
-    static function gridBootstrap($tag)
+    static function gridBootstrap($tag,$name)
     {
 
-        //Assets::createAssets(['alert(1)'],'js');
+     Assets::createAssets([static::end($name)],'js');
     // static::$assets->createAsset(['alert(1)'],'endAssets');   
 
      return '<div class="form-group">
                     '.$tag.'
-                    <div class="progress">
+                    <div id="progress" class="progress">
                         <div class="progress-bar" style="width:0%;">
                         <span class="sr-only"></span>
                     </div>
@@ -61,13 +63,16 @@ class FileUploadDir extends AbstractWidget{
 
     }
     //4
-    static function end()
+    static function end($name)
     {
       
-      return [''];          
+      $param = [
+         "progressall" => "function(e,data){var progress = parseInt(data.loaded / data.total * 100, 10); $('#progress .bar').css( 'width', progress + '%' );}",
+      ];
+
+      return '$(function () {$("#'.$name.'").fileupload();});';        
 
     }
-
 }
 ?>
  
