@@ -22,12 +22,11 @@ class Assets{
 
 	public $dirname = '';
 
-	protected static $public = '';
+	public $assets = [];
 
 	
 	public  function init(){
-
-
+		
 		if(!empty($this->css)){
 			$this->Copy($this->css,'css');
 		}
@@ -35,6 +34,9 @@ class Assets{
 		if(!empty($this->js)){
 			$this->Copy($this->js,'js');
 		}
+
+	  return $this;
+
 	}
 
 	private function Copy($files,$type)
@@ -48,10 +50,16 @@ class Assets{
 		$count = strlen($this->base);
 
 		$objects = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
+		
+		$i=0;
+
+		$count_file = count($files);
+
 		foreach($objects as $path){
 		  
-		  if(in_array(substr($path->getPathName(),$count),$files))
+		    if(in_array(substr($path->getPathName(),$count),$files))
 		     {
+
 
 		     	$dir  = explode(DS,$path->getPathName());
 		     	$filename = end($dir);
@@ -68,13 +76,30 @@ class Assets{
 		     	$copy = $this->dirName().$newdir.DS.$filename;
 
  				copy($path->getPathName(),$copy);
-
- 				$src[] = '/assets/'.$this->basename.'/'. $newdir.DS.$filename;
+			 
 
 		     }
 
+		     ++$i;
+
 		}
-		if(empty(Session::getSession()->$type))
+
+		$reduce = function($recude,$src)
+		{
+			$this->assets[] = '/assets/'.$this->basename.'/'.$src;
+		};
+		array_reduce($files, $reduce,null);
+		
+		 
+		static::createAssets($this->assets,$type);
+		return true;
+
+ 	 }
+
+ 	static function createAssets($src,$type)
+ 	 {
+
+ 	 	if(empty(Session::getSession()->$type))
 		{
 			Session::setSession([
 				  $type => $src,	
@@ -104,11 +129,10 @@ class Assets{
 	}
 
 	 
-	static function end(){
-			
-	    Session::clear('EndAssets');		
-		return static::$public;
-
+	static function end($end=''){
+		
+		return $end;
+	   
 	}
 
 	

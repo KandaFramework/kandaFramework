@@ -94,13 +94,17 @@ class View{
         $assets = '';
 
         foreach ($session as $value) {
-          
-             $assets  .= Html::script(null,['src'=>$value])."\n";   
+             
+             if(is_file(WWW_ROOT.'/public/'.$value))    
+                    $assets  .= Html::script(null,['src'=>$value])."\n";
+              else
+                    $assets .= Html::script($value)."\n";
 
         }
+        Session::clear('js');
         echo $assets;
         }
-        Session::clear('js');
+        
     }
 
    

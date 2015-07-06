@@ -10,11 +10,11 @@ namespace base;
 
 
 abstract class AbstractWidget {
+ 
+  abstract  public static function class_name();
 
-  public static $table;
+  abstract  public function begin($name,$value,$param);
 
-  abstract  public static function widget($param);
-
-  abstract protected static function createActionColumns($action, $param, $id);
-
+  abstract  public static function end();
+ 
 }
