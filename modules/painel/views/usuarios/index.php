@@ -25,7 +25,7 @@ use modules\painel\models\Nivel;
                                             'id',
                                             'nome',
                                             'login',
-                                            'email',                                            
+                                                                             
                                         ],
                                         'actionColumns' => ['update', 'delete'],
                                     ]);
