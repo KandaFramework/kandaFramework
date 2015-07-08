@@ -1,10 +1,11 @@
 {
-    "name": "ksoftware/kanda-framework",
+    "name": "ksoftware/kandaframework",
     "description": "Framework PHP.",
     "type":"project",
     "minimum-stability":"stable",
     "require": {
-        "php": ">=5.4.0"        
+        "php": ">=5.4.0"
+        "ksoftware/kandaframework":"2.1"
     },
      "require-dev": {
       
