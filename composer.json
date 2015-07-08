@@ -4,7 +4,8 @@
     "type":"project",
     "minimum-stability":"dev",
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "ksoftware/kandaframework":"2.1"
     },
      "require-dev": {
       
