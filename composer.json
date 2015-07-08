@@ -1,8 +1,8 @@
 {
     "name": "ksoftware/kanda-framework",
     "description": "Framework PHP.",
-    "type":"library",
-    "minimum-stability":"dev",
+    "type":"project",
+    "minimum-stability":"stable",
     "require": {
         "php": ">=5.4.0",
         "ksoftware/kanda": "2.1"
