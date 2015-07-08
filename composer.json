@@ -1,5 +1,5 @@
 {
-    "name": "ksoftware/kandaframework",
+    "name": "ksoftware/kanda-framework",
     "description": "Framework PHP.",
     "type":"project",
     "minimum-stability":"dev",
