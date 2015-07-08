@@ -1,6 +1,6 @@
 {
     "name": "ksoftware/kanda-framework",
-    "description": "Framework PHP",
+    "description": "Framework PHP.",
     "require": {
         "php": ">=5.5.0",
         "ksoftware/kanda": "2.0.1"
