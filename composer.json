@@ -4,8 +4,7 @@
     "type":"library",
     "minimum-stability":"dev",
     "require": {
-        "php": ">=5.4.0",
-        "ksoftware/kanda": "2.1"
+        "php": ">=5.4.0"        
     },
      "require-dev": {
       
