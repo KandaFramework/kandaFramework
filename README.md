@@ -9,12 +9,12 @@
 
 Conhecimentos básicos em MVC, namespace, ActiveRecord PHP
 
-#Instação para Dev
+#Instação para desenvolvimento do framework
 
-Fazer um clone do projeto, a pasta application-dev contem os arquivos
-da aplicação.
+git clone https://github.com/KandaFramework/kandaframework.git
 
-A execução do servidor php remoto em application-dev
+Para rodar o projeto, entrar na pasta application-dev e executar o servidor remoto php
+ 
  
 #Instalação para testes e produção
 
@@ -28,9 +28,7 @@ A execução do servidor php remoto em application-dev
 
 #Rodando
 
-Para executar o projeto deve rodar o server remoto do php
 
-Comando: php -S 0.0.0.0:8888 -t public/
+Servidor remoto do php
 
-Em produção utilizar o arquivo .htaccess, contem as configurações do host.
-
+Exp: php -S 0.0.0.0:8888 -t public/
