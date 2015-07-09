@@ -6,9 +6,10 @@
     "require": {
         "php": ">=5.4.0"
     },
-    "autoload": {
-        "psr-0": {
-            "Kanda": "src/ksoftware/k2"
-        }
-    }
+  "autoload": {
+        "psr-4": {"kanda\\": ""}
+    },
+    "bin": [
+        "kanda"
+    ]
 }
