@@ -11,6 +11,6 @@
  * @package App
  * 
  */
-namespace app;
+namespace kanda\app;
 
 class Model extends \ActiveRecord\Config{}

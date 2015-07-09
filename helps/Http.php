@@ -1,6 +1,6 @@
 <?php
 
-namespace helps;
+namespace kanda\helps;
 
 class Http {
 

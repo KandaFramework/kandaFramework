@@ -8,11 +8,11 @@
  * 
  */
 
-namespace app;
+namespace kanda\app;
 
-use base\Url;
-use base\InterfaceController;
-use base\Root;
+use kanda\base\Url;
+use kanda\base\InterfaceController;
+use kanda\base\Root;
 
 class Controller implements  InterfaceController {
 

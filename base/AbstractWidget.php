@@ -6,7 +6,7 @@
  * Time: 09:27
  */
 
-namespace base;
+namespace kanda\base;
 
 
 abstract class AbstractWidget {

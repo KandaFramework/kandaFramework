@@ -6,12 +6,12 @@
  * 
  * 
  */
-namespace helps;
+namespace kanda\helps;
 
 
 class Exception{
 
-	  public static getError($message,$error=1)
+	  public static function getError($message,$error=1)
 	  {
  		throw new Exception($message, $error);
 	  }

@@ -7,9 +7,9 @@
  * 
  */
 
-namespace helps;
+namespace kanda\helps;
 
-use base\Url as UrlBase;
+use kanda\base\Url as UrlBase;
 
 class Url extends UrlBase{
 

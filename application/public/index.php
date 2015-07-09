@@ -2,8 +2,8 @@
  
  ini_set('display_errors', 1);
 
- define('WWW_ROOT',dirname(__DIR__));
- define('KANDA_ROOT',dirname(__DIR__).'/src/ksoftware/k2');
+  define('WWW_ROOT',dirname(__DIR__));
+ define('KANDA_ROOT',dirname(__DIR__).'/vendor/ksoftware/k2/');
  define('ASSETS',dirname(__DIR__).'/public/assets/');
 
  define('DS',DIRECTORY_SEPARATOR);
@@ -23,6 +23,6 @@
 
 
 
-  require_once WWW_ROOT.'/src/autoload.php';
+  require_once WWW_ROOT.'/vendor/autoload.php';
 
-  require_once (WWW_ROOT.'/src/ksoftware/KandaFramework.php');
+  require_once (WWW_ROOT.'/vendor/ksoftware/k2/KandaFramework.php');

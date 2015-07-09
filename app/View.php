@@ -9,7 +9,7 @@
  * 
  */
 
-namespace app;
+namespace kanda\app;
 
 
 use helps\Assets;

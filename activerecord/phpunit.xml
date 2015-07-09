@@ -1,7 +1,0 @@
-<phpunit>
-  <testSuites>
-    <testSuite name="default">
-      <directory>test/</directory>
-    </testSuite>
-  </testSuites>
-</phpunit>

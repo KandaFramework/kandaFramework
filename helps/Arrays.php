@@ -6,7 +6,7 @@
  * 
  * 
  */
-namespace helps;
+namespace kanda\helps;
 
 use app\Controller;
 

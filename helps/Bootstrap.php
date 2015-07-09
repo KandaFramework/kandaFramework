@@ -7,7 +7,7 @@
  * 
  */
 
-namespace helps;
+namespace kanda\helps;
 
 class Bootstrap {
     
