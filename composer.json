@@ -8,7 +8,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Kanda": "vendor/k2"
+            "Kanda": "src/ksoftware/k2"
         }
     }
 }
