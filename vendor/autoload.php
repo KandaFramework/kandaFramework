@@ -9,7 +9,7 @@ function Autoload($class) {
     
     $array =  explode(DS,$class);
            
-    $baseroot = "vendor".DS."ksoftware".DS."Kanda";
+    $baseroot = "vendor".DS."ksoftware".DS."k2";
        
     foreach ($array as $param){
    
