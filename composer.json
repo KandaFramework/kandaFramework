@@ -5,5 +5,10 @@
     "minimum-stability":"dev",
     "require": {
         "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kanda": "vendor/k2"
+        }
     }
 }
