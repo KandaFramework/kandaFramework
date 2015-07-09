@@ -10,7 +10,9 @@ set_include_path(get_include_path() . PATH_SEPARATOR . WWW_ROOT);
 set_include_path(get_include_path() . PATH_SEPARATOR . KANDA_ROOT);
   
   
-require_once WWW_ROOT.'/vendor/ksoftware/activerecord/ActiveRecord.php';
+ 
+
+require_once dirname(__DIR__).'/ksoftware/activerecord/ActiveRecord.php';
  
 
 use app\Controller;
