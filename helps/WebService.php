@@ -5,7 +5,7 @@
  * 
  * 
  */
-namespace kanda\helps;
+namespace helps;
 
 class WebServide{
      

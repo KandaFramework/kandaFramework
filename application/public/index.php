@@ -20,9 +20,6 @@
   /**
    * Carregando o Framework
    */
-
-
-
-  require_once WWW_ROOT.'/vendor/autoload.php';
+  require_once WWW_ROOT.'/vendor/ksoftware/k2/autoload.php';
 
   require_once (WWW_ROOT.'/vendor/ksoftware/k2/KandaFramework.php');

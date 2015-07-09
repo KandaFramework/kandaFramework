@@ -1,6 +1,6 @@
 <?php
 
-namespace kanda\base;
+namespace base;
 
 
 class ActiveModule implements InterfaceController{

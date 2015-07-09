@@ -8,8 +8,9 @@
 set_include_path(get_include_path() . PATH_SEPARATOR . WWW_ROOT);
 set_include_path(get_include_path() . PATH_SEPARATOR . KANDA_ROOT);
  
+ 
 
-require_once dirname(__DIR__).'/db/ActiveRecord.php';
+require_once dirname(__FILE__).'/db/ActiveRecord.php';
  
 
 use app\Controller;

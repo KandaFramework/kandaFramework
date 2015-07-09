@@ -7,7 +7,7 @@
  *
  */
 
-namespace kanda\base;
+namespace base;
 
 interface InterfaceController{
 
