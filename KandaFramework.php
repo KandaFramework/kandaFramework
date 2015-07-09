@@ -4,12 +4,9 @@
  * @access public
  * 
  */
-  
-
+   
 set_include_path(get_include_path() . PATH_SEPARATOR . WWW_ROOT);
 set_include_path(get_include_path() . PATH_SEPARATOR . KANDA_ROOT);
-  
-namespace kanda; 
  
 
 require_once dirname(__DIR__).'/db/ActiveRecord.php';

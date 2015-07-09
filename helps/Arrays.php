@@ -8,9 +8,7 @@
  */
 namespace kanda\helps;
 
-use app\Controller;
-
-class Arrays extends Controller {
+class Arrays{
     
     public static function run(){
         return new Arrays();
