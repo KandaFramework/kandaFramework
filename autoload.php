@@ -1,6 +1,5 @@
 <?php
 
-
 function Autoload($class) {
     
     $key = count(explode(DS,dirname(__FILE__)));
@@ -28,13 +27,23 @@ function Autoload($class) {
                 break;  
             case 'widgets':
                 $array[$key] = DS."widgets";
-                break;                   
+                break;  
+            case 'modules':
+
+            $controller = strpos(implode(DS, $array),'modules'); 
+            $array = WWW_ROOT.DS.substr(implode(DS, $array),$controller);
+             
+
+            break;                     
             
         }
   
     }   
     
+    if(is_array($array))    
     $filename = implode(DS,$array);
+    else
+      $filename= $array; 
       
     if(!file_exists($filename))
         throw new Exception("File path $class not found.");
