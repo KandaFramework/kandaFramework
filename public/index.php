@@ -3,7 +3,7 @@
  ini_set('display_errors', 1);
 
  define('WWW_ROOT',dirname(__DIR__));
- define('KANDA_ROOT',dirname(__DIR__).'/vendor/ksoftware/Kanda');
+ define('KANDA_ROOT',dirname(__DIR__).'/vendor/ksoftware/k2');
  define('ASSETS',dirname(__DIR__).'/public/assets/');
 
  define('DS',DIRECTORY_SEPARATOR);
