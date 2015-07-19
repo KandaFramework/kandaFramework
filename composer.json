@@ -6,7 +6,17 @@
     "require": {
         "php": ">=5.4.0"
     },
+  "authors":[
+  {
+    "name":"Marcus Antonio",
+    "email":"marcusjavascript@gmail.com",
+    "github":"https://github.com/Marcu5s",
+  }
+  ],
   "autoload": {
-        "psr-0": {"kanda\\": ""}
-    }     
+        "psr-4": {"kanda\\": ""}
+    },
+    "bin": [
+        "kanda"
+    ],     
 }
