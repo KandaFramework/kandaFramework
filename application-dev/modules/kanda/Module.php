@@ -1,8 +1,8 @@
 <?php
 
-namespace modules\kanda;
+namespace app\modules\kanda;
 
-use base\ActiveModule;
+use kanda\base\ActiveModule;
 
 class Module extends ActiveModule{
     

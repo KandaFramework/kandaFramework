@@ -13,12 +13,12 @@ return $main = [
             'kanda' => [
                 'timezone' => 'America/Sao_Paulo',
                 'dirAlias' => '',
-                'class' => 'modules\kanda\Module',
+                'class' => 'app\modules\kanda\Module',
             ],  
              'painel' => [
                 'timezone' => 'America/Sao_Paulo',
                 'dirAlias' => '',
-                'class' => 'modules\painel\Module',
+                'class' => 'app\modules\painel\Module',
             ], 
         ],
         'urlManager' => [

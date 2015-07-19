@@ -9,12 +9,12 @@
  * 
  */
 
-namespace app;
+namespace kanda\web;
 
 
-use helps\Assets;
-use helps\Session;
-use helps\Html;
+use kanda\helps\Assets;
+use kanda\helps\Session;
+use kanda\helps\Html;
 
 class View{
 
@@ -32,23 +32,30 @@ class View{
      */
     public static $title = '';
 
+    public static function pathapp($path)
+    {
+
+        return str_replace('app/',DS,$path);
+
+    }
+
     public static function render($render,$param=[],$layout){
  
 
        if(empty($render)) 
-         throw new Exception("Render can not be empty", 1);
+         throw new \Exception("Render can not be empty", 1);
          
-       if(!file_exists($layout) || !file_exists($render) )   
-            throw new Exception("Not fond $layout or <br/> $render", 1);
+       if(!file_exists(static::pathapp($layout)) || !file_exists(static::pathapp($render)) )   
+            throw new \Exception("Not fond $layout or $render", 1);
 
         ob_start();
         ob_implicit_flush(false);
         extract($param, EXTR_OVERWRITE);
-        require($render);
+        require(static::pathapp($render));
 
         $content = ob_get_clean();
         
-        require_once $layout;
+        require_once static::pathapp($layout);
 
         unset($content);
 
@@ -60,14 +67,14 @@ class View{
        if(empty($render)) 
          throw new Exception("Render can not be empty", 404);
          
-       if(!file_exists($render) ){
+       if(!file_exists(static::pathapp($render))){
           throw new Exception("Not fond $render", 404);
         }             
 
         ob_start();
         ob_implicit_flush(false);
         extract($param, EXTR_OVERWRITE);
-        require($render);
+        require(static::pathapp($render));
 
         echo $content = ob_get_clean();
         unset($content);

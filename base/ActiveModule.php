@@ -1,6 +1,12 @@
 <?php
-
-namespace base;
+/**
+ *
+ *
+ * @copyright (c) KandaFramework
+ * @access public
+ *
+ */
+namespace kanda\base;
 
 
 class ActiveModule implements InterfaceController{

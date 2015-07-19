@@ -6,7 +6,7 @@
  * @access public
  * 
  */
-namespace base;
+namespace kanda\base;
 
 class Root{
 

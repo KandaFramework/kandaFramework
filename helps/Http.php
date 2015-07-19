@@ -1,6 +1,12 @@
 <?php
+/**
+ * @copyright (c) KandaFramework
+ * @access public
+ * 
+ * 
+ */
 
-namespace helps;
+namespace kanda\helps;
 
 class Http {
 

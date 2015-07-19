@@ -5,7 +5,7 @@
  * 
  * 
  */
-namespace helps;
+namespace kanda\helps;
 
 class Cache extends \app\Controller {
 

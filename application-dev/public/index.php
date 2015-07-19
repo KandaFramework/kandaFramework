@@ -21,6 +21,6 @@
    * Carregando o Framework
    */
 
-  require_once '../../autoload.php';
+  //require_once '../../autoload.php';
 
-  require_once '../../KandaFramework.php';
+  require_once '../../Kanda.php';
