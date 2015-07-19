@@ -9,7 +9,7 @@
 
 Conhecimentos básicos em MVC, namespace, ActiveRecord PHP
 
-#Instação para desenvolvimento do framework
+#Instalação para desenvolvimento
 
 git clone https://github.com/KandaFramework/kandaframework.git
 

@@ -3,7 +3,7 @@
  ini_set('display_errors', 1);
 
   define('WWW_ROOT',dirname(__DIR__));
- define('KANDA_ROOT',WWW_ROOT);
+ define('KANDA_ROOT','/web/kandaframework/');
  define('ASSETS',dirname(__DIR__).'/public/assets/');
 
  define('DS',DIRECTORY_SEPARATOR);

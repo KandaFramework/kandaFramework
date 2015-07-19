@@ -130,7 +130,7 @@ return new Controller();
         $action .= ucwords(Url::segment());
     }else{
       //Para chamadas dos controllers  
-      if(Url::getCount() == 2){
+      if(Url::getCount() == 2 && Url::segment() <> 'public' ){
          static::$controller = ucwords(Url::segment());
          $action .='Index'; 
      }else{
