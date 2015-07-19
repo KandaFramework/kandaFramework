@@ -10,7 +10,7 @@
   {
     "name":"Marcus Antonio",
     "email":"marcusjavascript@gmail.com",
-    "github":"https://github.com/Marcu5s",
+    "github":"https://github.com/Marcu5s"
   }
   ],
   "autoload": {
@@ -18,5 +18,5 @@
     },
     "bin": [
         "kanda"
-    ],     
+    ]
 }
