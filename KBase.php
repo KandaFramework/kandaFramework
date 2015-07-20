@@ -64,16 +64,16 @@ class KBase {
 
     public static function aplication() {
 
-        KBase::$request = \kanda\helps\Http::run();
+        KBase::$request = \kanda\helpers\Http::run();
         /*
           KBase::$app = (object) [
-          'arrays'     => \kanda\helps\Arrays::run(),
-          'cache'      => \kanda\helps\Cache::run(),
-          'crop'       => \kanda\helps\Crop::run(),
-          'html'       => \kanda\helps\Html::run(),
-          'url'        => \kanda\helps\Url::run(),
-          'uploadFile' => \kanda\helps\UploadFile::run(),
-          'session'    => \kanda\helps\Session::run(),
+          'arrays'     => \kanda\helpers\Arrays::run(),
+          'cache'      => \kanda\helpers\Cache::run(),
+          'crop'       => \kanda\helpers\Crop::run(),
+          'html'       => \kanda\helpers\Html::run(),
+          'url'        => \kanda\helpers\Url::run(),
+          'uploadFile' => \kanda\helpers\UploadFile::run(),
+          'session'    => \kanda\helpers\Session::run(),
           ];
          */
     }

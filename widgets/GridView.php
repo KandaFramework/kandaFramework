@@ -12,9 +12,9 @@
 namespace kanda\widgets;
 
 use kanda\base\AbstractWidget; 
-use kanda\helps\Html;
-use kanda\helps\Url;
-use kanda\helps\Bootstrap;
+use kanda\helpers\Html;
+use kanda\helpers\Url;
+use kanda\helpers\Bootstrap;
 
 class GridView{
 

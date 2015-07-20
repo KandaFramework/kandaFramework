@@ -9,7 +9,7 @@ namespace app\app\modules\painel\controllers;
 
 
 use app\app\modules\painel\models\Aula;
-use kanda\kanda\helps\Session;
+use kanda\kanda\helpers\Session;
 use app\app\modules\painel\models\search\AulaSearch;
 use kanda\help\User;
 

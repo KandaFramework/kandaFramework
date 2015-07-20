@@ -3,8 +3,8 @@
 static::$title = 'Admin Adoremos';
 
 use kanda\widgets\FormWidget;
-use kanda\helps\Url;
-use kanda\helps\Session;
+use kanda\helpers\Url;
+use kanda\helpers\Session;
 ?>
 
 <div class="row">

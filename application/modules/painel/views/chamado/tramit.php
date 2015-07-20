@@ -1,7 +1,7 @@
 <?php
 static::$title = 'Tramit';
 
-use kanda\helps\Url;
+use kanda\helpers\Url;
 
 $status = ['', 'Aberto', 'Concluído', 'Pendente', 'Andamento'];
 ?>

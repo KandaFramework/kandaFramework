@@ -2,9 +2,9 @@
 static::$title = 'Contatos';
 
 use kanda\widgets\GridView;
-use kanda\helps\Html;
-use kanda\helps\Url;
-use kanda\helps\Session;
+use kanda\helpers\Html;
+use kanda\helpers\Url;
+use kanda\helpers\Session;
 ?>
 <div class="module">
     <div class="module-head">

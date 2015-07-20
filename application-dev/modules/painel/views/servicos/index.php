@@ -1,8 +1,8 @@
 <?php
 static::$title = 'Serviços';
 
-use kanda\helps\Url;
-use kanda\helps\Session;
+use kanda\helpers\Url;
+use kanda\helpers\Session;
 use kanda\widgetsGridView;
 use app\modules\painel\models\Nivel;
 ?>

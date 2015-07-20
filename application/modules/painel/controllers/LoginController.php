@@ -8,7 +8,7 @@
 namespace app\modules\painel\controllers;
 use app\modules\painel\models\LogSistema;
 use app\modules\painel\models\Usuario;
-use kanda\helps\Session;
+use kanda\helpers\Session;
 
 
 class LoginController extends \kanda\web\Controller{

@@ -8,7 +8,7 @@
 
 namespace app\help;
 
-use kanda\helps\Session;
+use kanda\helpers\Session;
 
 class User{
     

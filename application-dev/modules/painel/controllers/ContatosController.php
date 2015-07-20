@@ -11,7 +11,7 @@ use app\modules\painel\models\Contato;
 
 use app\modules\painel\models\search\ContatoSearch;
 use help\User;
-use kanda\helps\Session;
+use kanda\helpers\Session;
 
 
 class ContatosController extends \kanda\web\Controller {

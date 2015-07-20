@@ -2,7 +2,7 @@
 static::$title = 'Contatos';
 
 use kanda\widgets\FormWidget;
-use kanda\helps\Url;
+use kanda\helpers\Url;
 ?>
 <div class="module">
     <div class="module-head">

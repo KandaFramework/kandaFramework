@@ -7,7 +7,7 @@
  * 
  */
 
-namespace kanda\helps;
+namespace kanda\helpers;
 
 class Bootstrap {
     

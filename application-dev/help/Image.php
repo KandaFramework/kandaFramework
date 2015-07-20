@@ -9,7 +9,7 @@
 
 namespace app\help;
 
-use kanda\helps\UploadFile;
+use kanda\helpers\UploadFile;
 use kanda\wideImage\WideImage;
 
 class Image extends UploadFile {

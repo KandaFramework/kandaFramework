@@ -10,7 +10,7 @@ namespace app\modules\painel\controllers;
 
 use app\modules\painel\models\Usuario;
 use app\modules\painel\models\Nivel;
-use kanda\helps\Session;
+use kanda\helpers\Session;
 use app\modules\painel\models\search\UsuarioSearch;
 use help\User;
 

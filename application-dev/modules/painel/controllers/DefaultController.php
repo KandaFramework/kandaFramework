@@ -6,8 +6,8 @@ namespace app\modules\painel\controllers;
 use \kanda\web\Controller;
 
 use app\modules\painel\models\Usuario;
-use kanda\helps\Session;
-use kanda\helps\Url;
+use kanda\helpers\Session;
+use kanda\helpers\Url;
 
 class DefaultController extends Controller {
 

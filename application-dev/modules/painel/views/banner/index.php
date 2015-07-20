@@ -1,6 +1,6 @@
 <?php
 static::$title = 'Bannder';
-use kanda\helps\Url;
+use kanda\helpers\Url;
 ?>
 <style>
 	

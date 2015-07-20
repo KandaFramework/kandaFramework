@@ -9,7 +9,7 @@
  * 
  */
 
-namespace kanda\helps;
+namespace kanda\helpers;
 
 @session_start();
 

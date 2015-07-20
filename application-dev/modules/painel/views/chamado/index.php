@@ -1,6 +1,6 @@
 <?php
 static::$title = 'Chamados';
-use kanda\helps\Url;
+use kanda\helpers\Url;
 use kanda\widgets\GridView;
  
 

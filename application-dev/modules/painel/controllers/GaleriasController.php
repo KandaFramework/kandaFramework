@@ -8,7 +8,7 @@
   namespace app\modules\painel\controllers;
 
   use help\User;
-  use kanda\helps\UploadFile;
+  use kanda\helpers\UploadFile;
   use wideImage\WideImage;
 
   use app\modules\painel\models\Galeria;

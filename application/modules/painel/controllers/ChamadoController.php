@@ -9,7 +9,7 @@
 
 namespace app\modules\painel\controllers;
 
-use kanda\helps\Session;
+use kanda\helpers\Session;
 use help\User;
 
 class ChamadoController extends \kanda\web\Controller {

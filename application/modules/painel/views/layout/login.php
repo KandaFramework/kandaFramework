@@ -1,5 +1,5 @@
 <?php
-use kanda\helps\Url;    
+use kanda\helpers\Url;    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -57,7 +57,7 @@ use kanda\helps\Url;
 
                 <ul class="nav pull-right">
 
-                    <li><a data-toggle="modal" data-target="#myModal" onclick="Modal('<?php echo Url::to('create') ?>')" href="#">
+                    <li><a data-toggle="modal" data-target="#myModal" onclick="Modal('<?php echo Url::to(['create']) ?>')" href="#">
                         Cadastrar
                     </a></li>
                 </ul>

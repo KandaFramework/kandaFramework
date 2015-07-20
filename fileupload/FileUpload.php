@@ -2,11 +2,11 @@
 
 namespace kanda\fileupload;
 
-use kanda\helps\Session;
-use kanda\helps\Html;
-use kanda\helps\Url;
-use kanda\helps\Json;
-use kanda\helps\Assets;
+use kanda\helpers\Session;
+use kanda\helpers\Html;
+use kanda\helpers\Url;
+use kanda\helpers\Json;
+use kanda\helpers\Assets;
 use kanda\base\AbstractWidget;
  
 class FileUpload extends AbstractWidget{

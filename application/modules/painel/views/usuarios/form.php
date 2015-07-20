@@ -2,8 +2,8 @@
 static::$title = 'Usuários';
 
 use kanda\widgets\FormWidget;
-use kanda\helps\Url;
-use kanda\helps\Session;
+use kanda\helpers\Url;
+use kanda\helpers\Session;
 use kanda\fileupload\FileUpload;
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 
-use kanda\helps\Session;
-use kanda\helps\Url;
+use kanda\helpers\Session;
+use kanda\helpers\Url;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

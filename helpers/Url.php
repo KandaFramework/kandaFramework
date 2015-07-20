@@ -7,7 +7,7 @@
  * 
  */
 
-namespace kanda\helps;
+namespace kanda\helpers;
 
 use kanda\base\Url as UrlBase;
 

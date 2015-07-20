@@ -9,7 +9,7 @@ namespace app\modules\painel\controllers;
 
 use app\modules\painel\models\Sobre;
 use help\User;
-use kanda\helps\Session;
+use kanda\helpers\Session;
 
 class SobreController extends \kanda\web\Controller{
     

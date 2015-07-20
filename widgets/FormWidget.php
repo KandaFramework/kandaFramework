@@ -8,8 +8,8 @@
 
 namespace kanda\widgets;
 
-use kanda\helps\Html;
-use kanda\helps\Validate;
+use kanda\helpers\Html;
+use kanda\helpers\Validate;
 
 class FormWidget extends Validate{
 

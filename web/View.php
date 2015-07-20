@@ -12,9 +12,9 @@
 namespace kanda\web;
 
 
-use kanda\helps\Assets;
-use kanda\helps\Session;
-use kanda\helps\Html;
+use kanda\helpers\Assets;
+use kanda\helpers\Session;
+use kanda\helpers\Html;
 
 class View{
 

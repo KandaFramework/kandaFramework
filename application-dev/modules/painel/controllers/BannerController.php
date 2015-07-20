@@ -8,8 +8,8 @@
 namespace app\modules\painel\controllers;
 
 use help\User;
-use kanda\helps\UploadFile;
-use kanda\helps\Json;
+use kanda\helpers\UploadFile;
+use kanda\helpers\Json;
 use wideImage\WideImage;
 use app\modules\painel\models\Banner;
 
