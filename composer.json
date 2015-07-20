@@ -15,8 +15,5 @@
   ],
   "autoload": {
         "psr-4": {"kanda\\": ""}
-    },
-    "bin": [
-        "kanda"
-    ]
+    }    
 }
