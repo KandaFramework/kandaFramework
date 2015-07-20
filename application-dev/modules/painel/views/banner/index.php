@@ -3,11 +3,7 @@ static::$title = 'Bannder';
 use kanda\helpers\Url;
 ?>
 <style>
-	
-	.bar {
-		height: 18px;
-		background: green;
-	}
+ 
 	ul#Banner li{
 		border: 1px solid #ebebeb;
 		display: inline-flex;
@@ -66,7 +62,7 @@ use kanda\helpers\Url;
 					?>
 					<li id="<?php echo $data->id ?>">
 						<img width="220" height="140" src="<?php echo $assets.$data->name ?>" alt="" />
-						<a href="#" onclick="Delete('<?php echo Url::to('delete?id='.$data->id) ?>');return false;" ><span class="banner">Deletar</span></a>
+						<a href="#" onclick="Delete('<?php echo Url::to(['delete','id'=>$data->id]) ?>');return false;" ><span class="banner">Deletar</span></a>
 					</li>
 					<?php
 				}
