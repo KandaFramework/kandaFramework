@@ -107,7 +107,7 @@ class Url{
         if(php_sapi_name() === 'cli-server')
             return  self::$home =  $protocolo . '://'.$_SERVER['HTTP_HOST'];
 
-        self::$home = $protocolo . '://' . $server_name . ALIAS;
+        self::$home = $protocolo . '://' . $server_name;
 
         return self::$home;
     }
