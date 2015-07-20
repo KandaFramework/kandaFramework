@@ -126,11 +126,16 @@ return new Controller();
    else{  //CRUD DELETE CREATE UPDATE VIEW OUTROS
     if(Url::getCount() == 3)
     {
+               
         static::$controller = ucwords(Url::segment(2));
-        $action .= ucwords(Url::segment());
+        
+        $segment = str_replace('-',' ',Url::segment());
+        
+        $action .= str_replace(' ','',ucwords(trim($segment)));
     }else{
       //Para chamadas dos controllers  
       if(Url::getCount() == 2 && Url::segment() <> 'public' ){
+          
          static::$controller = ucwords(Url::segment());
          $action .='Index'; 
      }else{
@@ -143,11 +148,11 @@ return new Controller();
        } 
 
    }
-
-
+  
+   }
 }
-}
-
+ 
+  
 return $action;
 
 }

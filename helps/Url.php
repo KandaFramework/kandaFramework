@@ -17,24 +17,24 @@ class Url extends UrlBase{
         return new Url();
     }
 
-    static function toRouter($to='')
-    {
+   public static function toRouter($to=[])
+   {
         if(isset($_SERVER['PATH_INFO']))
         {
             $toRouter = explode('/',$_SERVER['PATH_INFO']);
-            return static::baseUrl().'/'.next($toRouter).'/'.$to;
+            return static::baseUrl().'/'.next($toRouter).'/'.static::getParam($to);
 
         }        
         else
            return static::baseUrl(); 
-    }
+   }
 
-    static function request()
+   public static function request()
     { 
         return static::baseUrl().($_SERVER['REQUEST_URI']);
     }
 
-    static function prev()
+   public static function prev()
     {
         $prev =  explode('/',$_SERVER['REQUEST_URI']);
 
@@ -43,9 +43,9 @@ class Url extends UrlBase{
         return  static::baseUrl().implode('/',$prev);
     }
 
-    static function to($to='')
+   public static function to($to=[])
     {
-        return static::baseUrl().$_SERVER['PATH_INFO'].'/'.$to;
+        return static::baseUrl().$_SERVER['PATH_INFO'].'/'.static::getParam($to);
     }
 
 }

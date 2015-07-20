@@ -1,49 +1,39 @@
 <?php
+
 /**
  * @copyright (c) KandaFramework
  * @access public
  * 
  */
+
 namespace kanda;
 
+class KBase {
 
-class KBase
-{
-
-	public static $app;
-
+    public static $app;
     public static $request;
-    
     public static $get;
-    
     public static $param;
 
+    public static function autoload($class) {
 
-	public static function autoload($class)
-	{
+        $class = __DIR__ . DS . str_replace('\\', DS, $class) . '.php';
 
-    $class = __DIR__.DS. str_replace('\\', DS, $class) . '.php';
+        $filename = str_replace(DS . 'kanda' . DS, DS, $class);
+ 
+        $app = strpos($filename, 'app/');
 
-    $filename = str_replace(DS.'kanda'.DS, DS, $class);
+        if ($app) {
+            $filename = str_replace('app' . DS, WWW_ROOT . DS, substr($class, $app));
+        }
 
-    //$filename = str_replace(DS.'app'.DS, WWW_ROOT, $class);
-
-    $app  = strpos($filename,'app/');
-
-    if($app)
-    {
-    $filename = str_replace('app'.DS, WWW_ROOT.DS, substr($class, $app));        
+        if (is_file($filename))
+            require_once $filename;
     }
 
-    if(is_file($filename))
-        require_once $filename;
-   
-	}
- 
- 	
- 	/*
+    /*
 
-   */
+     */
 
     /**
      * @access public
@@ -55,13 +45,13 @@ class KBase
      * 
      */
     public static function begin($main) {
-   
-        define('DSN',$main['config']['db']['dsn']);
-        
+
+        define('DSN', $main['config']['db']['dsn']);
+
         KBase::$param = (object) $main['param'];
 
         \ActiveRecord\Config::initialize(function($cfg) {
-                $cfg->set_connections(array(
+            $cfg->set_connections(array(
                 'development' => DSN));
         });
 
@@ -70,25 +60,22 @@ class KBase
         static::aplication();
 
         \kanda\web\Controller::begin($main)->load();
-                
     }
 
-    public static function aplication()
-    {
+    public static function aplication() {
 
-      KBase::$request = \kanda\helps\Http::run();
-      /*    
-      KBase::$app = (object) [
-                    'arrays'     => \kanda\helps\Arrays::run(),
-                    'cache'      => \kanda\helps\Cache::run(),
-                    'crop'       => \kanda\helps\Crop::run(),
-                    'html'       => \kanda\helps\Html::run(),
-                    'url'        => \kanda\helps\Url::run(),
-                    'uploadFile' => \kanda\helps\UploadFile::run(),
-                    'session'    => \kanda\helps\Session::run(),
-        ];
-      */
+        KBase::$request = \kanda\helps\Http::run();
+        /*
+          KBase::$app = (object) [
+          'arrays'     => \kanda\helps\Arrays::run(),
+          'cache'      => \kanda\helps\Cache::run(),
+          'crop'       => \kanda\helps\Crop::run(),
+          'html'       => \kanda\helps\Html::run(),
+          'url'        => \kanda\helps\Url::run(),
+          'uploadFile' => \kanda\helps\UploadFile::run(),
+          'session'    => \kanda\helps\Session::run(),
+          ];
+         */
     }
-
 
 }

@@ -176,9 +176,9 @@ class GridView{
         $Action = [];
   
         $actionColumn = [
-            'update' => Html::a('editar',Url::to("update?id=$id"), ['class'=>'btn btn-info']),
-            'delete' => Html::a('deletar',Url::to("delete?id=$id"), ['class'=>'btn btn-danger','onclick'=>"if(confirm('Deseja excluir esse item?')){return true;}else{return false;};"]), 
-            'view'   => Html::a('visualizar',Url::to("view?id=$id"), ['class'=>'btn btn-success']), 
+            'update' => Html::a('editar',Url::to(['update','id'=>$id]), ['class'=>'btn btn-info']),
+            'delete' => Html::a('deletar',Url::to(['delete','id'=>$id]), ['class'=>'btn btn-danger','onclick'=>"if(confirm('Deseja excluir esse item?')){return true;}else{return false;};"]), 
+            'view'   => Html::a('visualizar',Url::to(['view','id'=>$id]), ['class'=>'btn btn-success']), 
         ];
         foreach ($action as $columns) {
 

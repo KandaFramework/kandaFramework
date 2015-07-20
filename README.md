@@ -32,9 +32,6 @@ Para rodar o projeto, entrar na pasta application-dev e executar o servidor remo
 
 3 Configuração do projeto em /config/main.php
 
-4 Para produção adicionar o arquivo .htaccess que encontra-se em vendor/ksoftware/k2
-
-
 
 #Rodando
 

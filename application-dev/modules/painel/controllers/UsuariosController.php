@@ -89,6 +89,11 @@ class UsuariosController extends \kanda\web\Controller {
                 }
             }
         }
+        
+        public function actionFileUpload($id)
+        {
+            print_r($_FILES);
+        }
 
     /**
      * 

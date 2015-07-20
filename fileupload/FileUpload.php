@@ -4,6 +4,7 @@ namespace kanda\fileupload;
 
 use kanda\helps\Session;
 use kanda\helps\Html;
+use kanda\helps\Url;
 use kanda\helps\Json;
 use kanda\helps\Assets;
 use kanda\base\AbstractWidget;
@@ -12,6 +13,10 @@ class FileUpload extends AbstractWidget{
 
 
     private static $assets = null;
+    
+    private static $param =  [];
+    
+    private static $basename = 'FileUpload';
 
     public static function version()
     {
@@ -43,16 +48,19 @@ class FileUpload extends AbstractWidget{
        return new FileUpload();
     }
     //3
-    public function begin($name,$value,$param='')
+    public function begin($name,$basename,$value,$param='')
     {
-
-      return static::gridBootstrap(Html::input('file',$name,$value,['class'=>'form-control',' id'=>$name]),$name);
+      
+        static::$basename = $basename;
+        static::$param    = Json::encode($param['conditions'],false);
+        
+     return static::gridBootstrap(Html::input('file',$name.'[]',$value,['class'=>'form-control',' id'=>$basename]));
     }
 
-    static function gridBootstrap($tag,$name)
+    static function gridBootstrap($tag)
     {
 
-     Assets::createAssets([static::end($name)],'js');
+     Assets::createAssets([static::end()],'js');
     // static::$assets->createAsset(['alert(1)'],'endAssets');   
 
      return '<div class="form-group">
@@ -68,14 +76,14 @@ class FileUpload extends AbstractWidget{
 
     }
     //4
-    static function end($name)
+    static function end()
     {
       
       $param = [
          "progressall" => "function(e,data){var progress = parseInt(data.loaded / data.total * 100, 10); $('#progress .bar').css( 'width', progress + '%' );}",
       ];
-
-      return '$(function () {$("#'.$name.'").fileupload();});';        
+      //fileupload({dataType: 'json'})
+      return "$(function (){ $('input[type=\"file\"]#".static::$basename."').fileupload(".static::$param.") });";        
 
     }
 }

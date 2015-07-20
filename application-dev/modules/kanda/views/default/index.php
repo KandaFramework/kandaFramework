@@ -1,6 +1,6 @@
 <?php
-
-static::$title  = 'KandaFramework';
+//pegando o valor da main.php | param
+static::$title  = Kanda::$param->name;
 
 ?>
 <!-- Example row of columns -->

@@ -93,7 +93,7 @@ class Url{
      */
     public static function baseUrl() {
  
-        $server_name = $_SERVER['SCRIPT_URI'];
+        $server_name = (isset($_SERVER['SCRIPT_URI'])? $_SERVER['SCRIPT_URI'] : $_SERVER['SERVER_NAME']);
 
         $protocolo = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false) ? 'http' : 'https';
 
@@ -126,7 +126,7 @@ class Url{
      */
     public static function redirect($param = []) {
 
-        $queryString = '';
+        
 
 
         $render = $param[0];
@@ -163,7 +163,7 @@ class Url{
         
     }
 
-    static function Request(){
+    public static function Request(){
 
         if(!empty($_GET))
             return $_GET;
@@ -171,6 +171,29 @@ class Url{
         if(!empty($_POST))
             return $_POST;
 
+    }
+    
+    public static function getParam($param)
+    {
+        
+        $queryString = '';
+       
+        $render = $param[0];
+        unset($param[0]);    
+
+        if (!empty($param)) {
+
+            $queryString = '?';
+            $queryString .= http_build_query($param);
+        }
+  
+        
+        if($render == '/')
+            $render = '';
+ 
+
+        return $render.$queryString;  
+        
     }
 
  }
