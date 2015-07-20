@@ -5,16 +5,16 @@
  * 
  * 
  */
-namespace modules\painel\controllers;
+namespace app\modules\painel\controllers;
 
 use help\User;
-use helps\UploadFile;
-use helps\Json;
+use kanda\helps\UploadFile;
+use kanda\helps\Json;
 use wideImage\WideImage;
-use modules\painel\models\Banner;
+use app\modules\painel\models\Banner;
 
 
-class BannerController extends \app\Controller {
+class BannerController extends \kanda\web\Controller {
  
 
   public function behaviors() {

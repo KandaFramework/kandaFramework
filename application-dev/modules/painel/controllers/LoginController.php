@@ -5,13 +5,13 @@
  * 
  * 
  */
-namespace modules\painel\controllers;
-use modules\painel\models\LogSistema;
-use modules\painel\models\Usuario;
-use helps\Session;
+namespace app\modules\painel\controllers;
+use app\modules\painel\models\LogSistema;
+use app\modules\painel\models\Usuario;
+use kanda\helps\Session;
 
 
-class LoginController extends \app\Controller{
+class LoginController extends \kanda\web\Controller{
 
     public function actionIndex($token){
 

@@ -7,7 +7,7 @@
  * 
  */
 
-namespace modules\painel\models;
+namespace app\modules\painel\models;
 
 class NewsLetter extends \ActiveRecord\Model {
 

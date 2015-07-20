@@ -1,10 +1,10 @@
 <?php
 static::$title = 'Usuários';
 
-use helps\Url;
-use helps\Session;
-use widgets\GridView;
-use modules\painel\models\Nivel;
+use kanda\helps\Url;
+use kanda\helps\Session;
+use kanda\widgets\GridView;
+use app\modules\painel\models\Nivel;
  
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 static::$title = 'Chamados';
-use helps\Url;
-use widgets\GridView;
+use kanda\helps\Url;
+use kanda\widgets\GridView;
  
 
 function TdDinamic($td){

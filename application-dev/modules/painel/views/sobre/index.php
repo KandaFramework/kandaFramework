@@ -1,7 +1,7 @@
 <?php
 static::$title = 'Sobre';
-use helps\Url;
-use helps\Session;
+use kanda\helps\Url;
+use kanda\helps\Session;
 ?>
 <style>
     .cleditorMain{

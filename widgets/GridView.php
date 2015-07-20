@@ -9,13 +9,12 @@
  *
  */
 
-namespace widgets;
+namespace kanda\widgets;
 
-use app\Controller;
-use base\AbstractWidget; 
-use helps\Html;
-use helps\Url;
-use helps\Bootstrap;
+use kanda\base\AbstractWidget; 
+use kanda\helps\Html;
+use kanda\helps\Url;
+use kanda\helps\Bootstrap;
 
 class GridView{
 

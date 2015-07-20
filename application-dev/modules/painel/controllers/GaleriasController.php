@@ -5,16 +5,16 @@
    * 
    * 
    */
-  namespace modules\painel\controllers;
+  namespace app\modules\painel\controllers;
 
   use help\User;
-  use helps\UploadFile;
+  use kanda\helps\UploadFile;
   use wideImage\WideImage;
 
-  use modules\painel\models\Galeria;
+  use app\modules\painel\models\Galeria;
 
 
-  class GaleriasController extends \app\Controller {
+  class GaleriasController extends \kanda\web\Controller {
 
     public function behaviors() {
       return [

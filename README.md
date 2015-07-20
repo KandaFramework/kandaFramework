@@ -18,13 +18,23 @@ Para rodar o projeto, entrar na pasta application-dev e executar o servidor remo
  
 #Instalação para testes e produção
 
-1 composer require ksoftware/k2
+1 composer require ksoftware/k2 ou
+
+{
+
+	"minimum-stability":"dev",
+	"require": {
+		"ksoftware/k2": "dev-master"
+	}
+}
 
 2 Copiar os arquivos da pasta application para fora do vendor.
 
 3 Configuração do projeto em /config/main.php
 
 4 Para produção adicionar o arquivo .htaccess que encontra-se em vendor/ksoftware/k2
+
+
 
 #Rodando
 

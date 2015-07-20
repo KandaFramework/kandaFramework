@@ -1,12 +1,12 @@
-<?php
+w<?php
 /**
  * @copyright (c) KandaFramework
  * @access public
  * 
  */
-namespace modules\painel\models\search;
+namespace app\modules\painel\models\search;
 
-use modules\painel\models\Noticia;
+use app\modules\painel\models\Noticia;
 
 
 class NoticiaSearch extends Noticia{

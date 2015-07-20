@@ -5,11 +5,11 @@
  * 
  * 
  */
-namespace modules\painel\controllers;
-use helps\Session;
+namespace app\modules\painel\controllers;
+use kanda\helps\Session;
 
 
-class LogaoutController extends \app\Controller{
+class LogaoutController extends \kanda\web\Controller{
     
     public function actionIndex(){
          

@@ -4,9 +4,9 @@
  * @access public
  * 
  */
-namespace modules\painel\models\search;
+namespace app\modules\painel\models\search;
 
-use modules\painel\models\Servico;
+use app\modules\painel\models\Servico;
 
 
 class ServicoSearch extends Servico{

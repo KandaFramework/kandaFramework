@@ -1,8 +1,8 @@
 <?php
 static::$title = 'Contatos';
 
-use widgets\FormWidget;
-use helps\Url;
+use kanda\widgets\FormWidget;
+use kanda\helps\Url;
 ?>
 <div class="module">
     <div class="module-head">

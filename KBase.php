@@ -37,29 +37,13 @@ class KBase
 
     if(is_file($filename))
         require_once $filename;
-  
-
-
-
+   
 	}
+ 
  	
  	/*
 
-    public function __construct() {
-
-        Kanda::$request = helps\Http::run();
-          
-         Kanda::$app = (object) [
-                    'arrays'     => helps\Arrays::run(),
-                    'cache'      => helps\Cache::run(),
-                    'crop'       => helps\Crop::run(),
-                    'html'       => helps\Html::run(),
-                    'url'        => helps\Url::run(),
-                    'uploadFile' => helps\UploadFile::run(),
-                    'session'    => helps\Session::run(),
-        ];
-         
-    }*/
+   */
 
     /**
      * @access public
@@ -82,10 +66,28 @@ class KBase
         });
 
         date_default_timezone_set($main['config']['timezone']);
-        
+
+        static::aplication();
+
         \kanda\web\Controller::begin($main)->load();
-         
-        
+                
+    }
+
+    public static function aplication()
+    {
+
+      KBase::$request = \kanda\helps\Http::run();
+      /*    
+      KBase::$app = (object) [
+                    'arrays'     => \kanda\helps\Arrays::run(),
+                    'cache'      => \kanda\helps\Cache::run(),
+                    'crop'       => \kanda\helps\Crop::run(),
+                    'html'       => \kanda\helps\Html::run(),
+                    'url'        => \kanda\helps\Url::run(),
+                    'uploadFile' => \kanda\helps\UploadFile::run(),
+                    'session'    => \kanda\helps\Session::run(),
+        ];
+      */
     }
 
 

@@ -5,16 +5,16 @@
  * 
  * 
  */
-namespace modules\painel\controllers;
+namespace app\modules\painel\controllers;
 
-use modules\painel\models\Contato;
+use app\modules\painel\models\Contato;
 
-use modules\painel\models\search\ContatoSearch;
+use app\modules\painel\models\search\ContatoSearch;
 use help\User;
-use helps\Session;
+use kanda\helps\Session;
 
 
-class ContatosController extends \app\Controller {
+class ContatosController extends \kanda\web\Controller {
     
     public function behaviors() {
         return [

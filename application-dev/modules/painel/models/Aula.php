@@ -7,7 +7,7 @@
  * 
  */
 
-namespace modules\painel\models;
+namespace app\modules\painel\models;
 
 class Aula extends \ActiveRecord\Model {
 

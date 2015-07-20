@@ -7,7 +7,7 @@
  */
 namespace kanda\helps;
 
-class Cache extends \app\Controller {
+class Cache{
 
     private static $fileName;
     private static $active;

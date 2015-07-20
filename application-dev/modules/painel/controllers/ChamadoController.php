@@ -7,12 +7,12 @@
  * 
  */
 
-namespace modules\painel\controllers;
+namespace app\modules\painel\controllers;
 
-use helps\Session;
+use kanda\helps\Session;
 use help\User;
 
-class ChamadoController extends \app\Controller {
+class ChamadoController extends \kanda\web\Controller {
 
     private $create = 'http://inetsistemas.com.br/chamado/webservice/createchamado';
     private $form = 'http://inetsistemas.com.br/chamado/webservice/listForm';

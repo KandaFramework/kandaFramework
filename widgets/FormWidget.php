@@ -6,10 +6,10 @@
  * 
  */
 
-namespace widgets;
+namespace kanda\widgets;
 
-use helps\Html;
-use helps\Validate;
+use kanda\helps\Html;
+use kanda\helps\Validate;
 
 class FormWidget extends Validate{
 
