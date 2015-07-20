@@ -93,7 +93,7 @@ class Url{
      */
     public static function baseUrl() {
  
-        $server_name = $_SERVER['SERVER_NAME'];
+        $server_name = $_SERVER['SCRIPT_URI'];
 
         $protocolo = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false) ? 'http' : 'https';
 
