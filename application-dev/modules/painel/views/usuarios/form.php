@@ -29,7 +29,11 @@ use kanda\fileupload\FileUpload;
                 [
                   'conditions'=>[
                       'url'=> Url::toRouter(['usuarios/file-upload','id'=>$model->id]),
-                  ]
+                      'dataType'=>'json',
+                   ],
+                   'extra'=>[
+                       
+                   ],
                     
                 ]);
                 echo $form->field('senha')->text(['value'=>123],'password');

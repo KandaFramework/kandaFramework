@@ -78,8 +78,8 @@ class Validate extends Assets{
 
                         break;
                     case 'file':
-                        static::$rules .= "'" . static::$class . "[$colun[0]]':{required: $required,extension:\"{$colun['extension']}\"},";
-                        static::$message .= "'" . static::$class . "[$colun[0]]':{required:'$message',extension:'{$colun['error']}'},";
+                        static::$rules .= "'" . static::$class . "[$colun[0]]':{extension:\"{$colun['extension']}\"},";
+                        static::$message .= "'" . static::$class . "[$colun[0]]':{extension:'{$colun['error']}'},";
                         break;
                 }
             }

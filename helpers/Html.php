@@ -235,5 +235,18 @@ class Html{
         
         return $table;
     }
+    
+    
+    public static function conditionJs($param=[])
+    {
+        
+        $condition = '';
+        
+        foreach ($param as $key => $value)
+        {
+            $condition .= "$key:$value,";
+        }
+        return $condition;
+    }
 
 }

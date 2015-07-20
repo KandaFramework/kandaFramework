@@ -69,5 +69,8 @@ use kanda\helpers\Url;
 <footer>
  <p>© Company <?php echo date('Y') ?></p> 
 </footer>
+<?php
+static::footer();
+?>
 </body>
 </html>
