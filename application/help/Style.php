@@ -7,7 +7,7 @@
  * 
  */
 
-namespace help;
+namespace app\help;
 
 class Style {
 

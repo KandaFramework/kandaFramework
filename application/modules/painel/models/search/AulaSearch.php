@@ -4,9 +4,9 @@
  * @access public
  * 
  */
-namespace modules\painel\models\search;
+namespace app\modules\painel\models\search;
 
-use modules\painel\models\Aula;
+use app\modules\painel\models\Aula;
 
 
 class AulaSearch extends Aula{

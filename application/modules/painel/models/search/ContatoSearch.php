@@ -4,9 +4,9 @@
  * @access public
  * 
  */
-namespace modules\painel\models\search;
+namespace app\modules\painel\models\search;
 
-use modules\painel\models\Contato;
+use app\modules\painel\models\Contato;
 
 
 class ContatoSearch extends Contato{

@@ -6,8 +6,6 @@ use kanda\helps\Url;
 use kanda\helps\Session;
 use kanda\fileupload\FileUpload;
 
-FileUpload::version();
-
 ?>
  
 <div class="module">

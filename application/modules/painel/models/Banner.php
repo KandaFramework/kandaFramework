@@ -4,7 +4,7 @@
  * @access public
  * 
  */
-namespace modules\painel\models;
+namespace app\modules\painel\models;
 
 class Banner extends \ActiveRecord\Model {
 

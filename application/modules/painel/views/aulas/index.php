@@ -1,8 +1,8 @@
 <?php
 static::$title = 'Aulas';
 
-use helps\Url;
-use helps\Session;
+use kanda\helps\Url;
+use kanda\helps\Session;
 use widgets\GridView;
 ?>
 <div class="module">

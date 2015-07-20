@@ -5,16 +5,16 @@
  * 
  * 
  */
-namespace modules\painel\controllers;
+namespace app\modules\painel\controllers;
 
 
-use modules\painel\models\Usuario;
-use modules\painel\models\Nivel;
-use helps\Session;
-use modules\painel\models\search\UsuarioSearch;
+use app\modules\painel\models\Usuario;
+use app\modules\painel\models\Nivel;
+use kanda\helps\Session;
+use app\modules\painel\models\search\UsuarioSearch;
 use help\User;
 
-class UsuariosController extends \app\Controller {
+class UsuariosController extends \kanda\web\Controller {
 
     public function behaviors() {
         return [

@@ -6,13 +6,13 @@
  * 
  */
 
-namespace modules\painel\controllers;
+namespace app\modules\painel\controllers;
 
-use modules\painel\models\Usuario;
-use helps\Session;
+use app\modules\painel\models\Usuario;
+use kanda\helps\Session;
 
  
-class PainelController extends \app\Controller {
+class PainelController extends \kanda\web\Controller {
 
     public function actionPainel() {
              

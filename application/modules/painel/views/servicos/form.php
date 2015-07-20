@@ -1,9 +1,9 @@
 <?php
 static::$title = 'Serviços';
 
-use widgets\FormWidget;
-use helps\Url;
-use helps\Session;
+use kanda\widgets\FormWidget;
+use kanda\helps\Url;
+use kanda\helps\Session;
 ?>
 <div class="module">
     <div class="module-head">

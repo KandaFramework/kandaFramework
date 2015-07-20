@@ -1,8 +1,8 @@
 <?php
 
-namespace modules\painel;
+namespace app\modules\painel;
 
-use base\ActiveModule;
+use kanda\base\ActiveModule;
 
 class Module extends ActiveModule{
     

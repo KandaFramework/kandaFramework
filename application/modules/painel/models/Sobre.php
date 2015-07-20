@@ -5,7 +5,7 @@
  * 
  * 
  */
-namespace modules\painel\models;
+namespace app\modules\painel\models;
 
 class Sobre extends \ActiveRecord\Model {
 

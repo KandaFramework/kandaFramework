@@ -1,9 +1,10 @@
 <?php
 
-namespace modules\kanda\controllers;
+namespace app\modules\kanda\controllers;
 
+use kanda\web\Controller;
 
-class DefaultController extends \app\Controller {
+class DefaultController extends Controller {
 
     public function actionIndex() {
 

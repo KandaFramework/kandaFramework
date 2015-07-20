@@ -6,9 +6,9 @@
  * 
  */
 
-namespace help;
+namespace app\help;
 
-use helps\Session as Session;
+use kanda\helps\Session;
 
 class User{
     

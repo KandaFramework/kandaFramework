@@ -2,8 +2,8 @@
 static::$title = 'Aulas';
 
 use widgets\FormWidget;
-use helps\Url;
-use helps\Session;
+use kanda\helps\Url;
+use kanda\helps\Session;
 ?>
 <div class="module">
     <div class="module-head">

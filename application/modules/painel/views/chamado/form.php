@@ -1,9 +1,9 @@
 <?php
 static::$title = 'Abrir Chamado';
 
-use helps\Html;
-use helps\Url;
-use helps\Session;
+use kanda\helps\Html;
+use kanda\helps\Url;
+use kanda\helps\Session;
 
 function Grid($content, $label) {
 

@@ -5,15 +5,15 @@
  * 
  * 
  */
-namespace modules\painel\controllers;
+namespace app\modules\painel\controllers;
 
 
-use modules\painel\models\Servico;
-use helps\Session;
-use modules\painel\models\search\ServicoSearch;
+use app\modules\painel\models\Servico;
+use kanda\helps\Session;
+use app\modules\painel\models\search\ServicoSearch;
 use help\User;
 
-class ServicosController extends \app\Controller {
+class ServicosController extends \kanda\web\Controller {
 
     public function behaviors() {
         return [

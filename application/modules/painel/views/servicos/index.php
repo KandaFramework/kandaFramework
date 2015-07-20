@@ -1,10 +1,10 @@
 <?php
 static::$title = 'Serviços';
 
-use helps\Url;
-use helps\Session;
-use widgets\GridView;
-use modules\painel\models\Nivel;
+use kanda\helps\Url;
+use kanda\helps\Session;
+use kanda\widgetsGridView;
+use app\modules\painel\models\Nivel;
 ?>
 <div class="module">
     <div class="module-head">

@@ -5,13 +5,13 @@
  * 
  * 
  */
-namespace modules\painel\controllers;
+namespace app\modules\painel\controllers;
 
-use modules\painel\models\Sobre;
+use app\modules\painel\models\Sobre;
 use help\User;
-use helps\Session;
+use kanda\helps\Session;
 
-class SobreController extends \app\Controller{
+class SobreController extends \kanda\web\Controller{
     
     private static $id;
     

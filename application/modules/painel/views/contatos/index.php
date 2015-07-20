@@ -1,10 +1,10 @@
 <?php
 static::$title = 'Contatos';
 
-use widgets\GridView;
-use helps\Html;
-use helps\Url;
-use helps\Session;
+use kanda\widgets\GridView;
+use kanda\helps\Html;
+use kanda\helps\Url;
+use kanda\helps\Session;
 ?>
 <div class="module">
     <div class="module-head">

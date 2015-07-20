@@ -5,7 +5,7 @@
  * 
  * 
  */
-namespace modules\painel\models;
+namespace app\modules\painel\models;
 
 class Contato extends \ActiveRecord\Model {
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace modules\painel\controllers;
+namespace app\modules\painel\controllers;
 
 
-use \app\Controller;
+use \kanda\web\Controller;
 
-use modules\painel\models\Usuario;
-use helps\Session;
-use helps\Url;
+use app\modules\painel\models\Usuario;
+use kanda\helps\Session;
+use kanda\helps\Url;
 
 class DefaultController extends Controller {
 
