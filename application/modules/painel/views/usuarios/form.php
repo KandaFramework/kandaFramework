@@ -17,7 +17,7 @@ use kanda\fileupload\FileUpload;
 
         <br>
 
-        <form method="POST"  id="FormWidget" action=""  class="form-horizontal row-fluid" enctype="multipart/form-data" >
+        <form method="POST"  id="FormWidget" action="<?php echo Url::request() ?>"  enctype="multipart/form-data" class="form-horizontal row-fluid" >
             <fieldset>
                 <?php
                 $form = FormWidget::begin($model, [ 'style' => "app\help\Style",]);
@@ -25,7 +25,13 @@ use kanda\fileupload\FileUpload;
                 echo $form->field('nome')->text();
                 echo $form->field('login')->text();
                 echo $form->field('email')->text();
-                echo $form->field('email')->widget(FileUpload::class_name());
+                echo $form->field('file')->widget(FileUpload::class_name(),
+                [
+                  'conditions'=>[
+                      'url'=> Url::toRouter(['usuarios/file-upload','id'=>$model->id]),
+                  ]
+                    
+                ]);
                 echo $form->field('senha')->text(['value'=>123],'password');
            
                 ?>
