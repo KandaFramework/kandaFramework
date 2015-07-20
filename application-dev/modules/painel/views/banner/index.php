@@ -1,6 +1,7 @@
 <?php
 static::$title = 'Bannder';
 use kanda\helpers\Url;
+use kanda\fileupload\FileUpload;
 ?>
 <style>
  
@@ -40,7 +41,19 @@ use kanda\helpers\Url;
 				<div class="control-group">
 					<label class="control-label" for="nome">Foto</label>
 					<div class="controls">
-						<input type="file" multiple='4' class="input-xlarge focused"  id="fileupload" name="Banner[file]">
+                                          <?php 
+                                          echo FileUpload::widget('file',
+                                           [
+                                             'conditions'=>[
+                                              'url'=> Url::toRouter(['banner/file-upload']),
+                                                'dataType'=>'json',
+                                             ],
+                                             'extra'=>[
+                                               'done' =>"function (e, data){ $.each(data.result.files, function(index, file) { var img = '<img src=\"'+file.src+'\" />'; $('#Banner').append('<li id=\"'+file.id+'\" >'+img+'</li>')  })}",
+			                    ],   
+                                               
+                                           ]);
+                                          ?>
 					</div>
 				</div>
 
@@ -86,28 +99,6 @@ use kanda\helpers\Url;
 			};
 
 		},'JSON');
-	};
-
-	$(function () {
-		$('#fileupload').fileupload({
-			url:'<?php echo Url::to('FileUpload') ?>',
-			dataType: 'json',
-			done: function (e, data) {
-
-				$.each(data.result.files, function (index, file) {
-					var img = '<img src="'+file.src+'" />';
-					$('#Banner').append('<li id="'+file.id+'" >'+img+'</li>')
-				});
-			},
-			progressall: function (e, data) {
-				var progress = parseInt(data.loaded / data.total * 100, 10);
-				$('#progress .bar').css(
-					'width',
-					progress + '%'
-					);
-
-			},
-			
-		});
-	});
+	}; 
+	 
 </script>
