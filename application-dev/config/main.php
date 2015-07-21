@@ -20,6 +20,11 @@ return $main = [
                 'dirAlias' => '',
                 'class' => 'app\modules\painel\Module',
             ], 
+             'admin' => [
+                'timezone' => 'America/Sao_Paulo',
+                'dirAlias' => '',
+                'class' => 'app\modules\admin\Module',
+            ], 
         ],
         'urlManager' => [
             'class'

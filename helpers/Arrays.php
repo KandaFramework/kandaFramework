@@ -13,11 +13,11 @@ class Arrays{
         return new Arrays();
     }
 
-    public static function map($model=[],$param=[]){
+    public static function map($model,$key,$value){
         
       $map = [];
            foreach($model as $res)
-             $map[$res->$param[0]] = $res->$param[1];
+             $map[$res->$key] = $res->$value;
             
        return $map; 
     }   
