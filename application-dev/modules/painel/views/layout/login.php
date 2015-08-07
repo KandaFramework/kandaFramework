@@ -99,6 +99,17 @@ use kanda\helpers\Url;
     </div>
 </div>
 <script src="/assets/painel/bootstrap/js/bootstrap.min.js" ></script>
+<script>
+    
+    var Modal = function(url)
+    {
+
+        $.get(url,{},function(data){
+            $('.modal-body').append(data);
+        });
+    }
+
+</script>
 <?php
        static::footer();
 ?>

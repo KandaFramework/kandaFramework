@@ -77,7 +77,8 @@ class FileUpload extends AbstractWidget {
     }
 
     //4
-    public static function end() {
+    public static function end() 
+    {
 
         $param = [
             "progressall" => "function(e,data){var progress = parseInt(data.loaded / data.total * 100, 10); alert(progress) }",
