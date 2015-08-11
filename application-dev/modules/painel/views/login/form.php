@@ -1,21 +1,21 @@
 <?php
-use widgets\FormWidget;
+use kanda\widgets\FormWidget;
 use kanda\helpers\Url;
 use kanda\helpers\Session;
- 
+use kanda\fileupload\FileUpload;
 
 ?>
  
-
-     <form method="POST"  id="Validade" action=""  class="form-horizontal row-fluid" enctype="multipart/form-data" >
+        <br/>
+        <form method="POST"  id="FormWidget" action="<?php echo Url::request() ?>"  enctype="multipart/form-data" class="form-horizontal row-fluid" >
             <fieldset>
                 <?php
-                $form = FormWidget::widget($model, [ 'style' => "\help\Style",]);
+                $form = FormWidget::begin($model, [ 'style' => "app\help\Style",]);
 
-                echo $form->text('nome');
-                echo $form->text('login');
-                echo $form->text('email');
-                echo $form->text('senha',['value' => '123'], 'password');
+                echo $form->field('nome')->text();
+                echo $form->field('login')->text();
+                echo $form->field('email')->text();
+                 echo $form->field('senha')->text(['value'=>123],'password');
            
                 ?>
                 <div class="form-actions">
@@ -23,4 +23,4 @@ use kanda\helpers\Session;
                 </div>
 
             </fieldset>
-        </form>       
+        </form>     
