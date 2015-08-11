@@ -6,134 +6,112 @@
  * 
  * 
  */
+
 namespace kanda\helpers;
 
+class Assets {
+
+    public $base = '/assets/';
+    public $basename = '';
+    public $css = [];
+    public $js = [];
+    public $dirname = '';
+    public $assets = [];
+    public static $key = '';
+
+    public function init() {
+
+        if (!empty($this->css)) {
+            static::$key = 'css';
+            $this->Copy($this->css);
+        }
+
+        if (!empty($this->js)) {
+            static::$key = 'js';
+            $this->Copy($this->js);
+        }
 
 
-class Assets{
+        return $this;
+    }
 
-	public $base = '/assets/';
+    private function Copy($files) {
 
-	public $basename = '';
+        $src = [];
 
-	public $css = [];
+        $this->createDir($this->basename);
 
-	public $js = [];
+        $path = realpath($this->base);
 
-	public $dirname = '';
+        $count = strlen($this->base);
 
-	public $assets = [];
+        $objects = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
 
-	
-	public  function init(){
-		
-		if(!empty($this->css)){
-			$this->Copy($this->css,'css');
-		}
+        $i = 0;
 
-		if(!empty($this->js)){
-			$this->Copy($this->js,'js');
-		}
+        $count_file = count($files);
 
-	  return $this;
+        foreach ($objects as $path) {
 
-	}
-
-	private function Copy($files,$type)
-	{
-		$src = [];
-	    
-		$this->createDir($this->basename);
- 	
-		$path = realpath($this->base);
-
-		$count = strlen($this->base);
-
-		$objects = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
-		
-		$i=0;
-
-		$count_file = count($files);
-
-		foreach($objects as $path){
-		  
-		    if(in_array(substr($path->getPathName(),$count),$files))
-		     {
+            if (in_array(substr($path->getPathName(), $count), $files)) {
 
 
-		     	$dir  = explode(DS,$path->getPathName());
-		     	$filename = end($dir);
-		     	array_pop($dir);
-		     	
-		     	$newdir = implode(DS,$dir);
-		     	
-		     	$newdir = substr($newdir,$count);
-		     	
-		     	$new = $this->basename.DS.$newdir;
+                $dir = explode(DS, $path->getPathName());
+                $filename = end($dir);
+                array_pop($dir);
 
-		     	$this->createDir($new);
-		     	
-		     	$copy = $this->dirName().$newdir.DS.$filename;
+                $newdir = implode(DS, $dir);
 
- 				copy($path->getPathName(),$copy);
-			 
+                $newdir = substr($newdir, $count);
 
-		     }
+                $new = $this->basename . DS . $newdir;
 
-		     ++$i;
+                $this->createDir($new);
 
-		}
+                $copy = $this->dirName() . $newdir . DS . $filename;
 
-		$reduce = function($recude,$src)
-		{
-			$this->assets[] = '/assets/'.$this->basename.'/'.$src;
-		};
-		array_reduce($files, $reduce,null);
-		
-		 
-		static::createAssets($this->assets,$type);
-		return true;
+                copy($path->getPathName(), $copy);
+            }
 
- 	 }
+            ++$i;
+        }
 
- 	static function createAssets($src,$type)
- 	 {
+        $reduce = function($recude, $src) {
+            $this->assets[static::$key][] = '/assets/' . $this->basename . '/' . $src;
+        };
+        array_reduce($files, $reduce, null);
 
- 	 	if(empty(Session::getSession()->$type))
-		{
-			Session::setSession([
-				  $type => $src,	
-			]);
-			return true;
-		}
-		Session::setSession([
-				  $type => array_merge(Session::getSession()->$type,$src),	
-		]);
-		return true;				 
 
- 	 }
+        static::createAssets($this->assets);
+        return true;
+    }
 
-	
-	public function dirName(){
-		return ASSETS.$this->basename.DS;
-	}
-	
-	public function createDir($dirname){
+    static function createAssets($src) {
+        $type = static::$key;
 
-		$dirname = ASSETS.$dirname;
+        Session::setSession([
+            'assets' => $src,
+        ]);
+        return true;
+    }
 
-		if(!is_dir($dirname))	 	
-			mkdir($dirname);
-		
-		return $dirname;
-	}
+    public function dirName() {
+        return ASSETS . $this->basename . DS;
+    }
 
-	 
-	static function end($end=''){
-		
-		return $end;
-	   
-	}
+    public function createDir($dirname) {
 
-	
+        $dirname = ASSETS . $dirname;
+
+        if (!is_dir($dirname))
+            mkdir($dirname);
+
+        return $dirname;
+    }
+
+    static function end($end = '') {
+
+        return $end;
+    }
+
 }
