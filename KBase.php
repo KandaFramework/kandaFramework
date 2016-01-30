@@ -21,7 +21,7 @@ class KBase {
 
         $filename = str_replace(DS . 'kanda' . DS, DS, $class);
  
-        $app = strpos($filename, 'app/');
+        $app = strpos($filename, 'app'.DS);
 
         if ($app) {
             $filename = str_replace('app' . DS, WWW_ROOT . DS, substr($class, $app));

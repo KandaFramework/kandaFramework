@@ -3,11 +3,9 @@
 return $main = [
 
     'config' => [
-        'db' => [
-          'dsn' => require 'dsn.php',
-        ],
+        'db' => require 'dsn.php',
         'timezone' => 'America/Sao_Paulo',
-        'default' => 'kanda', //module default para ser carregado
+        'default' => 'painel', //module default para ser carregado
         'dirAlias' => '',
         'modules' => [
             'kanda' => [
